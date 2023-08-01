@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>Мой замечательный блог</h1>
+        <p>Мой слоган</p>
+    </header>
+    <aside>
+        <nav>
+            <h2>Мой блогролл</h2>
+            <ul>
+                <li><a href="https://blog.example.com/">Интересная ссылка</a>
+            </ul>
+        </nav>
+        <nav>
+            <h2>Архивы</h2>
+            <ol reversed>
+                <li><a href="/last-post">Моя последняя запись</a>
+                <li><a href="/first-post">Моя первая запись</a>
+            </ol>
+        </nav>
+    </aside>
+    <aside>
+        <h2>Мой Twitter</h2>
+        <blockquote cite="https://twitter.example.net/t31351234">
+            Я в отпуске, пишу для своего блога.
+        </blockquote>
+        <blockquote cite="https://twitter.example.net/t31219752">
+            Я скоро пойду в отпуск.
+        </blockquote>
+    </aside>
+    <article>
+        <h2>Моя последняя запись</h2>
+        <p>Это моя последняя запись.</p>
+        <footer>
+            <p><a href="/last-post" rel=bookmark>Ссылка</a>
+        </footer>
+    </article>
+    <article>
+        <h2>Моя первая запись</h2>
+        <p>Это моя первая запись.</p>
+        <aside>
+            <h1>Публикация</h1>
+            <p>Пока я думаю об этом, я хотел бы сказать кое-что о публикациях. Опубликовывать статьи - это весело!</p>
+        </aside>
+        <footer>
+            <p><a href="/first-post" rel="bookmark">Ссылка</a></p>
+        </footer>
+    </article>
+    <footer>
+        <nav>
+            <a href="/archives">Архивы</a> — <a href="/about">Обо мне</a> — <a href="/copyright">Copyright</a>
+        </nav>
+    </footer>
+
+
+
+    <article>
+        <header>
+            <h2>Яблоки</h2>
+            <p>Вкусные, восхитительные фрукты!</p>
+        </header>
+        <p>Яблоко является плодом яблони.</p>
+        <section aria-label="Красные яблоки">
+            <h3>Ред Делишес</h3>
+            <p>Эти ярко-красные яблоки чаще всего встречаются во многих супермаркетах.</p>
+        </section>
+        <section aria-label="Зеленые яблоки">
+            <h3>Гренни Смит</h3>
+            <p>Эти сочные зеленые яблоки станут отличной начинкой для яблочных пирогов.</p>
+        </section>
+    </article>
+
+
+    <fieldset>
+        <legend>Персональная информация</legend>
+        <p>
+            <label>Имя: <input name="n"></label>
+            <label><input name="anon" type="checkbox"> Скрыть от других пользователей</label>
+        </p>
+        <p><label>Адрес: <textarea name="a"></textarea></label></p>
+    </fieldset>
+    <section>
+        <h1>Общение</h1>
+        <p>Существуют различные способы общения. Этот раздел охватывает несколько важных, используемых проектом.</p>
+        <hr>
+        <p>Камни связи, кажется, приходят парами и имеют загадочные свойства:</p>
+        <ul>
+            <li>Они могут передавать мысли в двух направлениях после активации, если используются в одиночку.</li>
+            <li>Если оба камня используются с другим устройством, сознание переключается на другое тело.</li>
+        </ul>
+        <hr>
+        <p>Радиоприемники используют электромагнитный спектр в метровом диапазоне и дольше.</p>
+        <hr>
+        <p>Сигнальные вспышки используют электромагнитный спектр в нанометровом диапазоне.</p>
+    </section>
+
+    <p>Это конструктор <code>Panel</code>:</p>
+    <pre><code>function Panel(element, canClose, closeHandler) {
+  this.element = element;
+  this.canClose = canClose;
+  this.closeHandler = function () { if (closeHandler) closeHandler() };
+}</code></pre>
+    <blockquote>
+        <p>Моя любимая книга <cite class="from-source">"О водоплавающих"</cite></p>
+        <footer>- <cite>Майк Смит</cite></footer>
+    </blockquote>
+
+    <dl>
+        <dt lang="en-us"><dfn>Color</dfn></dt>
+        <dt lang="en-gb"><dfn>Colour</dfn></dt>
+        <dd>A sensation which (in humans) derives from the ability of the fine structure of the eye to distinguish three
+            differently filtered analyses of a view.</dd>
+    </dl>
+
+
+    <figure>
+        <img src="picture.jpg" alt="Осень">
+        <figcaption>Осенний лес</figcaption>
+    </figure>
+</body>
+
+<body>
+    <header>
+        <h1>Пудель</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О породе</a></li>
+                <li><a href="health.html">Здоровье</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <header>
+                <h2>О породе</h2>
+                <nav>
+                    <ul>
+                        <li><a href="#basic">Разновидности</a></li>
+                        <li><a href="#app">Внешний вид</a></li>
+                        <li><a href="#temp">Характер</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <section id="basic">
+                <h3>Разновидности</h3>
+                <p>...</p>
+            </section>
+            <section id="app">
+                <h3>Внешний вид</h3>
+                <p>...</p>
+            </section>
+            <section id="temp">
+                <h3>Характер</h3>
+                <p>...</p>
+            </section>
+            <footer>
+                <a href="#basic">Разновидности</a>
+                <a href="#app">Внешний вид</a>
+                <a href="#temp">Характер</a>
+            </footer>
+            <aside class="advertising">
+                <h2>Викиум</h2>
+                <a href="https://ad.example.com/?adid=1929&pubid=1422">
+                    <section>
+                        <h3>Тренажеры для мозга</h3>
+                        <p>Какая функция мозга у тебя сильнее?</p>
+                    </section>
+                </a>
+            </aside>
+        </section>
+    </main>
+    <footer>
+        <small>Copyright © <time datetime="2016">2016</time> Моя собака.ру</small>
+    </footer>
+
+
+    <p>Добро пожаловать в Реми, систему напоминаний.</p>
+    <p>Ваши задачи на сегодня:</p>
+    <ul>
+        <li>
+            <p><strong>Выключите духовку</strong></p>
+        </li>
+        <li>
+            <p>Выбросьте мусор</p>
+        </li>
+        <li>
+            <p>Займитесь стиркой</p>
+        </li>
+    </ul>
+
+
+    <p>Купите наш чай со льдом и лимонад!</p>
+    <p><s>Рекомендованная розничная цена: 100 руб. за бутылку</s></p>
+    <p><strong>Успей купить сегодня всего за 60 руб. за бутылку!</strong></p>
+
+    <p>Кто твой любимый доктор (в сериале <cite>Доктор Кто</cite>)?</p>
+
+    <p><dfn id="csr"><abbr title="Certificate Signing Request">CSR</abbr></dfn> — это ключ, генерируемый при запросе на
+        выдачу SSL-сертификата.</p>
+    <p>Для генерации <a href="#csr"><abbr title="Certificate Signing Request">CSR</abbr></a> Вам понадобится
+        предоставить следующую информацию...</p>
+
+    <ruby>日<rt>に</rt></ruby><ruby>本<rt>ほん</rt></ruby>
+    <ruby>語<rt>ご</rt></ruby>で<ruby>書<rt>か</rt></ruby>
+    いた<ruby>作<rt>さく</rt></ruby><ruby>文<rt>ぶん</rt></ruby>です。
+
+    <p>Новые поступления:</p>
+    <ul>
+        <li><data value="44678">Альбом «На память о дне пятидесятилетия Эммануила Людвиговича Нобеля. 10 июня 1909
+                г.»</data></li>
+        <li><data value="44668">Ноты. Травиата. Опера Джузеппе Верди</data></li>
+        <li><data value="44688">Обух Н.К. Первый снег. Павловск. 1910-е годы</data></li>
+    </ul>
+
+    <p>Чтобы заставить Джорджа съесть яблоко, нажмите <kbd><kbd>Shift</kbd>+<kbd>F3</kbd></kbd></p>
+
+    <ul>
+        <li>Пользователь <bdi>jcranmer</bdi>: 12 записей.
+        <li>Пользователь <bdi>hober</bdi>: 5 записей.
+        <li>Пользователь <bdi>إيان</bdi>: 3 записи.
+    </ul>
+    <aside>
+        <ins>
+            <p>Я люблю фрукты.</p>
+        </ins>
+    </aside>
+
+    <h1>Список дел</h1>
+    <ul>
+        <li>Разгрузить посудомоечную машину</li>
+        <li><del datetime="2009-10-11T01:25-07:00">Посмотреть лекции Уолтера Левина</del></li>
+        <li><del datetime="2009-10-10T23:38-07:00">Скачать больше треков</del></li>
+        <li>Купить принтер</li>
+    </ul>
+
+
+    <object type="application/x-shockwave-flash">
+        <param name="movie" value="https://video.example.com/library/watch.swf">
+        <param name="allowfullscreen" value="true">
+        <param name="flashvars" value="https://video.example.com/vids/123456">
+        <video controls src="https://video.example.com/vids/123456" <a href="https://video.example.com/vids/123456">View
+            video</a>
+        </video>
+    </object>
+
+    <object type="application/vnd.o3d.auto">
+        <param name="o3d_features" value="FloatingPointTextures">
+        <img src="o3d-teapot.png" title="3D Utah Teapot illustration rendered using O3D." alt="When O3D renders the Utah Teapot, it appears as a squat
+            teapot with a shiny metallic finish on which the
+            surroundings are reflected, with a faint shadow caused by
+            the lighting.">
+        <p>To see the teapot actually rendered by O3D on your computer, please download and install the
+            <a href="https://example.com/o3d/install">O3D plugin</a>.
+        </p>
+    </object>
+    <script src="o3d-teapot.js"></script>
+
+
+    <table style="width: 100%;">
+        <colgroup style="background: #ccc;">
+            <col style="background: #ddd; width: 30%;">
+            <col style="background: #eee; width: 50%;">
+            <col style="width: 20%;">
+        </colgroup>
+        <tbody>
+            <tr>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+            </tr>
+            <!-- ... -->
+        </tbody>
+    </table>
+</body>
+
+</html>

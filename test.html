@@ -4,28 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="test.css">
     <title>Document</title>
 </head>
 
 <body>
-    <header>
-        <h1>Мой замечательный блог</h1>
-        <p>Мой слоган</p>
-    </header>
-    <aside>
-        <nav>
-            <h2>Мой блогролл</h2>
-            <ul>
-                <li><a href="https://blog.example.com/">Интересная ссылка</a>
-            </ul>
-        </nav>
-        <nav>
-            <h2>Архивы</h2>
-            <ol reversed>
-                <li><a href="/last-post">Моя последняя запись</a>
-                <li><a href="/first-post">Моя первая запись</a>
-            </ol>
-        </nav>
+
+    <nav>
+        <h2>Архивы</h2>
+        <ol reversed>
+            <li><a href="/last-post" class="global">Моя последняя запись</a>
+            <li><a href="/first-post" class="global">Моя первая запись</a>
+        </ol>
+    </nav>
     </aside>
     <aside>
         <h2>Мой Twitter</h2>
@@ -280,6 +271,98 @@
             <!-- ... -->
         </tbody>
     </table>
+
+
+    <form method="post" enctype="application/x-www-form-urlencoded" action="https://pizza.example.com/order.cgi">
+        <p><label>Customer name: <input name="custname" required autocomplete="shipping name"></label></p>
+        <p><label>Telephone: <input type=tel name="custtel" autocomplete="shipping tel"></label></p>
+        <p><label>Buzzer code: <input name="custbuzz" inputmode="numeric"></label></p>
+        <p><label>Email address: <input type=email name="custemail" autocomplete="shipping email"></label></p>
+        <fieldset>
+            <legend>Pizza Size</legend>
+            <p><label> <input type="radio" name="size" required value="small">Small</label></p>
+            <p><label> <input type="radio" name="size" required value="medium">Medium</label></p>
+            <p><label> <input type="radio" name="size" required value="large">Large</label></p>
+        </fieldset>
+        <fieldset>
+            <legend>Pizza Toppings</legend>
+            <p><label> <input type="checkbox" name="topping" value="bacon">Bacon</label></p>
+            <p><label> <input type="checkbox" name="topping" value="cheese">Extra Cheese</label></p>
+            <p><label> <input type="checkbox" name="topping" value="onion">Onion</label></p>
+            <p><label> <input type="checkbox" name="topping" value="mushroom">Mushroom</label></p>
+        </fieldset>
+        <p><label>Preferred delivery time: <input type="time" min="11:00" max="21:00" step="900" name="delivery"
+                    required></label></p>
+        <p><label>Delivery instructions: <textarea name="comments" maxlength=1000></textarea></label></p>
+        <p><button>Submit order</button></p>
+    </form>
+
+    <form action="courseselector.dll" method="get">
+        <p>Which course would you like to watch today?
+        <p><label>Course:
+                <select name="c">
+                    <optgroup label="8.01 Physics I: Classical Mechanics">
+                        <option value="8.01.1">Lecture 01: Powers of Ten
+                        <option value="8.01.2">Lecture 02: 1D Kinematics
+                        <option value="8.01.3">Lecture 03: Vectors
+                    <optgroup label="8.02 Electricity and Magnetism">
+                        <option value="8.02.1">Lecture 01: What holds our world together?
+                        <option value="8.02.2">Lecture 02: Electric Field
+                        <option value="8.02.3">Lecture 03: Electric Flux
+                    <optgroup label="8.03 Physics III: Vibrations and Waves">
+                        <option value="8.03.1">Lecture 01: Periodic Phenomenon
+                        <option value="8.03.2">Lecture 02: Beats
+                        <option value="8.03.3">Lecture 03: Forced Oscillations with Damping
+                </select>
+            </label>
+        <p><input type=submit value="▶ Play">
+
+
+        <form onsubmit="return false" oninput="o.value = a.valueAsNumber + b.valueAsNumber">
+            <input id="a" type="number" step="any"> +
+            <input id="b" type="number" step="any"> =
+            <output id="o" for="a b"></output>
+        </form>
+
+
+        <fieldset name="clubfields" disabled>
+            <legend>
+                <label>
+                    <input type="checkbox" name="club" onchange="form.clubfields.disabled = !checked">
+                    Use Club Card
+                </label>
+            </legend>
+            <p><label>Name on card: <input name="clubname" required></label></p>
+            <p><label>Card number: <input name="clubnum" required pattern="[-0-9]+"></label></p>
+            <p><label>Expiry date: <input name="clubexp" type="month"></label></p>
+        </fieldset>
+    </form>
+
+
+
+    <dialog id="favDialog">
+        <form method="dialog">
+            <p>
+                <label for="favAnimal">Любимые животные:</label>
+                <select id="favAnimal">
+                    <option></option>
+                    <option>Вельш-корги</option>
+                    <option>Красная панда</option>
+                    <option>Рэгдолл</option>
+                </select>
+            </p>
+            <p>
+                <button id="cancel" type="reset">Отменить</button>
+                <button type="submit">Отправить</button>
+            </p>
+        </form>
+    </dialog>
+</body>
+
+<body>
+    <video controls width="710" height="538" poster="/examples/media/martynko.png" preload="none">
+        <source src="/examples/media/martynko.mp4" type="video/mp4">
+    </video>
 </body>
 
 </html>

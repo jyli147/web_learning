@@ -1,0 +1,27 @@
+h2 {
+    text-transform: uppercase;
+    white-space: pre-line;
+    text-align: start;
+    font-family: "Goudy Bookletter 1911", sans-serif;
+    font-weight: 900;
+}
+
+p {
+    text-align-last: left;
+}
+
+.global {
+    color: #ddc249;
+    text-decoration: none;
+    border-bottom: 2px dashed DarkOrchid;
+    padding-bottom: 3px;
+}
+
+.global:hover {
+    text-decoration: underline;
+
+}
+
+li {
+    list-style-image: linear-gradient(#FF7A2F 0, #FF7A2F 50%, #FFB214 50%);
+}

@@ -1,0 +1,47 @@
+table {
+    border-collapse: collapse;
+    border: 1px solid rgb(221, 57, 126);
+    width: 90%;
+
+}
+
+th {
+    border: 1px solid rgb(221, 57, 126)
+}
+
+td {
+    border: 1px solid rgb(221, 57, 126)
+}
+
+th,
+td {
+    padding: 20px 30px;
+}
+
+table {
+    height: 200px;
+    background: linear-gradient(67deg, #17747a, #C5DDE8);
+
+}
+
+.skil {
+    border-style: dotted;
+    border-color: aqua;
+    border-width: 20px;
+}
+
+h1:before,
+h1:after {
+    content: "Peps";
+    font-family: 'Dancing Script', cursive;
+    color: #000000;
+    text-shadow: 1px 1px 2px grey;
+}
+
+h1:before {
+    margin-right: 100px;
+}
+
+h1:after {
+    margin-left: 100px;
+}

@@ -1,0 +1,14 @@
+section {
+    display: flex;
+    flex-flow: row wrap;
+
+}
+
+
+article {
+    flex: 1 200px;
+}
+
+article:nth-of-type(3) {
+    flex: 2 200px;
+}

@@ -1,0 +1,15 @@
+ .flex-container {
+     /*генерирует flex-контейнер уровня блока*/
+     display: -webkit-flex;
+     display: flex;
+ }
+
+ .flex-container {
+     /*генерирует flex-контейнер уровня строки*/
+     display: -webkit-inline-flex;
+     display: inline-flex;
+ }
+
+ .page {
+     border;
+ }

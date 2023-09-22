@@ -1,0 +1,28 @@
+.page {
+    display: flex;
+    height: 100vh;
+    flex-direction: row;
+}
+
+.sidebar {
+    background-color: red;
+    flex: 1;
+}
+
+.workspace {
+    background-color: blue;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+}
+
+.answer  {
+    flex: 1;
+    background-color: green;
+}
+
+.question {
+    flex: 2;
+    background-color: yellow;
+}

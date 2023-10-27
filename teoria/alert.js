@@ -183,7 +183,7 @@ do {
 Функциональное выржение и функция разница
 Последняя задача в функциях
 Как посмотреть брекпоинты
-Автоматическое тестирование моша, полифы*/
+Автоматическое тестирование моша, полифы
 
 
 function pow(x, n) {
@@ -193,5 +193,137 @@ function pow(x, n) {
     
   
 
+};
+
+Ключевое слово this в обьектах, почему не работает код
+Понимание ооп
+Цикл for переменная key являетсяфактически константой использования?
+this не является фиксированным?
+
+
+let user = {
+  namee: `John`,
+  surname: `Smith`,
 }
+user.namee = "Pete";
+delete user.namee;
+
+
+let obj = {
+  width: 200,
+  height: 300,
+  title: "My menu"
+};
+function multiplyNumeric(x, y, z) {
+  if (x === Number, y === Number, z === Number,) {
+    x *= 2;
+    y *= 2;
+    z *= 2;
+  } 
+
+  }
+multiplyNumeric(obj.width, )
+
+let calculator = {
+  sum() {
+    return this.a + this.b;
+  },
+
+  mul() {
+    return this.a * this.b;
+  },
+
+  read() {
+    this.a = +prompt('a?', 0);
+    this.b = +prompt('b?', 0);
+  }
+};
+
+calculator.read();
+alert(calculator.sum());
+alert(calculator.mul());
+
+
+function pow(x, n) {
+  let resylt = x;
+  for (let i = 1; n > i; i++) {
+    resylt *= x;
+  }
+  return resylt;
+};
+let x = prompt(`ввкдите число х`, ``);
+let y = prompt(`ввкдите число y`, ``);
+
+pow(x, y);
+
+if (n % 1 === 0 || n >= 1) {
+  alert(pow(x, n))
+} else {
+  alert(`Степень не поддерживается ${n}`)
+}
+
+//Функция факториала n! = n * (n - 1) * (n - 2) * ...*1
+
+function calcFactorian(n) {
+  let result = 1;
+  for (let i = n; i > 0; i--) {
+    result *= i;
+  }
+  return result;
+}
+let n = prompt(`ввкдите число n`, ``);
+
+calcFactorian(n);
+
+if (n % 1 === 0 || n >= 1) {
+  console.log(calcFactorian(n))
+} else {
+  console.log(`не поддерживается ${n}`);
+}
+
+
+function calcFactorian(n) {
+  let result = 1;
+  let i = n;
+  while (i > 0) {
+    i--;
+    result *= i;
+  }
+
+  return result;
+}
+let n = prompt(`ввкдите число n`, ``);
+
+calcFactorian(n);
+
+if (n % 1 === 0 || n >= 1) {
+  console.log(calcFactorian(n))
+} else {
+  console.log(`не поддерживается ${n}`);
+}
+
+n <= 1 = n, (fibonacci(n - 1) + fibonacci(n - 2)).*/
+
+function fub(n) {
+  let a = 0;
+  let b = 0;
+  if (n <= 1) {
+    return n = n;
+  } else {
+    for (let i = 2; i >= n; i++) {
+      result = a + b;
+
+    }
+  }
+}
+let n = prompt(`ввкдите число n`, ``);
+
+
+if (n % 1 === 0 || n >= 0) {
+  console.log(fub(n))
+} else {
+  console.log(`не поддерживается ${n}`);
+}
+
+
 

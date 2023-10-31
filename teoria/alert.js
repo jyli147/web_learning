@@ -71,13 +71,13 @@ while (i < 3) {
 }
 */
 
-
+/*
 for (let i = 1; i > 1; ++i) {
   if (i % 2 === 0) {
     alert(i);
   }
 }
-/*
+
 
 let age = prompt(`Введите число`, 0);
 let message;
@@ -304,26 +304,180 @@ if (n % 1 === 0 || n >= 1) {
 
 n <= 1 = n, (fibonacci(n - 1) + fibonacci(n - 2)).*/
 
+
+
+
+// function fub(n) {
+//   let a = 0;
+//   let b = 0;
+
+//   if (n <= 1) {
+//     return n = n;
+//   } else {
+//     for (let i = 2; i >= n; i++) {
+//       result = a + b;
+//     }
+//   }
+// }
+
+// let n = prompt(`ввкдите число n`, ``);
+
+
+// if (n % 1 === 0 || n >= 0) {
+//   console.log(fub(n))
+// } else {
+//   console.log(`не поддерживается ${n}`);
+// }
+
+
+// function calcFactorian(n) {
+//   if (n % 1 !== 0 || n < 1) {
+//     console.log(`не поддерживается ${n}`);
+//     return;
+//   }
+
+//   let result = 1;
+
+//   // for (let i = 1; i <= n; i++) {
+//   //   result *= i;
+//   // }
+
+//   for (let i = n; i > 0; i--) {
+//     result *= i;
+//   }
+
+//   return result;
+// }
+
+// let n = prompt(`ввкдите число n`, ``);
+// calcFactorian(n);
+
+
+// function calcFactorian(n) {
+//   let result = 1;
+//   let i = n;
+
+//   while (i > 0) {
+//     result *= i;
+//     i -= 1;
+//   }
+
+//   return result;
+// }
+// let n = prompt(`ввкдите число n`, ``);
+
+// if (n % 1 === 0 || n >= 1) {
+//   console.log(calcFactorian(n))
+// } else {
+//   console.log(`не поддерживается ${n}`);
+// }
+
+
 function fub(n) {
-  let a = 0;
-  let b = 0;
-  if (n <= 1) {
-    return n = n;
-  } else {
-    for (let i = 2; i >= n; i++) {
-      result = a + b;
-
-    }
+  // Условие работы функции. Область значений
+  if (n < 0) {
+    alert('Не умею в отрицательные числа Фибоначчи');
+    return;
   }
+
+  // Пограничное условие. Частный случай
+  if (n <= 1) {
+    return n;
+  }
+
+  // Два последних значения
+  let last2 = 0;
+  let last1 = 1;
+
+  for (let i = 2; i < n; i++) {
+    let originalLast2 = last2;
+
+    last2 = last1;
+    last1 = last1 + originalLast2;
+  }
+
+  return last2 + last1;
 }
+// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946
+// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+console.log(fub(0));
+console.log(fub(1));
+console.log(fub(2));
+console.log(fub(3));
+console.log(fub(4));
+console.log(fub(5));
+console.log(fub(6));
+console.log(fub(7));
+console.log(fub(8));
+console.log(fub(9));
+console.log(fub(10));
+
+// let n = prompt(`ввкдите число n`, ``);
+// let result = "Я все решил!!!";
+
+// if (n % 1 === 0 || n >= 0) {
+//   console.log(fub(n))
+// } else {
+//   console.log(`не поддерживается ${n}`);
+// }
+
+
+
+
+
+
+
+
+
+function fub(n) {
+  // Условие работы функции. Область значений
+  if (n < 0) {
+    alert('Не умею в отрицательные числа Фибоначчи');
+    return;
+  }
+
+  // Пограничное условие. Частный случай
+  if (n <= 1) {
+    return n;
+  }
+
+  // Два последних значения
+  let last1 = 0;
+  let last2 = 1;
+
+  for (let i = 2; i <= n; i++) {
+    [last1, last2] = [last2, last1 + last2];
+  }
+
+  return last2;
+};
+
+
 let n = prompt(`ввкдите число n`, ``);
-
-
-if (n % 1 === 0 || n >= 0) {
-  console.log(fub(n))
-} else {
-  console.log(`не поддерживается ${n}`);
-}
+console.log(fub(n));
 
 
 
+// function dec(a, b, c) {
+
+//   let d = ((b * b) - (4 * a * c));
+//   let x1;
+//   let x2;
+//   if (d < 0) {
+//     return `У дискриминанта нет дейтсвительных корней`;
+//   } else if (d === 0) {
+//     x1 = -b / (2 * a);
+//     return `У дискриминанта один корень: x1 = ${x1}`;
+//   } else {
+//     x1 = (-b + Math.sqrt(d)) / (2 * a);
+//     x2 = (-b - Math.sqrt(d)) / (2 * a);
+//     return `У дискриминанта два корня: x1 = ${x1}, x2 = ${x2}`;
+//   }
+//   return (d, x1, x2);
+// }
+
+// let a = +prompt(`ввeдите число a`, ``);
+// let b = +prompt(`ввeдите число b`, ``);
+// let c = +prompt(`ввeдите число c`, ``);
+
+// console.log(dec(a, b, c));

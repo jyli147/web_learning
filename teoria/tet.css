@@ -12,3 +12,11 @@ article {
 article:nth-of-type(3) {
     flex: 2 200px;
 }
+
+.titleh2 {
+    background: red;
+}
+
+.titleh3 {
+    background: green;
+}

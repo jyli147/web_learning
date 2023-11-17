@@ -1,29 +1,29 @@
-function fub(n) {
-  // Условие работы функции. Область значений
-  if (n < 0) {
-    alert('Не умею в отрицательные числа Фибоначчи');
-    return;
-  }
+// function fub(n) {
+//   // Условие работы функции. Область значений
+//   if (n < 0) {
+//     alert('Не умею в отрицательные числа Фибоначчи');
+//     return;
+//   }
 
-  // Пограничное условие. Частный случай
-  if (n <= 1) {
-    return n;
-  }
+//   // Пограничное условие. Частный случай
+//   if (n <= 1) {
+//     return n;
+//   }
 
-  // Два последних значения
-  let last1 = 0;
-  let last2 = 1;
+//   // Два последних значения
+//   let last1 = 0;
+//   let last2 = 1;
 
-  for (let i = 2; i <= n; i++) {
-    [last1, last2] = [last2, last1 + last2];
-  }
+//   for (let i = 2; i <= n; i++) {
+//     [last1, last2] = [last2, last1 + last2];
+//   }
 
-  return last2;
-};
+//   return last2;
+// };
 
 
-let n = prompt(`ввкдите число n`, ``);
-console.log(fub(n));
+// let n = prompt(`ввкдите число n`, ``);
+// console.log(fub(n));
 
 
 
@@ -50,3 +50,21 @@ console.log(fub(n));
 // let c = +prompt(`ввeдите число c`, ``);
 
 // console.log(dec(a, b, c));
+
+// let elem = document.querySelector(`.titleh2`);
+
+// let elemClassName = elem.className;
+// console.log(elemClassName);
+
+// elem.className = "titleh3";
+
+// let element = document.querySelector(`.titleh2`);
+// element.style.color = `green`;
+// element.style.cssText = `
+
+let elem = elem.offsetWidth - clientWidth - clientLeft - clientLeft
+
+    `
+
+
+

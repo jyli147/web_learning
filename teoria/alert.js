@@ -508,3 +508,52 @@ const ulElem = divElem.nextElementSibling;
 
 console.log(divElem);
 console.log(ulElem);
+
+
+
+class MyClass {
+  constructor({ template }) {
+    this.template = template;
+  }
+  let timer;
+
+function render() {
+  let date = new Date();
+
+  let hours = date.getHours();
+  if (hours < 10) hours = '0' + hours;
+
+  let mins = date.getMinutes();
+  if (mins < 10) mins = '0' + mins;
+
+  let secs = date.getSeconds();
+  if (secs < 10) secs = '0' + secs;
+
+  let output = template
+    .replace('h', hours)
+    .replace('m', mins)
+    .replace('s', secs);
+
+  console.log(output);
+}
+
+this.stop = function () {
+  clearInterval(timer);
+};
+
+this.start = function () {
+  render();
+  timer = setInterval(render, 1000);
+};
+
+}
+prop = value; // свойство
+constructor(...) { // конструктор
+  // ...
+}
+method(...) { } // метод
+  get something(...) { } // геттер
+  set something(...) { } // сеттер
+[Symbol.iterator]() { } // метод с вычисляемым именем (здесь - символом)
+  // ...
+}

@@ -555,5 +555,35 @@ method(...) { } // метод
   get something(...) { } // геттер
   set something(...) { } // сеттер
 [Symbol.iterator]() { } // метод с вычисляемым именем (здесь - символом)
-  // ...
+// ...
+
+
+
+
+class Task {
+  constructor(id, title, description, isCompleted = false) {
+    this.id = new Set(id);
+    this.title = title;
+    this.description = description;
+    this.isCompleted = isCompleted;
+  }
+  toggleCompleted() {
+    this.isCompleted = !this.isCompleted;
+
+    toString() {
+      return `id=${task.id}, title=${task.title}, description=${task.description}, isCompleted=${task.isCompleted}`;
+    }
+
+  };
+
+};
+
+
+class TaskList {
+
+  tasks = [];
+
+  addTask(title, description) {
+    this._tasks.push(task);
+  }
 }

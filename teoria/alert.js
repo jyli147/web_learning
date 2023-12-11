@@ -624,11 +624,18 @@ class TaskList {
   // Переключить isCompleted у задачи. 
   // Если задача удалена, вернуть измененную задачу
   // Если задача не найдена в списке, выбросить ошибку TaskNotFoundError
-//   toggleTask(id) { }
-// let toggleTaskIsCompleter = this._tasks
-// }
-
-
+  toggleTask(id) {
+    if (id >= 0 && id < this._tasks.length) {
+      let task = this._tasks[id];
+      task.isCompleted = !task.isCompleted;
+      return task;
+    } else if (id < 0) {
+      throw new Error(`id не может быть отрицательным: ${id}`);
+    } else {
+      throw new Error(`Задача не найдена в списке: ${id}`);
+    }
+  }
+}
 
 
 
@@ -657,12 +664,23 @@ let task2 = myTasksList.addTask(`Сходить в магазин`, `купит�
 
 // тест для удаления
 
+// let targetId = 1;
+
+// let taskWithId1 = myTasksList.findById(targetId);
+// console.log(taskWithId1); // task
+// let removedTask = myTasksList.removeTaskById(targetId);
+// console.log(removedTask); // task
+// console.log(taskWithId1 === removedTask) // true
+// console.log(myTasksList.findById(targetId)); // null
+
+// тест для переключения isCompleted
+
 let targetId = 1;
 
 let taskWithId1 = myTasksList.findById(targetId);
 console.log(taskWithId1); // task
-let removedTask = myTasksList.removeTaskById(targetId);
-console.log(removedTask); // task
-console.log(taskWithId1 === removedTask) // true
-console.log(myTasksList.findById(targetId)); // null
+let toggledTask = myTasksList.toggleTask(targetId);
+console.log(toggledTask); // task
+console.log(taskWithId1.isCompleted !== toggledTask.isCompleted) // true
+console.log(myTasksList.findById(taskWithId1.id)); // task
 

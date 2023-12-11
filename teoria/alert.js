@@ -675,12 +675,22 @@ let task2 = myTasksList.addTask(`Сходить в магазин`, `купит�
 
 // тест для переключения isCompleted
 
-let targetId = 1;
+// let targetId = 1;
 
-let taskWithId1 = myTasksList.findById(targetId);
-console.log(taskWithId1); // task
-let toggledTask = myTasksList.toggleTask(targetId);
-console.log(toggledTask); // task
-console.log(taskWithId1.isCompleted !== toggledTask.isCompleted) // true
-console.log(myTasksList.findById(taskWithId1.id)); // task
+// let taskWithId1 = myTasksList.findById(targetId);
+// console.log(taskWithId1); // task
+// let toggledTask = myTasksList.toggleTask(targetId);
+// console.log(toggledTask); // task
+// console.log(taskWithId1.isCompleted !== toggledTask.isCompleted) // true
+// console.log(myTasksList.findById(taskWithId1.id)); // task
+
+
+console.log('\nДо удаления и добавления: \n')
+console.log(myTasksList);
+
+myTasksList.removeTaskById(task1.id);
+myTasksList.addTask(task1.title, task1.description);
+
+console.log('\nПосле удаления и добавления: \n')
+console.log(myTasksList);
 

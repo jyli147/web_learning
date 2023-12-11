@@ -502,88 +502,167 @@ n <= 1 = n, (fibonacci(n - 1) + fibonacci(n - 2)).*/
 // let str = arr.join(';');
 
 
-const bodiElem = document.body;
-const divElem = bodiElem.lastElementChild;
-const ulElem = divElem.nextElementSibling;
+// const bodiElem = document.body;
+// const divElem = bodiElem.lastElementChild;
+// const ulElem = divElem.nextElementSibling;
 
-console.log(divElem);
-console.log(ulElem);
+// console.log(divElem);
+// console.log(ulElem);
 
 
 
-class MyClass {
-  constructor({ template }) {
-    this.template = template;
-  }
-  let timer;
+// class MyClass {
+//   constructor({ template }) {
+//     this.template = template;
+//   }
+//   let timer;
 
-function render() {
-  let date = new Date();
+// function render() {
+//   let date = new Date();
 
-  let hours = date.getHours();
-  if (hours < 10) hours = '0' + hours;
+//   let hours = date.getHours();
+//   if (hours < 10) hours = '0' + hours;
 
-  let mins = date.getMinutes();
-  if (mins < 10) mins = '0' + mins;
+//   let mins = date.getMinutes();
+//   if (mins < 10) mins = '0' + mins;
 
-  let secs = date.getSeconds();
-  if (secs < 10) secs = '0' + secs;
+//   let secs = date.getSeconds();
+//   if (secs < 10) secs = '0' + secs;
 
-  let output = template
-    .replace('h', hours)
-    .replace('m', mins)
-    .replace('s', secs);
+//   let output = template
+//     .replace('h', hours)
+//     .replace('m', mins)
+//     .replace('s', secs);
 
-  console.log(output);
-}
+//   console.log(output);
+// }
 
-this.stop = function () {
-  clearInterval(timer);
-};
+// this.stop = function () {
+//   clearInterval(timer);
+// };
 
-this.start = function () {
-  render();
-  timer = setInterval(render, 1000);
-};
+// this.start = function () {
+//   render();
+//   timer = setInterval(render, 1000);
+// };
 
-}
-prop = value; // свойство
-constructor(...) { // конструктор
-  // ...
-}
-method(...) { } // метод
-  get something(...) { } // геттер
-  set something(...) { } // сеттер
-[Symbol.iterator]() { } // метод с вычисляемым именем (здесь - символом)
-// ...
+// }
+// prop = value; // свойство
+// constructor(...) { // конструктор
+//   // ...
+// }
+// method(...) { } // метод
+//   get something(...) { } // геттер
+//   set something(...) { } // сеттер
+// [Symbol.iterator]() { } // метод с вычисляемым именем (здесь - символом)
+// // ...
+
+
+
+
+
 
 
 
 
 class Task {
   constructor(id, title, description, isCompleted = false) {
-    this.id = new Set(id);
+    this.id = id;
     this.title = title;
     this.description = description;
     this.isCompleted = isCompleted;
   }
+
   toggleCompleted() {
     this.isCompleted = !this.isCompleted;
-
-    toString() {
-      return `id=${task.id}, title=${task.title}, description=${task.description}, isCompleted=${task.isCompleted}`;
-    }
-
   };
 
+  toString() {
+    return `id=${this.id}, title=${this.title}, description=${this.description}, isCompleted=${this.isCompleted}`;
+  }
 };
 
 
 class TaskList {
+  _tasks = [];
 
-  tasks = [];
-
-  addTask(title, description) {
+  addTask(title, taskDescription) {
+    let task = new Task(this._tasks.length, title, taskDescription);
     this._tasks.push(task);
+    return task;
   }
-}
+
+  // найти и вернуть все задачи
+  findAll() {
+    return this._tasks;
+  }
+
+  // Найти задачу в списке по id. 
+  // Если задача найдена, вернуть ее
+  // Если задача не найдена, вернуть null
+  findById(id) {
+    // filteredTasks пустой массив или массив с одним элепентом
+    let filteredTasks = this._tasks.filter(item => item.id === id);
+    if (filteredTasks.length >= 1) {
+      return filteredTasks[0];
+    } else {
+      return null;
+    }
+  }
+
+  // Удалить задачу из списка. 
+  // Если задача удалена, вернуть удаленную задачу
+  // Если задача не найдена в списке, выбросить ошибку TaskNotFoundError
+  removeTaskById(id) {
+    if (id >= 0) {
+      return this._tasks.splice(id, 1)[0];
+    } else {
+      throw new Error(`Ошибка`);
+    }
+  }
+
+  // Переключить isCompleted у задачи. 
+  // Если задача удалена, вернуть измененную задачу
+  // Если задача не найдена в списке, выбросить ошибку TaskNotFoundError
+//   toggleTask(id) { }
+// let toggleTaskIsCompleter = this._tasks
+// }
+
+
+
+
+
+let myTasksList = new TaskList();
+let task1 = myTasksList.addTask(`Сходить в магазин`, `купить яиц`);
+let task2 = myTasksList.addTask(`Сходить в магазин`, `купить хлеба`);
+
+// console.log(task1);
+// console.log(task2);
+
+// console.log();
+// console.log();
+// console.log();
+
+// console.log(`.findAll = ${myTasksList.findAll()}`)
+
+// console.log();
+// console.log(myTasksList.findById(3));
+// console.log();
+// console.log(myTasksList.findById(1));
+// console.log();
+// console.log(myTasksList.removeTaskById(1));
+// console.log();
+// console.log(`.findAll = ${myTasksList.findAll()}`)
+
+
+// тест для удаления
+
+let targetId = 1;
+
+let taskWithId1 = myTasksList.findById(targetId);
+console.log(taskWithId1); // task
+let removedTask = myTasksList.removeTaskById(targetId);
+console.log(removedTask); // task
+console.log(taskWithId1 === removedTask) // true
+console.log(myTasksList.findById(targetId)); // null
+

@@ -585,17 +585,27 @@ class Task {
 
 class TaskList {
   _tasks = [];
+  _lastId = this.id;
+  _lastId = 0;
 
+  // addTask(title, taskDescription) {
+  //   let task = new Task(this._tasks.length, title, taskDescription);
+  //   this._tasks.push(task);
+  //   return task;
+  // }
   addTask(title, taskDescription) {
-    let task = new Task(this._tasks.length, title, taskDescription);
+    this._lastId++;
+    let task = new Task(this._lastId, title, taskDescription);
     this._tasks.push(task);
     return task;
   }
 
   // найти и вернуть все задачи
   findAll() {
-    return this._tasks;
+    return [...this._tasks.map(t => new Task(t.id, t.title, t.description, t.isCompleted))];
   }
+
+
 
   // Найти задачу в списке по id. 
   // Если задача найдена, вернуть ее
@@ -613,9 +623,18 @@ class TaskList {
   // Удалить задачу из списка. 
   // Если задача удалена, вернуть удаленную задачу
   // Если задача не найдена в списке, выбросить ошибку TaskNotFoundError
+  // removeTaskById(id) {
+  //   if (id >= 0) {
+  //     return this._tasks.splice(id, 1)[0];
+  //   } else {
+  //     throw new Error(`Ошибка`);
+  //   }
+  // }
+
   removeTaskById(id) {
-    if (id >= 0) {
-      return this._tasks.splice(id, 1)[0];
+    let index = this.findById(id);
+    if (index !== -1) {
+      this._tasks.splice(index, 1);
     } else {
       throw new Error(`Ошибка`);
     }
@@ -625,12 +644,10 @@ class TaskList {
   // Если задача удалена, вернуть измененную задачу
   // Если задача не найдена в списке, выбросить ошибку TaskNotFoundError
   toggleTask(id) {
-    if (id >= 0 && id < this._tasks.length) {
-      let task = this._tasks[id];
+    let task = this.findById(id);
+    if (task) {
       task.isCompleted = !task.isCompleted;
       return task;
-    } else if (id < 0) {
-      throw new Error(`id не может быть отрицательным: ${id}`);
     } else {
       throw new Error(`Задача не найдена в списке: ${id}`);
     }
@@ -639,58 +656,88 @@ class TaskList {
 
 
 
+// let myTasksList = new TaskList();
+// let task1 = myTasksList.addTask(`Сходить в магазин`, `купить яиц`);
+// let task2 = myTasksList.addTask(`Сходить в магазин`, `купить хлеба`);
+
+// // console.log(task1);
+// // console.log(task2);
+
+// // console.log();
+// // console.log();
+// // console.log();
+
+// // console.log(`.findAll = ${myTasksList.findAll()}`)
+
+// // console.log();
+// // console.log(myTasksList.findById(3));
+// // console.log();
+// // console.log(myTasksList.findById(1));
+// // console.log();
+// // console.log(myTasksList.removeTaskById(1));
+// // console.log();
+// // console.log(`.findAll = ${myTasksList.findAll()}`)
+
+
+// // тест для удаления
+
+// // let targetId = 1;
+
+// // let taskWithId1 = myTasksList.findById(targetId);
+// // console.log(taskWithId1); // task
+// // let removedTask = myTasksList.removeTaskById(targetId);
+// // console.log(removedTask); // task
+// // console.log(taskWithId1 === removedTask) // true
+// // console.log(myTasksList.findById(targetId)); // null
+
+// // тест для переключения isCompleted
+
+// // let targetId = 1;
+
+// // let taskWithId1 = myTasksList.findById(targetId);
+// // console.log(taskWithId1); // task
+// // let toggledTask = myTasksList.toggleTask(targetId);
+// // console.log(toggledTask); // task
+// // console.log(taskWithId1.isCompleted !== toggledTask.isCompleted) // true
+// // console.log(myTasksList.findById(taskWithId1.id)); // task
+
+
+// console.log('\nДо удаления и добавления: \n')
+// console.log(myTasksList);
+
+// myTasksList.removeTaskById(task1.id);
+// myTasksList.addTask(task1.title, task1.description);
+
+// console.log('\nПосле удаления и добавления: \n')
+// console.log(myTasksList);
+
 let myTasksList = new TaskList();
-let task1 = myTasksList.addTask(`Сходить в магазин`, `купить яиц`);
-let task2 = myTasksList.addTask(`Сходить в магазин`, `купить хлеба`);
 
-// console.log(task1);
-// console.log(task2);
+// Добавляем две задачи в список
+let task1 = myTasksList.addTask(`Задача: task1`, `купить яиц`);
+let task2 = myTasksList.addTask(`Задача: task2`, `купить хлеба`);
 
-// console.log();
-// console.log();
-// console.log();
-
-// console.log(`.findAll = ${myTasksList.findAll()}`)
-
-// console.log();
-// console.log(myTasksList.findById(3));
-// console.log();
-// console.log(myTasksList.findById(1));
-// console.log();
-// console.log(myTasksList.removeTaskById(1));
-// console.log();
-// console.log(`.findAll = ${myTasksList.findAll()}`)
-
-
-// тест для удаления
-
-// let targetId = 1;
-
-// let taskWithId1 = myTasksList.findById(targetId);
-// console.log(taskWithId1); // task
-// let removedTask = myTasksList.removeTaskById(targetId);
-// console.log(removedTask); // task
-// console.log(taskWithId1 === removedTask) // true
-// console.log(myTasksList.findById(targetId)); // null
-
-// тест для переключения isCompleted
-
-// let targetId = 1;
-
-// let taskWithId1 = myTasksList.findById(targetId);
-// console.log(taskWithId1); // task
-// let toggledTask = myTasksList.toggleTask(targetId);
-// console.log(toggledTask); // task
-// console.log(taskWithId1.isCompleted !== toggledTask.isCompleted) // true
-// console.log(myTasksList.findById(taskWithId1.id)); // task
-
-
+// Смотрим на список
 console.log('\nДо удаления и добавления: \n')
-console.log(myTasksList);
+console.log(myTasksList.findAll());
 
+// Удаляем первую задачу из списка, она нам больше не нужна
 myTasksList.removeTaskById(task1.id);
-myTasksList.addTask(task1.title, task1.description);
 
-console.log('\nПосле удаления и добавления: \n')
-console.log(myTasksList);
+// смотрим список
+console.log('\nПосле удаления task1: \n')
+console.log(myTasksList.findAll());
 
+// Добавляем новую задачу в список
+let task3 = myTasksList.addTask('Задача: task3', 'купить соль')
+
+// Смотрим в список
+console.log('\nПосле добавления task3: \n')
+console.log(myTasksList.findAll());
+
+// хотим отметить task2 как выполненную
+myTasksList.toggleTask(task2.id)
+
+// Смотрим в список
+console.log('\nПосле переключания task2: \n')
+console.log(myTasksList.findAll());

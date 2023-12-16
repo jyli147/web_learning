@@ -582,27 +582,28 @@ class Task {
   }
 };
 
-
 class TaskList {
-  _tasks = [];
-  _lastId = this.id;
-  _lastId = 0;
+  #tasks = [];
+  #lastId = 0;
+
+  // Разные классы и разные контексты разные this. 597 598 строки, поменять местами, 588 и 589 исправить. приватные поля по настоящему.
 
   // addTask(title, taskDescription) {
   //   let task = new Task(this._tasks.length, title, taskDescription);
   //   this._tasks.push(task);
   //   return task;
   // }
+
   addTask(title, taskDescription) {
-    this._lastId++;
-    let task = new Task(this._lastId, title, taskDescription);
-    this._tasks.push(task);
+    let task = new Task(this.#lastId, title, taskDescription);
+    this.#lastId++;
+    this.#tasks.push(task);
     return task;
   }
 
   // найти и вернуть все задачи
   findAll() {
-    return [...this._tasks.map(t => new Task(t.id, t.title, t.description, t.isCompleted))];
+    return [...this.#tasks.map(t => new Task(t.id, t.title, t.description, t.isCompleted))];
   }
 
 
@@ -612,7 +613,7 @@ class TaskList {
   // Если задача не найдена, вернуть null
   findById(id) {
     // filteredTasks пустой массив или массив с одним элепентом
-    let filteredTasks = this._tasks.filter(item => item.id === id);
+    let filteredTasks = this.#tasks.filter(item => item.id === id);
     if (filteredTasks.length >= 1) {
       return filteredTasks[0];
     } else {
@@ -634,7 +635,7 @@ class TaskList {
   removeTaskById(id) {
     let index = this.findById(id);
     if (index !== -1) {
-      this._tasks.splice(index, 1);
+      this.#tasks.splice(index, 1);
     } else {
       throw new Error(`Ошибка`);
     }

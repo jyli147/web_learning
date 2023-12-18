@@ -606,8 +606,6 @@ class TaskList {
     return [...this.#tasks.map(t => new Task(t.id, t.title, t.description, t.isCompleted))];
   }
 
-
-
   // Найти задачу в списке по id. 
   // Если задача найдена, вернуть ее
   // Если задача не найдена, вернуть null
@@ -654,8 +652,6 @@ class TaskList {
     }
   }
 }
-
-
 
 // let myTasksList = new TaskList();
 // let task1 = myTasksList.addTask(`Сходить в магазин`, `купить яиц`);

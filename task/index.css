@@ -31,23 +31,35 @@ body {
 
 .tasks-panel {
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 .left-panel {
-
-    max-width: 282px;
-    max-height: 516px;
-    padding: 0 15px 0 15px;
+    max-width: 250px;
+    max-height: 514px;
     background: #354259;
     border-radius: 1.6em;
+}
+
+.left-panel-categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Как сделать полоски по бокам?  */
+
 }
 
 .title-left-panel {
     color: #FFF;
     font-size: 1.25rem;
     font-weight: 600;
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .right-panel {

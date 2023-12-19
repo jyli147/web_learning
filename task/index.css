@@ -1,9 +1,14 @@
+:root {
+    --global-bg-color: #1C273C;
+    font-size: 16px;
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-color: #1C273C;
+    background-color: var(--global-bg-color);
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     font-family: 'Open Sans', sans-serif;
@@ -11,36 +16,37 @@ body {
 }
 
 .header {
-    margin: 80px 0 144px 0;
+    margin: 5em 0 9em 0;
 
 }
 
 .header-title {
     color: #E9C597;
     text-align: center;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 800;
     margin: 0 0 0 0;
 
 }
 
 .tasks-panel {
-    width: 972px;
-    height: 518px;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .left-panel {
-    width: 280px;
-    height: 514px;
+
+    max-width: 282px;
+    max-height: 516px;
     padding: 0 15px 0 15px;
     background: #354259;
-    border-radius: 10px;
+    border-radius: 1.6em;
 }
 
 .title-left-panel {
     color: #FFF;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 600;
 }
 
@@ -49,5 +55,5 @@ body {
     height: 518px;
     padding: 0 15px 0 15px;
     background: #354259;
-    border-radius: 10px;
+    border-radius: 1.6em;
 }

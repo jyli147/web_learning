@@ -32,27 +32,31 @@ body {
 .tasks-panel {
     display: flex;
     justify-content: center;
+
 }
 
 .left-panel {
-    max-width: 250px;
-    max-height: 514px;
+    width: 250px;
+    height: 514px;
     background: #354259;
-    border-radius: 1.6em;
+    border-radius: 10px;
+    border-bottom: 2px solid #26A7B8;
 }
 
 .left-panel-categories {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    /* Как сделать полоски по бокам?  */
-
+    margin-bottom: 46px;
+    margin-top: 25px;
 }
 
 .title-left-panel {
     color: #FFF;
+    font-family: 'Open Sans';
     font-size: 1.25rem;
     font-weight: 600;
+    margin: 0 0 0 0;
 }
 
 .categories {
@@ -60,12 +64,64 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 166px;
+}
+
+.button {
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Open Sans';
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 10px;
+}
+
+.button-completed {
+    background-color: #4CAF50;
+}
+
+.button-urgent {
+    background-color: #FF5252;
+}
+
+.button-important {
+    background-color: #FFC107;
+}
+
+.button-later {
+    background-color: #9C27B0;
+}
+
+.button-to-study {
+    background-color: #26A7B8;
+    margin-bottom: 19px;
+}
+
+.categories-button-add-category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 19px;
+}
+
+.button-add-category {
+    width: 168px;
+    height: 31px;
+    border-radius: 10px;
+    background: #44A0A0;
+    color: #F6F6F6;
+    font-family: 'Open Sans';
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 90%;
 }
 
 .right-panel {
-    width: 680px;
-    height: 518px;
-    padding: 0 15px 0 15px;
-    background: #354259;
-    border-radius: 1.6em;
+    /* background: #354259;
+    border-radius: 0.6em; */
+    display: flex;
 }

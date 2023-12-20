@@ -32,6 +32,7 @@ body {
 .tasks-panel {
     display: flex;
     justify-content: center;
+    gap: 12px;
 
 }
 
@@ -121,7 +122,10 @@ body {
 }
 
 .right-panel {
-    /* background: #354259;
-    border-radius: 0.6em; */
     display: flex;
+}
+
+.top-right-panel {
+    background: #354259;
+    border-radius: 10px;
 }

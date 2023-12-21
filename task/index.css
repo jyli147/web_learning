@@ -10,9 +10,7 @@
 body {
     background-color: var(--global-bg-color);
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
     font-family: 'Open Sans', sans-serif;
-
 }
 
 .container {
@@ -24,14 +22,14 @@ body {
 }
 
 .header {
-    margin: 5em 0 9em 0;
+    margin: 80px 0 144px 0;
 
 }
 
 .header-title {
     color: #E9C597;
     text-align: center;
-    font-size: 2rem;
+    font-size: 32px;
     font-weight: 800;
     margin: 0 0 0 0;
 
@@ -191,7 +189,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 650px;
     height: 80px;
     border-bottom: 1px solid #F6F6F6;
 }
@@ -221,7 +218,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 650px;
     height: 50px;
 }
 
@@ -250,4 +246,82 @@ body {
     font-weight: 800;
     border: none;
     background: none;
+}
+
+.mobil {
+    display: none;
+}
+
+.button-add-mobil {
+    display: none;
+}
+
+@media (max-width:375px) {
+    :root {
+        font-size: 14.4px;
+    }
+
+    .header {
+        margin: 80px 0 52px 0;
+    }
+
+    .mobil {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 17px;
+        border-radius: 15px;
+        background: #354259;
+        box-shadow: 0px 4px 0px 0px #38938A;
+        width: 160px;
+        height: 30px;
+    }
+
+    .button-add-mobil {
+        display: contents;
+        color: #F6F6F6;
+        text-align: center;
+        font-family: 'Open Sans';
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 16.2px;
+    }
+
+    .left-panel {
+        display: none;
+    }
+
+    .top-right-panel {
+        display: none;
+    }
+
+    .bottom-right-panel {
+        width: 300px;
+        height: 400px;
+    }
+
+    .check-completed {
+        width: 25px;
+        height: 25px;
+    }
+
+    .task {
+        width: 300px;
+        height: 70px;
+    }
+
+    .subtitle {
+        width: 210px;
+        font-size: 16px;
+
+    }
+
+    .button-right-panel {
+        transform: rotate(-90deg);
+        width: 70px;
+        height: 30px;
+        border-radius: 0;
+        font-size: 11px;
+        font-weight: 600;
+    }
 }

@@ -15,6 +15,14 @@ body {
 
 }
 
+.container {
+    width: 942px;
+    height: 1024px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+}
+
 .header {
     margin: 5em 0 9em 0;
 

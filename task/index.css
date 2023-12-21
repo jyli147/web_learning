@@ -100,7 +100,6 @@ body {
 
 .button-to-study {
     background-color: #26A7B8;
-    margin-bottom: 19px;
 }
 
 .categories-button-add-category {
@@ -119,7 +118,8 @@ body {
     font-family: 'Open Sans';
     font-size: 20px;
     font-weight: 800;
-    line-height: 90%;
+    line-height: 18px;
+    border: none;
 }
 
 .right-panel {
@@ -139,14 +139,12 @@ body {
     border-bottom: 2px solid #26A7B8;
 }
 
-/* 
-.button-tasks {
+.number-of-tasks {
     color: #44A0A0;
     font-family: 'Open Sans';
     font-size: 1.25rem;
     font-weight: 700;
-
-} */
+}
 
 .button-add {
     width: 200px;
@@ -158,6 +156,16 @@ body {
     font-size: 1.25rem;
     font-weight: 800;
     line-height: 18px;
+    border: none;
+}
+
+.button-clear-completed {
+    color: #44A0A0;
+    font-family: 'Open Sans';
+    font-size: 1.25rem;
+    font-weight: 700;
+    border: none;
+    background: none;
 }
 
 .bottom-right-panel {
@@ -168,10 +176,35 @@ body {
     width: 650px;
     height: 449px;
     border-bottom: 2px solid #26A7B8;
+
 }
 
 .task {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    width: 650px;
+    height: 80px;
+    border-bottom: 1px solid #F6F6F6;
+}
+
+.subtitle {
+    color: #FFF;
+    font-family: 'Open Sans';
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin: 0 0 0 0;
+}
+
+.button-right-panel {
+    width: 150px;
+    height: 30px;
+    border-radius: 10px;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Open Sans';
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 10px;
+    border: none;
 }

@@ -189,8 +189,8 @@ body {
 .task-list {
     display: flex;
     flex-direction: column;
-    width: 650px;
-    height: 449px;
+    /* width: 650px; */
+
 }
 
 .task {
@@ -304,15 +304,11 @@ body {
         display: none;
     }
 
-    .task-list {
-        min-width: 300px;
-        min-height: 400px;
-        width: 0;
-        height: 0;
-    }
+
 
     .task {
         position: relative;
+        height: 70px;
     }
 
     .button-right-panel {
@@ -324,6 +320,7 @@ body {
         height: 30px;
         position: absolute;
         right: 0px;
+        border-left: 1px solid #F6F6F6;
     }
 
     .check-completed {

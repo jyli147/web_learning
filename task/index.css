@@ -265,13 +265,13 @@ body {
     display: none;
 }
 
-@media (max-width:375px) {
+@media (max-width:900px) {
     :root {
         font-size: 14.4px;
     }
 
     .header {
-        padding: 80px 0 52px 0;
+        padding: 0 0 52px;
     }
 
     .mobile {
@@ -305,8 +305,14 @@ body {
     }
 
     .task-list {
-        width: 300px;
-        height: 400px;
+        min-width: 300px;
+        min-height: 400px;
+        width: 0;
+        height: 0;
+    }
+
+    .task {
+        position: relative;
     }
 
     .button-right-panel {

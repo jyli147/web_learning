@@ -156,7 +156,7 @@ body {
 .tasks {
     display: flex;
     flex-direction: column;
-    max-width: 650px;
+    min-width: 650px;
     gap: 12px;
 }
 
@@ -202,7 +202,6 @@ body {
 .task-list {
     display: flex;
     flex-direction: column;
-    /* width: 650px; */
 
 }
 
@@ -210,6 +209,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
     height: 80px;
     border-bottom: 1px solid #F6F6F6;
     padding: 0 20px 0 20px;
@@ -318,11 +318,17 @@ body {
         display: none;
     }
 
-
+    .tasks {
+        min-width: 300px;
+    }
 
     .task {
         position: relative;
         height: 70px;
+    }
+
+    .subtitle {
+        margin-right: 20px;
     }
 
     .button-right-panel {
@@ -333,7 +339,7 @@ body {
         width: 70px;
         height: 30px;
         position: absolute;
-        right: 0px;
+        right: -20px;
         border-left: 1px solid #F6F6F6;
     }
 

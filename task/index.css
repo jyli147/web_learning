@@ -27,6 +27,15 @@ body {
     border-bottom: 2px solid #26A7B8;
 }
 
+.surface-button {
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.surface-button:hover {
+    box-shadow: 0px 0px 15px 5px #00ebff;
+}
+
 .header {
     padding-bottom: 114px;
 }
@@ -78,7 +87,8 @@ body {
     flex-direction: column;
     justify-content: center;
     padding: 0 25px 0 25px;
-
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
 }
 
 .button {
@@ -92,9 +102,9 @@ body {
     font-weight: 400;
     line-height: 10px;
     border: none;
-    cursor: pointer;
-    transition: box-shadow 0.2s;
     margin: 5px 0 5px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
 }
 
 .button:hover {
@@ -139,6 +149,8 @@ body {
     font-weight: 800;
     line-height: 18px;
     border: none;
+
+
 }
 
 .tasks {
@@ -175,6 +187,7 @@ body {
     font-weight: 800;
     line-height: 18px;
     border: none;
+
 }
 
 .button-clear-completed {
@@ -221,6 +234,7 @@ body {
     font-weight: 400;
     line-height: 10px;
     border: none;
+
 }
 
 .filters {

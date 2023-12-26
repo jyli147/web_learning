@@ -19,8 +19,8 @@
         <header class="header">
             <h1 class="header-title">PERSONAL <br>TASK MANAGER</h1>
         </header>
-        <div class="mobile">
-            <button class="button-add-mobile surface-button">Add new task</button>
+        <div class="mobile surface-button">
+            <button class="button-add-mobile ">Add new task</button>
         </div>
         <main class="work-space">
             <section class="categories surface">
@@ -29,7 +29,7 @@
                     <h2 class="title-categories">Categories</h2>
                     <img src="./img/right-line (1).png" alt="right line">
                 </header>
-                <div class="categories-buttons">
+                <div class="categories-buttons scroll">
                     <button type="button" class="button surface-button button-completed">Completed</button>
                     <button type="button" class="button surface-button button-urgent">Urgent</button>
                     <button type="button" class="button surface-button button-important">Important</button>
@@ -39,7 +39,8 @@
                     <button type="button" class="button surface-button button-completed">Completed</button>
                     <button type="button" class="button surface-button button-completed">Completed</button>
                     <button type="button" class="button surface-button button-completed">Completed</button>
-
+                    <button type="button" class="button surface-button button-completed">Completed</button>
+                    <button type="button" class="button surface-button button-completed">Completed</button>
                 </div>
                 <footer class="footer-categories">
                     <button class="button-add-category surface-button">Add category</button>
@@ -53,34 +54,66 @@
                     <button class="button-clear-completed">Clear completed</button>
                 </header>
                 <div class="task-list surface">
-
-                    <div class="task">
-                        <img class="check-completed" src="./img/check-completed.png" alt="Done">
-                        <p class="subtitle">Memorize the fifty states and their capitals</p>
-                        <button type="button"
-                            class="button-right-panel surface-button button-completed">Completed</button>
-                    </div>
-                    <div class="task">
-                        <img class="check-completed" src="./img/check-completed.png" alt="Done">
-                        <p class="subtitle">Memorize the fifty states and their capitals</p>
-                        <button type="button" class="button-right-panel surface-button button-urgent">Urgent</button>
-                    </div>
-                    <div class="task">
-                        <img class="check-completed" src="./img/check-completed.png" alt="Done">
-                        <p class="subtitle">Memorize the fifty states and their capitals</p>
-                        <button type="button"
-                            class="button-right-panel surface-button button-important">Important</button>
-                    </div>
-                    <div class="task">
-                        <img class="check-completed" src="./img/check-completed.png" alt="Done">
-                        <p class="subtitle">Memorize the fifty states and their capitals</p>
-                        <button type="button" class="button-right-panel surface-button button-later">Later</button>
-                    </div>
-                    <div class="task">
-                        <img class="check-completed" src="./img/check-completed.png" alt="Done">
-                        <p class="subtitle">Memorize the fifty states and their capitals</p>
-                        <button type="button" class="button-right-panel surface-button button-to-study">To
-                            study</button>
+                    <div class="scroll">
+                        <div class="task">
+                            <img class="check-completed" src="./img/check-completed.png" alt="Done">
+                            <p class="subtitle">Memorize the fifty states and their capitals</p>
+                            <button type="button"
+                                class="button-right-panel surface-button button-completed">Completed</button>
+                        </div>
+                        <div class="task">
+                            <img class="check-completed" src="./img/check-completed.png" alt="Done">
+                            <p class="subtitle">Memorize the fifty states and their capitals</p>
+                            <button type="button"
+                                class="button-right-panel surface-button button-urgent">Urgent</button>
+                        </div>
+                        <div class="task">
+                            <img class="check-completed" src="./img/check-completed.png" alt="Done">
+                            <p class="subtitle">Memorize the fifty states and their capitals</p>
+                            <button type="button"
+                                class="button-right-panel surface-button button-important">Important</button>
+                        </div>
+                        <div class="task">
+                            <img class="check-completed" src="./img/check-completed.png" alt="Done">
+                            <p class="subtitle">Memorize the fifty states and their capitals</p>
+                            <button type="button" class="button-right-panel surface-button button-later">Later</button>
+                        </div>
+                        <div class="task">
+                            <img class="check-completed" src="./img/check-completed.png" alt="Done">
+                            <p class="subtitle">Memorize the fifty states and their capitals</p>
+                            <button type="button" class="button-right-panel surface-button button-to-study">To
+                                study</button>
+                        </div>
+                        <div class="task">
+                            <img class="check-completed" src="./img/check-completed.png" alt="Done">
+                            <p class="subtitle">Memorize the fifty states and their capitals</p>
+                            <button type="button"
+                                class="button-right-panel surface-button button-urgent">Urgent</button>
+                        </div>
+                        <div class="task">
+                            <img class="check-completed" src="./img/check-completed.png" alt="Done">
+                            <p class="subtitle">Memorize the fifty states and their capitals</p>
+                            <button type="button"
+                                class="button-right-panel surface-button button-urgent">Urgent</button>
+                        </div>
+                        <div class="task">
+                            <img class="check-completed" src="./img/check-completed.png" alt="Done">
+                            <p class="subtitle">Memorize the fifty states and their capitals</p>
+                            <button type="button"
+                                class="button-right-panel surface-button button-urgent">Urgent</button>
+                        </div>
+                        <div class="task">
+                            <img class="check-completed" src="./img/check-completed.png" alt="Done">
+                            <p class="subtitle">Memorize the fifty states and their capitals</p>
+                            <button type="button"
+                                class="button-right-panel surface-button button-urgent">Urgent</button>
+                        </div>
+                        <div class="task">
+                            <img class="check-completed" src="./img/check-completed.png" alt="Done">
+                            <p class="subtitle">Memorize the fifty states and their capitals</p>
+                            <button type="button"
+                                class="button-right-panel surface-button button-urgent">Urgent</button>
+                        </div>
                     </div>
                     <footer class="filters">
                         <button type="button" class="button-filters-active">Active</button>
@@ -88,6 +121,7 @@
                         <button type="button" class="button-filters-completed">Сompleted</button>
                     </footer>
                 </div>
+
             </section>
         </main>
     </div>

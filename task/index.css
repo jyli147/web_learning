@@ -36,6 +36,33 @@ body {
     box-shadow: 0px 0px 15px 5px #00ebff;
 }
 
+.scroll {
+    overflow-y: auto;
+    scroll-snap-align: start;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 10px;
+    padding: 0 5px 0 5px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: #354259;
+    /* цвет зоны отслеживания */
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background-color: #26A7B8;
+    /* цвет бегунка */
+    border-radius: 10px;
+    /* округлось бегунка */
+    border: 3px solid #354259;
+}
+
+.scroll::-webkit-scrollbar-thumb:hover {
+    background-color: #2297a7;
+}
+
 .header {
     padding-bottom: 114px;
 }
@@ -87,8 +114,7 @@ body {
     flex-direction: column;
     justify-content: center;
     padding: 0 25px 0 25px;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
+
 }
 
 .button {
@@ -103,12 +129,7 @@ body {
     line-height: 10px;
     border: none;
     margin: 5px 0 5px;
-    scroll-snap-align: start;
     flex-shrink: 0;
-}
-
-.button:hover {
-    box-shadow: 0px 0px 15px 5px #00ebff;
 }
 
 .button-completed {
@@ -149,8 +170,6 @@ body {
     font-weight: 800;
     line-height: 18px;
     border: none;
-
-
 }
 
 .tasks {
@@ -165,6 +184,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-shrink: 0;
     padding: 0 14px 0 20px;
 }
 
@@ -187,7 +207,6 @@ body {
     font-weight: 800;
     line-height: 18px;
     border: none;
-
 }
 
 .button-clear-completed {
@@ -202,7 +221,7 @@ body {
 .task-list {
     display: flex;
     flex-direction: column;
-
+    height: 449px;
 }
 
 .task {
@@ -210,6 +229,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 12px;
+    flex-shrink: 0;
     height: 80px;
     border-bottom: 1px solid #F6F6F6;
     padding: 0 20px 0 20px;
@@ -241,6 +261,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
     height: 50px;
 }
 
@@ -284,6 +305,8 @@ body {
         font-size: 14.4px;
     }
 
+
+
     .header {
         padding: 0 0 52px;
     }
@@ -322,9 +345,15 @@ body {
         min-width: 300px;
     }
 
+    .scroll {
+        direction: rtl;
+        overflow-y: auto;
+    }
+
     .task {
         position: relative;
         height: 70px;
+        direction: ltr;
     }
 
     .subtitle {

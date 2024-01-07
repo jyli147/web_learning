@@ -1,5 +1,6 @@
 :root {
     --global-bg-color: #1C273C;
+    --gap: 12px;
     font-size: 16px;
 }
 
@@ -18,7 +19,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 80px 15px 257px 15px
+    padding: 15px;
+    gap: 50px;
+
 }
 
 .surface {
@@ -63,24 +66,18 @@ body {
     background-color: #2297a7;
 }
 
-.header {
-    padding-bottom: 114px;
-}
-
 .header-title {
     color: #E9C597;
     text-align: center;
     font-size: 2rem;
     font-weight: 800;
     margin: 0;
-
 }
 
 .work-space {
     display: flex;
     justify-content: center;
-    gap: 12px;
-
+    gap: var(--gap);
 }
 
 .categories {
@@ -89,15 +86,13 @@ body {
     justify-content: space-between;
     max-width: 250px;
     height: 514px;
-
 }
 
 .header-categories {
-    padding: 25px 0 25px;
+    padding: 25px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .title-categories {
@@ -110,11 +105,7 @@ body {
 }
 
 .categories-buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 25px 0 25px;
-
+    padding: 25px 25px 0 25px;
 }
 
 .button {
@@ -176,7 +167,7 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 650px;
-    gap: 12px;
+    gap: var(--gap);
 }
 
 .header-tasks {
@@ -194,6 +185,7 @@ body {
     font-size: 1.25rem;
     font-weight: 700;
     margin: 0;
+    cursor: pointer;
 }
 
 .button-add {
@@ -216,6 +208,7 @@ body {
     font-weight: 700;
     border: none;
     background: none;
+    cursor: pointer;
 }
 
 .task-list {
@@ -228,14 +221,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: var(--gap);
     flex-shrink: 0;
     height: 80px;
     border-bottom: 1px solid #F6F6F6;
     padding: 0 20px 0 20px;
 }
 
-/* .real-checkbox {
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap);
+}
+
+.real-checkbox {
     width: 0;
     height: 0;
     opacity: 0;
@@ -248,10 +248,13 @@ body {
     display: inline-block;
     width: 30px;
     height: 30px;
-    /* background: #4CAF50; */
-/* border-radius: 15px;
-} */
-/* 
+    background: white;
+    border: 2px solid #4CAF50;
+    border-radius: 15px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
 .custom-checkbox::before {
     content: "";
     display: inline-block;
@@ -267,9 +270,9 @@ body {
     transition: 0.2s ease-in;
 }
 
-.real-checkbox:checked.custom-checkbox::content {
+.real-checkbox:checked~.custom-checkbox::before {
     transform: translate(-50%, -50%) scale(1);
-} */
+}
 
 .subtitle {
     color: #FFF;
@@ -277,6 +280,7 @@ body {
     font-size: 1.25rem;
     font-weight: 400;
     margin: 0;
+    cursor: pointer;
 }
 
 .button-right-panel {
@@ -290,7 +294,6 @@ body {
     font-weight: 400;
     line-height: 10px;
     border: none;
-
 }
 
 .filters {
@@ -308,6 +311,7 @@ body {
     font-weight: 800;
     border: none;
     background: none;
+    cursor: pointer;
 }
 
 .button-filters-all {
@@ -317,6 +321,7 @@ body {
     font-weight: 800;
     border: none;
     background: none;
+    cursor: pointer;
 }
 
 .button-filters-completed {
@@ -326,6 +331,7 @@ body {
     font-weight: 800;
     border: none;
     background: none;
+    cursor: pointer;
 }
 
 .mobile {
@@ -334,85 +340,4 @@ body {
 
 .button-add-mobile {
     display: none;
-}
-
-@media (max-width:900px) {
-    :root {
-        font-size: 14.4px;
-    }
-
-
-
-    .header {
-        padding: 0 0 52px;
-    }
-
-    .mobile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 17px;
-        border-radius: 15px;
-        background: #354259;
-        box-shadow: 0px 4px 0px 0px #38938A;
-        width: 160px;
-        height: 30px;
-    }
-
-    .button-add-mobile {
-        display: contents;
-        color: #F6F6F6;
-        text-align: center;
-        font-family: 'Open Sans';
-        font-size: 18px;
-        font-weight: 800;
-        line-height: 16.2px;
-    }
-
-    .categories.surface {
-        display: none;
-    }
-
-    .header-tasks.surface {
-        display: none;
-    }
-
-    .tasks {
-        min-width: 300px;
-    }
-
-    .scroll {
-        overflow-y: auto;
-    }
-
-    .task {
-        position: relative;
-        height: 70px;
-    }
-
-    .subtitle {
-        margin-right: 20px;
-    }
-
-    .button-right-panel {
-        border-radius: 0;
-        font-size: 11px;
-        font-weight: 600;
-        transform: rotate(-90deg);
-        width: 70px;
-        height: 30px;
-        position: absolute;
-        right: -20px;
-        border-left: 1px solid #F6F6F6;
-    }
-
-    .check-completed {
-        width: 25px;
-        height: 25px;
-    }
-
-    .subtitle {
-        font-size: 16px;
-
-    }
 }

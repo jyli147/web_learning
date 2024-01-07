@@ -1,0 +1,83 @@
+@media (max-width:900px) {
+    :root {
+        font-size: 14.4px;
+    }
+
+    .work-space {
+        flex-direction: column;
+        align-items: center;
+        gap: 17px;
+    }
+
+    .mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        background: #354259;
+        box-shadow: 0px 4px 0px 0px #38938A;
+        width: 160px;
+        height: 30px;
+    }
+
+    .button-add-mobile {
+        display: contents;
+        color: #F6F6F6;
+        text-align: center;
+        font-family: 'Open Sans';
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 16.2px;
+    }
+
+    .categories.surface {
+        display: none;
+    }
+
+    .header-tasks.surface {
+        display: none;
+    }
+
+    .tasks {
+        min-width: 300px;
+    }
+
+    .scroll {
+        overflow-y: auto;
+    }
+
+    .task {
+        position: relative;
+        height: 70px;
+    }
+
+    .subtitle {
+        margin-right: 20px;
+    }
+
+    .button-right-panel {
+        border-radius: 0;
+        font-size: 11px;
+        font-weight: 600;
+        transform: rotate(-90deg);
+        width: 70px;
+        height: 30px;
+        position: absolute;
+        right: -20px;
+        border-left: 1px solid #F6F6F6;
+    }
+
+    .custom-checkbox {
+        width: 25px;
+        height: 25px;
+    }
+
+    .custom-checkbox::before {
+        width: 25px;
+        height: 25px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+}

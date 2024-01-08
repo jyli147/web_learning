@@ -12,6 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./media.css">
+    <link rel="stylesheet" href="./modal.css">
 
 </head>
 
@@ -51,10 +52,10 @@
             <section class="tasks">
                 <header class="header-tasks surface">
                     <p class="number-of-tasks">5 tasks</p>
-                    <button class="button-add surface-button">Add new task</button>
-                    <button class="button-clear-completed">Clear completed</button>
+                    <button class="button-add surface-button" id="open-modal">Add new task</button>
+                    <button class="button-clear-completed" id="clearCompleted">Clear completed</button>
                 </header>
-                <div class="task-list surface">
+                <div class="task-list surface" id="taskList">
                     <div class="scroll">
                         <div class="task">
                             <label class="form">
@@ -152,10 +153,36 @@
                         <button type="button" class="button-filters-completed">Сompleted</button>
                     </footer>
                 </div>
-
             </section>
         </main>
+        <div class="modal-box" id="modal">
+
+
+            <div class="modal">
+                <h1 class="modal-title">CREATE TASK</h1>
+                <input type="text" placeholder="Task description...">
+                <img src="./img/category-left-line.png" alt="left line">
+                <h2 class="title-categories">Categories</h2>
+                <img src="./img/category-right-line.png" alt="right line">
+                <div class="categories-buttons scroll">
+                    <button type="button" class="button surface-button button-completed">Completed</button>
+                    <button type="button" class="button surface-button button-urgent">Urgent</button>
+                    <button type="button" class="button surface-button button-important">Important</button>
+                    <button type="button" class="button surface-button button-later">Later</button>
+                    <button type="button" class="button surface-button button-to-study">To study</button>
+                    <button type="button" class="button surface-button button-completed">Completed</button>
+                    <button type="button" class="button surface-button button-completed">Completed</button>
+                    <button type="button" class="button surface-button button-completed">Completed</button>
+                    <button type="button" class="button surface-button button-completed">Completed</button>
+                    <button type="button" class="button surface-button button-completed">Completed</button>
+                    <button type="button" class="button surface-button button-completed">Completed</button>
+                    <button type="button" id="add">SUBMIT TASK</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="./index.js"></script>
 </body>
 
 </html>

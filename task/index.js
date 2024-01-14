@@ -14,8 +14,6 @@ window.addEventListener(`keydown`, (e) => {
 
 let tasks = [];
 
-
-
 // Поиск
 
 const form = document.getElementById(`form`)
@@ -32,6 +30,8 @@ function clearTasks() {
     while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild);
     }
+    // Очищаем массив
+    tasks.splice(0, tasks.length);
 }
 // Добавляем обработчик события клика по кнопке очистки
 clearButton.addEventListener('click', clearTasks);
@@ -61,7 +61,6 @@ function addTask(event) {
 
     // Добавляем в массив
     tasks.push(newTask);
-    console.log(tasks);
 
     // Разметка для задачи
     const taskHtml = `<div id="${newTask.id}" class="task">
@@ -75,9 +74,14 @@ function addTask(event) {
     <button type="button" class="button-right-panel surface-button button-completed">Completed</button>
     </div>
 </div>`
+
+
     // Добавить на страницу
     taskList.insertAdjacentHTML(`beforeend`, taskHtml);
 
+    // Очищение инпут и фокус на него
+    input.value = "";
+    input.focus();
 }
 
 // Удаляем задачи
@@ -105,6 +109,8 @@ function deleteTask(event) {
 // Не появляется чекбокс в состоянии true
 // Не знаю как привязать категории, чтобы их можно было выбирать
 // Модальное окно
+// Не работает очищение всего массива
+// Не работает очищение инпута и фокус
 
 
 

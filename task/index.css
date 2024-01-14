@@ -210,10 +210,13 @@ body {
     cursor: pointer;
 }
 
-.task-list {
+.work-space-task-list {
     display: flex;
     flex-direction: column;
-    height: 449px;
+}
+
+.task-list {
+    height: 400px;
 }
 
 .task {
@@ -280,6 +283,13 @@ body {
     font-weight: 400;
     margin: 0;
     cursor: pointer;
+}
+
+.button-delete-category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--gap);
 }
 
 .button-right-panel {

@@ -55,16 +55,19 @@
                     <button class="button-add surface-button" id="open-modal">Add new task</button>
                     <button class="button-clear-completed" id="clearCompleted">Clear completed</button>
                 </header>
-                <div class="task-list surface" id="taskList">
-                    <div class="scroll">
+                <div class="work-space-task-list surface ">
+                    <div class="task-list scroll" id="taskList">
                         <div class="task">
                             <label class="form">
                                 <input type="checkbox" class="real-checkbox">
                                 <span class="custom-checkbox"></span>
                                 <p class="subtitle">Memorize the fifty states and their capitals</p>
                             </label>
-                            <button type="button"
-                                class="button-right-panel surface-button button-completed">Completed</button>
+                            <div class="button-delete-category">
+                                <button type="button" data-action="delete">х</button>
+                                <button type="button"
+                                    class="button-right-panel surface-button button-completed">Completed</button>
+                            </div>
                         </div>
                         <div class="task">
                             <label class="form">
@@ -72,6 +75,7 @@
                                 <span class="custom-checkbox"></span>
                                 <p class="subtitle">Memorize the fifty states and their capitals</p>
                             </label>
+                            <button type="button" data-action="delete">х</button>
                             <button type="button"
                                 class="button-right-panel surface-button button-urgent">Urgent</button>
                         </div>
@@ -81,6 +85,7 @@
                                 <span class="custom-checkbox"></span>
                                 <p class="subtitle">Memorize the fifty states and their capitals</p>
                             </label>
+                            <button type="button" data-action="delete">х</button>
                             <button type="button"
                                 class="button-right-panel surface-button button-important">Important</button>
                         </div>
@@ -90,6 +95,7 @@
                                 <span class="custom-checkbox"></span>
                                 <p class="subtitle">Memorize the fifty states and their capitals</p>
                             </label>
+                            <button type="button" data-action="delete">х</button>
                             <button type="button" class="button-right-panel surface-button button-later">Later</button>
                         </div>
                         <div class="task">
@@ -98,53 +104,9 @@
                                 <span class="custom-checkbox"></span>
                                 <p class="subtitle">Memorize the fifty states and their capitals</p>
                             </label>
+                            <button type="button" data-action="delete">х</button>
                             <button type="button" class="button-right-panel surface-button button-to-study">To
                                 study</button>
-                        </div>
-                        <div class="task">
-                            <label class="form">
-                                <input type="checkbox" class="real-checkbox">
-                                <span class="custom-checkbox"></span>
-                                <p class="subtitle">Memorize the fifty states and their capitals</p>
-                            </label>
-                            <button type="button"
-                                class="button-right-panel surface-button button-urgent">Urgent</button>
-                        </div>
-                        <div class="task">
-                            <label class="form">
-                                <input type="checkbox" class="real-checkbox">
-                                <span class="custom-checkbox"></span>
-                                <p class="subtitle">Memorize the fifty states and their capitals</p>
-                            </label>
-                            <button type="button"
-                                class="button-right-panel surface-button button-urgent">Urgent</button>
-                        </div>
-                        <div class="task">
-                            <label class="form">
-                                <input type="checkbox" class="real-checkbox">
-                                <span class="custom-checkbox"></span>
-                                <p class="subtitle">Memorize the fifty states and their capitals</p>
-                            </label>
-                            <button type="button"
-                                class="button-right-panel surface-button button-urgent">Urgent</button>
-                        </div>
-                        <div class="task">
-                            <label class="form">
-                                <input type="checkbox" class="real-checkbox">
-                                <span class="custom-checkbox"></span>
-                                <p class="subtitle">Memorize the fifty states and their capitals</p>
-                            </label>
-                            <button type="button"
-                                class="button-right-panel surface-button button-urgent">Urgent</button>
-                        </div>
-                        <div class="task">
-                            <label class="form">
-                                <input type="checkbox" class="real-checkbox">
-                                <span class="custom-checkbox"></span>
-                                <p class="subtitle">Memorize the fifty states and their capitals</p>
-                            </label>
-                            <button type="button"
-                                class="button-right-panel surface-button button-urgent">Urgent</button>
                         </div>
                     </div>
                     <footer class="filters">

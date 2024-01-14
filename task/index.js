@@ -9,10 +9,22 @@ window.addEventListener(`keydown`, (e) => {
     }
 });
 
-// Кнопка очистки всех задач
 
-const clearButton = document.getElementById('clearCompleted');
+
+
+let tasks = [];
+
+
+
+// Поиск
+
+const form = document.getElementById(`form`)
+const add = document.getElementById('add');
+const input = document.getElementById(`input`);
 const taskList = document.getElementById('taskList');
+const clearButton = document.getElementById('clearCompleted');
+
+// Кнопка очистки всех задач
 
 // Функция для обработки клика по кнопке очистки
 function clearTasks() {
@@ -25,91 +37,151 @@ function clearTasks() {
 clearButton.addEventListener('click', clearTasks);
 
 
-
 // Добавляем задачи
-const form = document.querySelector(`#form`)
-const add = document.getElementById('add');
-const input = document.getElementById(`#input`);
-const tasksList = document.getElementById(`#taskList`);
 
-form.addEventListener(`submit`, function (event) {
+form.addEventListener(`submit`, addTask);
+
+function addTask(event) {
+
     // Отменяем отправку формы
     event.preventDefault();
     //    Достаем текст из поля ввода задачи
+
     const taskText = input.value;
-    console.log(taskText);
+
+    // Описание задачи работа с данными
+    const newTask = {
+        id: Date.now(),
+        description: taskText,
+        // categories: categories,
+        isCompleted: true,
+    }
+
+    const checkbox = newTask.isCompleted ? "custom-checkbox::before" : "custom-checkbox";
+
+    // Добавляем в массив
+    tasks.push(newTask);
+    console.log(tasks);
+
     // Разметка для задачи
-    const taskHtml = `<div class="task">
+    const taskHtml = `<div id="${newTask.id}" class="task">
     <label class="form">
         <input type="checkbox" class="real-checkbox">
-        <span class="custom-checkbox"></span>
-        <p class="subtitle">${taskText}</p>
+        <span class="${checkbox}"></span>
+        <p class="subtitle">${newTask.description}</p>
     </label>
-    <button type="button"
-        class="button-right-panel surface-button button-urgent">Urgent</button>
+    <div class="button-delete-category">
+    <button type="button" data-action="delete">х</button>
+    <button type="button" class="button-right-panel surface-button button-completed">Completed</button>
+    </div>
 </div>`
     // Добавить на страницу
-    tasksList.insertAdjacentHTML(`beforeend`, taskHtml);
+    taskList.insertAdjacentHTML(`beforeend`, taskHtml);
 
-})
+}
 
+// Удаляем задачи
 
+taskList.addEventListener(`click`, deleteTask);
 
+function deleteTask(event) {
+    if (event.target.dataset.action !== `delete`) {
+        return;
+    }
+    const parentNode = event.target.closest(`.task`);
 
+    const id = Number(parentNode.id);
 
+    // Поиск индекс и удаление
+    const index = tasks.findIndex(function (task) {
+        if (task.id === id)
+            return true;
+    })
+    tasks.splice(index, 1);
 
+    parentNode.remove();
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-// class Task {
-//     constructor(id, description, categories, isCompleted = false) {
-//         this.id = id;
-//         this.description = description;
-//         this.categories = categories;
-//         this.isCompleted = isCompleted;
-//     }
-
-//     toggleCompleted() {
-//         this.isCompleted = !this.isCompleted;
-//     };
-
-//     toString() {
-//         return `id=${this.id}, title=${this.title}, description=${this.description}, isCompleted=${this.isCompleted}`;
-//     }
-// };
+// Не появляется чекбокс в состоянии true
+// Не знаю как привязать категории, чтобы их можно было выбирать
+// Модальное окно
 
 
-// class TaskList {
-//     #tasks = [];
-
-//     addTask(description, categories,) {
-//         let task = new Task(this.#tasks.length + 1, description, categories,);
-//         this.#tasks.push(task);
-//         return task;
-//     }
-//     // addTask(taskDescription) {
-//     //     let task = new Task(taskDescription);
-//     //     this.#tasks.push(task);
-//     //     return task;
-//     // }
-// }
 
 
-// let myTasksList = new TaskList();
 
-// add.onclick = () => {
-//     let task = input.value;
-//     if (task) {
-//         console.log(myTasksList.addTask());
-//     }
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Добавляю в скрол из-за
+
+// Элементы похожие.радиокнопки.При выборе кнопки
+// всегда активные.Нужны ли всегда кнопки.Проверка
+// на пустую задачу, чтобы она не была пуста, проверить
+// value на длинну
+// Функция трим.
+
+// Проверка инпута на задачу
+
+
+
+
+
+// // class Task {
+// //     constructor(id, description, categories, isCompleted = false) {
+// //         this.id = id;
+// //         this.description = description;
+// //         this.categories = categories;
+// //         this.isCompleted = isCompleted;
+// //     }
+
+// //     toggleCompleted() {
+// //         this.isCompleted = !this.isCompleted;
+// //     };
+
+// //     toString() {
+// //         return `id=${this.id}, title=${this.title}, description=${this.description}, isCompleted=${this.isCompleted}`;
+// //     }
+// // };
+
+
+// // class TaskList {
+// //     #tasks = [];
+
+// //     addTask(description, categories,) {
+// //         let task = new Task(this.#tasks.length + 1, description, categories,);
+// //         this.#tasks.push(task);
+// //         return task;
+// //     }
+
+
+// // }
+
+
+// // let myTasksList = new TaskList();
+
+// // add.onclick = () => {
+// //     let task = input.value;
+// //     if (task) {
+// //         console.log(myTasksList.addTask());
+// //     }
+// // }

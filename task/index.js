@@ -13,7 +13,7 @@ window.addEventListener(`keydown`, (e) => {
 
 
 let tasks = [];
-
+let i = tasks.length;
 // Поиск
 
 const form = document.getElementById(`form`)
@@ -21,6 +21,7 @@ const add = document.getElementById('add');
 const input = document.getElementById(`input`);
 const taskList = document.getElementById('taskList');
 const clearButton = document.getElementById('clearCompleted');
+const counter = document.getElementById('counter');
 
 // Кнопка очистки всех задач
 
@@ -42,12 +43,13 @@ clearButton.addEventListener('click', clearTasks);
 form.addEventListener(`submit`, addTask);
 
 function addTask(event) {
-
     // Отменяем отправку формы
     event.preventDefault();
     //    Достаем текст из поля ввода задачи
 
     const taskText = input.value;
+
+    if (input.value.trim() === "") return
 
     // Описание задачи работа с данными
     const newTask = {
@@ -75,9 +77,11 @@ function addTask(event) {
     </div>
 </div>`
 
-
     // Добавить на страницу
     taskList.insertAdjacentHTML(`beforeend`, taskHtml);
+
+    i++;
+    counter.textContent = i;
 
     // Очищение инпут и фокус на него
     input.value = "";
@@ -92,6 +96,8 @@ function deleteTask(event) {
     if (event.target.dataset.action !== `delete`) {
         return;
     }
+    i--;
+    counter.textContent = i;
     const parentNode = event.target.closest(`.task`);
 
     const id = Number(parentNode.id);

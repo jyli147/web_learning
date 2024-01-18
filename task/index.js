@@ -96,8 +96,10 @@ function deleteTask(event) {
     if (event.target.dataset.action !== `delete`) {
         return;
     }
+
     i--;
     counter.textContent = i;
+
     const parentNode = event.target.closest(`.task`);
 
     const id = Number(parentNode.id);
@@ -115,6 +117,7 @@ function deleteTask(event) {
 // Не появляется чекбокс в состоянии true
 // Не знаю как привязать категории, чтобы их можно было выбирать
 // Модальное окно
+// Не работает счетчик задач
 
 
 console.log(tasks)

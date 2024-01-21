@@ -12,7 +12,8 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./media.css">
-    <link rel="stylesheet" href="./modal.css">
+    <link rel="stylesheet" href="./modal-add-task.css">
+    <link rel="stylesheet" href="./modal-add-category.css">
 
 </head>
 
@@ -45,14 +46,14 @@
                     <button type="button" class="button surface-button button-completed">Completed</button>
                 </div>
                 <footer class="footer-categories">
-                    <button class="button-add-category surface-button">Add category</button>
+                    <button class="button-add-category surface-button" id="open-modal-add-category">Add
+                        category</button>
                 </footer>
 
             </section>
             <section class="tasks">
                 <header class="header-tasks surface">
-                    <p class="number-of-tasks"><span id="
-                        counter">5</span> tasks</p>
+                    <p class="number-of-tasks"><span id="counter">5</span> tasks</p>
                     <button class="button-add surface-button" id="open-modal">Add new task</button>
                     <button class="button-clear-completed" id="clearCompleted">Clear completed</button>
                 </header>
@@ -65,7 +66,7 @@
                                 <p class="subtitle">Memorize the fifty states and their capitals</p>
                             </label>
                             <div class="button-delete-category">
-                                <button type="button" data-action="delete">х</button>
+                                <button class="delete surface-button" type="button" data-action="delete">х</button>
                                 <button type="button"
                                     class="button-right-panel surface-button button-completed">Completed</button>
                             </div>
@@ -76,9 +77,11 @@
                                 <span class="custom-checkbox"></span>
                                 <p class="subtitle">Memorize the fifty states and their capitals</p>
                             </label>
-                            <button type="button" data-action="delete">х</button>
-                            <button type="button"
-                                class="button-right-panel surface-button button-urgent">Urgent</button>
+                            <div class="button-delete-category">
+                                <button class="delete surface-button" type="button" data-action="delete">х</button>
+                                <button type="button"
+                                    class="button-right-panel surface-button button-urgent">Urgent</button>
+                            </div>
                         </div>
                         <div class="task">
                             <label class="form">
@@ -86,9 +89,11 @@
                                 <span class="custom-checkbox"></span>
                                 <p class="subtitle">Memorize the fifty states and their capitals</p>
                             </label>
-                            <button type="button" data-action="delete">х</button>
-                            <button type="button"
-                                class="button-right-panel surface-button button-important">Important</button>
+                            <div class="button-delete-category">
+                                <button class="delete surface-button" type="button" data-action="delete">х</button>
+                                <button type="button"
+                                    class="button-right-panel surface-button button-important">Important</button>
+                            </div>
                         </div>
                         <div class="task">
                             <label class="form">
@@ -96,8 +101,11 @@
                                 <span class="custom-checkbox"></span>
                                 <p class="subtitle">Memorize the fifty states and their capitals</p>
                             </label>
-                            <button type="button" data-action="delete">х</button>
-                            <button type="button" class="button-right-panel surface-button button-later">Later</button>
+                            <div class="button-delete-category">
+                                <button class="delete surface-button" type="button" data-action="delete">х</button>
+                                <button type="button"
+                                    class="button-right-panel surface-button button-later">Later</button>
+                            </div>
                         </div>
                         <div class="task">
                             <label class="form">
@@ -105,9 +113,11 @@
                                 <span class="custom-checkbox"></span>
                                 <p class="subtitle">Memorize the fifty states and their capitals</p>
                             </label>
-                            <button type="button" data-action="delete">х</button>
-                            <button type="button" class="button-right-panel surface-button button-to-study">To
-                                study</button>
+                            <div class="button-delete-category">
+                                <button class="delete surface-button" type="button" data-action="delete">х</button>
+                                <button type="button" class="button-right-panel surface-button button-to-study">To
+                                    study</button>
+                            </div>
                         </div>
                     </div>
                     <footer class="filters">
@@ -119,23 +129,43 @@
             </section>
         </main>
         <div class="modal-box" id="modal">
-
-
             <div class="modal">
                 <h1 class="modal-title">CREATE TASK</h1>
-                <form id="form">
-                    <input type="text" id="input" placeholder="Task description...">
-                    <img src="./img/category-left-line.png" alt="left line">
-                    <h2 class="title-categories">Categories</h2>
-                    <img src="./img/category-right-line.png" alt="right line">
-                    <div class="categories-buttons scroll">
-                        <button type="button" class="button surface-button button-completed">Completed</button>
+                <form class="form-modal" id="form">
+                    <input class="input" type="text" id="input" placeholder="Task description...">
+                    <div class="modal-categories">
+                        <img src="./img/category-left-line.png" alt="left line">
+                        <h2 class="title-categories">Categories</h2>
+                        <img src="./img/category-right-line.png" alt="right line">
+                    </div>
+                    <div class="modal-button">
                         <button type="button" class="button surface-button button-urgent">Urgent</button>
                         <button type="button" class="button surface-button button-important">Important</button>
                         <button type="button" class="button surface-button button-later">Later</button>
                         <button type="button" class="button surface-button button-to-study">To study</button>
-                        <button type="submit" id="add">SUBMIT TASK</button>
+                        <button type="button" class="button surface-button button-completed">Completed</button>
                     </div>
+                    <button class="submit" type="submit" id="add">SUBMIT TASK</button>
+                </form>
+            </div>
+        </div>
+        <div class="modal-box" id="modal-add-category">
+            <div class="modal">
+                <h1 class="modal-title">CREATE CATEGORY</h1>
+                <form class="form-modal" id="form">
+                    <input class="input" type="text" id="input" placeholder="Category description...">
+                    <div class="modal-categories">
+                        <img src="./img/category-left-line.png" alt="left line">
+                        <h2 class="title-categories">Colors</h2>
+                        <img src="./img/category-right-line.png" alt="right line">
+                    </div>
+                    <div class="modal-button-category">
+                        <button type="button" class="button surface-button button-urgent">Red</button>
+                        <button type="button" class="button surface-button button-important">Yellow</button>
+                        <button type="button" class="button surface-button button-later">Purple</button>
+                        <button type="button" class="button surface-button button-completed">Green</button>
+                    </div>
+                    <button class="submit" type="submit" id="add">CREATE CATEGORY</button>
                 </form>
             </div>
         </div>
@@ -145,3 +175,7 @@
 </body>
 
 </html>
+
+
+<!-- Не получается выровнять последний элемент в грид -->
+<!-- Кнопки не распологаются на весь контейнер сетки -->

@@ -1,8 +1,10 @@
-// Модальное окно
+// Модальное окно add-task
 
 document.getElementById("open-modal").addEventListener("click", function () {
     document.getElementById("modal").classList.add("open")
 });
+
+
 window.addEventListener(`keydown`, (e) => {
     if (e.key === "Escape") {
         document.getElementById("modal").classList.remove("open")
@@ -10,12 +12,41 @@ window.addEventListener(`keydown`, (e) => {
 });
 
 
+document.querySelector("#modal .modal").addEventListener("click", (e) => {
+    e._isClickWithInModal = true;
+});
+document.getElementById("modal").addEventListener("click", (e) => {
+    if (e._isClickWithInModal) return;
+    e.currentTarget.classList.remove("open");
+});
+
+
+// Модальное окно add-task
+
+document.getElementById("open-modal-add-category").addEventListener("click", function () {
+    document.getElementById("modal-add-category").classList.add("open")
+});
+
+// Закрытие модального окна по Es
+window.addEventListener(`keydown`, (e) => {
+    if (e.key === "Escape") {
+        document.getElementById("modal-add-category").classList.remove("open")
+    }
+});
+
+// Закрытие модального окна вне его поля
+document.querySelector("#modal-add-category .modal").addEventListener("click", (e) => {
+    e._isClickWithInModal = true;
+});
+document.getElementById("modal-add-category").addEventListener("click", (e) => {
+    if (e._isClickWithInModal) return;
+    e.currentTarget.classList.remove("open");
+});
 
 
 let tasks = [];
-let i = tasks.length;
+let i = 5;
 // Поиск
-
 const form = document.getElementById(`form`)
 const add = document.getElementById('add');
 const input = document.getElementById(`input`);
@@ -27,16 +58,17 @@ const counter = document.getElementById('counter');
 
 // Функция для обработки клика по кнопке очистки
 function clearTasks() {
+    counter.textContent = 0;
     // Удаляем все дочерние элементы списка задач
     while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild);
     }
     // Очищаем массив
     tasks.splice(0, tasks.length);
+
 }
 // Добавляем обработчик события клика по кнопке очистки
 clearButton.addEventListener('click', clearTasks);
-
 
 // Добавляем задачи
 
@@ -59,20 +91,18 @@ function addTask(event) {
         isCompleted: true,
     }
 
-    const checkbox = newTask.isCompleted ? "custom-checkbox::before" : "custom-checkbox";
-
     // Добавляем в массив
     tasks.push(newTask);
 
     // Разметка для задачи
     const taskHtml = `<div id="${newTask.id}" class="task">
     <label class="form">
-        <input type="checkbox" class="real-checkbox">
-        <span class="${checkbox}"></span>
+    <input type="checkbox" ${newTask.isCompleted ? "checked=checked" : ""} class="real-checkbox">
+        <span class="custom-checkbox"></span>
         <p class="subtitle">${newTask.description}</p>
     </label>
     <div class="button-delete-category">
-    <button type="button" data-action="delete">х</button>
+    <button class="delete surface-button" type="button" data-action="delete">х</button>
     <button type="button" class="button-right-panel surface-button button-completed">Completed</button>
     </div>
 </div>`
@@ -96,7 +126,6 @@ function deleteTask(event) {
     if (event.target.dataset.action !== `delete`) {
         return;
     }
-
     i--;
     counter.textContent = i;
 
@@ -114,10 +143,10 @@ function deleteTask(event) {
     parentNode.remove();
 }
 
-// Не появляется чекбокс в состоянии true
-// Не знаю как привязать категории, чтобы их можно было выбирать
-// Модальное окно
-// Не работает счетчик задач
+
+
+
+
 
 
 console.log(tasks)

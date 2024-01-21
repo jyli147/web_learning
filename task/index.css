@@ -292,6 +292,16 @@ body {
     gap: var(--gap);
 }
 
+.delete {
+    border-radius: 6px;
+    background: #44A0A0;
+    color: #F6F6F6;
+    font-family: 'Open Sans';
+    font-size: 1rem;
+    font-weight: 400;
+    border: none;
+}
+
 .button-right-panel {
     width: 150px;
     height: 30px;

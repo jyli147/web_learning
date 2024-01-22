@@ -1,16 +1,39 @@
+// Поиск
+const form = document.getElementById(`form`)
+const add = document.getElementById('add');
+const input = document.getElementById(`input`);
+const taskList = document.getElementById('taskList');
+const clearButton = document.getElementById('clearCompleted');
+const counter = document.getElementById('counter');
+
+// Выбираем категорию
+
+let linkedCategoryForAddTask;
+
+function categoryLinkedCategoryForAddTask(event) {
+    if (event.target.dataset.role === `category`) {
+        linkedCategoryForAddTask = event.target;
+    }
+}
 // Модальное окно add-task
 
 document.getElementById("open-modal").addEventListener("click", function () {
-    document.getElementById("modal").classList.add("open")
+    document.getElementById("modal").classList.add("open");
+    document.getElementById("categories-for-add-task").addEventListener("click", categoryLinkedCategoryForAddTask);
 });
-
 
 window.addEventListener(`keydown`, (e) => {
     if (e.key === "Escape") {
         document.getElementById("modal").classList.remove("open")
     }
+    document.getElementById("categories-for-add-task").removeEventListener("clic",
+        linkedCategoryForAddTask = null
+    )
+    // if (e.key === "Escape" && document.getElementById("modal").classList.contains("open")) {
+    //     document.getElementById("modal").classList.remove("open");
+    //     linkedCategoryForAddTask = null;
+    // }
 });
-
 
 document.querySelector("#modal .modal").addEventListener("click", (e) => {
     e._isClickWithInModal = true;
@@ -20,8 +43,12 @@ document.getElementById("modal").addEventListener("click", (e) => {
     e.currentTarget.classList.remove("open");
 });
 
+// Закрытие модально окна после добавления задачи
+add.addEventListener("click", (e) => {
+    document.getElementById("modal").classList.remove("open")
+});
 
-// Модальное окно add-task
+// Модальное окно add-category
 
 document.getElementById("open-modal-add-category").addEventListener("click", function () {
     document.getElementById("modal-add-category").classList.add("open")
@@ -46,19 +73,12 @@ document.getElementById("modal-add-category").addEventListener("click", (e) => {
 
 let tasks = [];
 let i = 5;
-// Поиск
-const form = document.getElementById(`form`)
-const add = document.getElementById('add');
-const input = document.getElementById(`input`);
-const taskList = document.getElementById('taskList');
-const clearButton = document.getElementById('clearCompleted');
-const counter = document.getElementById('counter');
+
 
 // Кнопка очистки всех задач
 
 // Функция для обработки клика по кнопке очистки
 function clearTasks() {
-    counter.textContent = 0;
     // Удаляем все дочерние элементы списка задач
     while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild);
@@ -66,6 +86,8 @@ function clearTasks() {
     // Очищаем массив
     tasks.splice(0, tasks.length);
 
+    i = 0;
+    counter.textContent = i;
 }
 // Добавляем обработчик события клика по кнопке очистки
 clearButton.addEventListener('click', clearTasks);
@@ -94,6 +116,9 @@ function addTask(event) {
     // Добавляем в массив
     tasks.push(newTask);
 
+    linkedCategoryForAddTask.classList.remove("button");
+    linkedCategoryForAddTask.classList.add("button-right-panel");
+
     // Разметка для задачи
     const taskHtml = `<div id="${newTask.id}" class="task">
     <label class="form">
@@ -103,19 +128,19 @@ function addTask(event) {
     </label>
     <div class="button-delete-category">
     <button class="delete surface-button" type="button" data-action="delete">х</button>
-    <button type="button" class="button-right-panel surface-button button-completed">Completed</button>
+   ${linkedCategoryForAddTask.outerHTML}
     </div>
 </div>`
 
     // Добавить на страницу
     taskList.insertAdjacentHTML(`beforeend`, taskHtml);
 
-    i++;
-    counter.textContent = i;
-
     // Очищение инпут и фокус на него
     input.value = "";
     input.focus();
+
+    i++;
+    counter.textContent = i;
 }
 
 // Удаляем задачи
@@ -126,8 +151,7 @@ function deleteTask(event) {
     if (event.target.dataset.action !== `delete`) {
         return;
     }
-    i--;
-    counter.textContent = i;
+
 
     const parentNode = event.target.closest(`.task`);
 
@@ -141,6 +165,9 @@ function deleteTask(event) {
     tasks.splice(index, 1);
 
     parentNode.remove();
+
+    i--;
+    counter.textContent = i;
 }
 
 
@@ -152,81 +179,3 @@ function deleteTask(event) {
 console.log(tasks)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Добавляю в скрол из-за
-
-// Элементы похожие.радиокнопки.При выборе кнопки
-// всегда активные.Нужны ли всегда кнопки.Проверка
-// на пустую задачу, чтобы она не была пуста, проверить
-// value на длинну
-// Функция трим.
-
-// Проверка инпута на задачу
-
-
-
-
-
-// // class Task {
-// //     constructor(id, description, categories, isCompleted = false) {
-// //         this.id = id;
-// //         this.description = description;
-// //         this.categories = categories;
-// //         this.isCompleted = isCompleted;
-// //     }
-
-// //     toggleCompleted() {
-// //         this.isCompleted = !this.isCompleted;
-// //     };
-
-// //     toString() {
-// //         return `id=${this.id}, title=${this.title}, description=${this.description}, isCompleted=${this.isCompleted}`;
-// //     }
-// // };
-
-
-// // class TaskList {
-// //     #tasks = [];
-
-// //     addTask(description, categories,) {
-// //         let task = new Task(this.#tasks.length + 1, description, categories,);
-// //         this.#tasks.push(task);
-// //         return task;
-// //     }
-
-
-// // }
-
-
-// // let myTasksList = new TaskList();
-
-// // add.onclick = () => {
-// //     let task = input.value;
-// //     if (task) {
-// //         console.log(myTasksList.addTask());
-// //     }
-// // }

@@ -109,7 +109,7 @@ function addTask(event) {
     const newTask = {
         id: Date.now(),
         description: taskText,
-        // categories: categories,
+        categories: linkedCategoryForAddTask.textContent,
         isCompleted: true,
     }
 

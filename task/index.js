@@ -5,6 +5,8 @@ const input = document.getElementById(`input`);
 const taskList = document.getElementById('taskList');
 const clearButton = document.getElementById('clearCompleted');
 const counter = document.getElementById('counter');
+const filters = document.getElementById('filters');
+const checkbox = document.getElementById('checkbox');
 
 // Выбираем категорию
 
@@ -92,6 +94,17 @@ function clearTasks() {
 // Добавляем обработчик события клика по кнопке очистки
 clearButton.addEventListener('click', clearTasks);
 
+
+
+
+checkbox.addEventListener('click', toggleTask);
+function toggleTask(e) {
+    if (e.target === checkbox) {
+        console.log(target);
+    }
+
+}
+
 // Добавляем задачи
 
 form.addEventListener(`submit`, addTask);
@@ -110,8 +123,10 @@ function addTask(event) {
         id: Date.now(),
         description: taskText,
         categories: linkedCategoryForAddTask.textContent,
-        isCompleted: true,
+        isCompleted: false,
     }
+
+    // newTask.isCompleted != newTask.isCompleted;
 
     // Добавляем в массив
     tasks.push(newTask);
@@ -122,7 +137,7 @@ function addTask(event) {
     // Разметка для задачи
     const taskHtml = `<div id="${newTask.id}" class="task">
     <label class="form">
-    <input type="checkbox" ${newTask.isCompleted ? "checked=checked" : ""} class="real-checkbox">
+    <input id="checkbox" type="checkbox" ${newTask.isCompleted ? "checked=checked" : ""} class="real-checkbox">
         <span class="custom-checkbox"></span>
         <p class="subtitle">${newTask.description}</p>
     </label>
@@ -141,7 +156,9 @@ function addTask(event) {
 
     i++;
     counter.textContent = i;
-}
+};
+
+
 
 // Удаляем задачи
 
@@ -151,7 +168,6 @@ function deleteTask(event) {
     if (event.target.dataset.action !== `delete`) {
         return;
     }
-
 
     const parentNode = event.target.closest(`.task`);
 
@@ -170,9 +186,12 @@ function deleteTask(event) {
     counter.textContent = i;
 }
 
+// Фильтр
+filters.addEventListener(`click`, filtersTask);
 
+function filtersTask(event) {
 
-
+}
 
 
 

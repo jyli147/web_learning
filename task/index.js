@@ -6,7 +6,7 @@ const taskList = document.getElementById('taskList');
 const clearButton = document.getElementById('clearCompleted');
 const counter = document.getElementById('counter');
 const filters = document.getElementById('filters');
-const checkbox = document.getElementById('checkbox');
+const checkboxies = document.getElementsByClassName('task-checkbox-toggler');
 
 // Выбираем категорию
 
@@ -95,16 +95,6 @@ function clearTasks() {
 clearButton.addEventListener('click', clearTasks);
 
 
-
-
-checkbox.addEventListener('click', toggleTask);
-function toggleTask(e) {
-    if (e.target === checkbox) {
-        console.log(target);
-    }
-
-}
-
 // Добавляем задачи
 
 form.addEventListener(`submit`, addTask);
@@ -118,15 +108,16 @@ function addTask(event) {
 
     if (input.value.trim() === "") return
 
+    const newCategories = linkedCategoryForAddTask.textContent;
+
     // Описание задачи работа с данными
     const newTask = {
         id: Date.now(),
         description: taskText,
-        categories: linkedCategoryForAddTask.textContent,
+        categories: newCategories,
         isCompleted: false,
     }
 
-    // newTask.isCompleted != newTask.isCompleted;
 
     // Добавляем в массив
     tasks.push(newTask);
@@ -135,20 +126,10 @@ function addTask(event) {
     linkedCategoryForAddTask.classList.add("button-right-panel");
 
     // Разметка для задачи
-    const taskHtml = `<div id="${newTask.id}" class="task">
-    <label class="form">
-    <input id="checkbox" type="checkbox" ${newTask.isCompleted ? "checked=checked" : ""} class="real-checkbox">
-        <span class="custom-checkbox"></span>
-        <p class="subtitle">${newTask.description}</p>
-    </label>
-    <div class="button-delete-category">
-    <button class="delete surface-button" type="button" data-action="delete">х</button>
-   ${linkedCategoryForAddTask.outerHTML}
-    </div>
-</div>`
+    const taskHtml = createHtmlForTask(newTask);
 
     // Добавить на страницу
-    taskList.insertAdjacentHTML(`beforeend`, taskHtml);
+    renderTaskHtml(taskHtml)
 
     // Очищение инпут и фокус на него
     input.value = "";
@@ -158,6 +139,63 @@ function addTask(event) {
     counter.textContent = i;
 };
 
+Array.from(checkboxies).forEach(checkbox => {
+    checkbox.addEventListener('click', updateTaskIsCompleted);
+});
+
+function updateTaskIsCompleted(e) {
+    const taskId = e.target.getAttribute('id');
+    if (!taskId) {
+        alert('Задача не найдена');
+    }
+    let task = tasks.find(item => item.id === id);
+
+    if (task == taskId) {
+        tasks.isCompleted = !tasks.isCompleted;
+    }
+}
+
+// Use Case (пользовательский сценарий, сценарий использования)
+// за реализацию use case отвечает контроллер
+//
+// 1) получить id задачи
+// 1.1) валидировать id
+// 1.2) если id не валидный, показать ошибку
+// 2) найти задачу в масиве (получить данные из модели)
+// 2.1) если не находим в массиве, сообщить пользователю
+// 3) переключить isCompleted на противоположное значение
+// 4) обновить массив задач (обновить модель)
+// 5) обновить view (визуальная составляющая) (вьюха, экран, страницу, UI)
+// 
+// 
+// MVC (Model - View - Controller) -- паттерн проектирования (архитектурой)
+
+
+
+
+
+// 1) Повесить слушатели (listenner) на класс task (можно сделать другой класс чтобы не мешать с css)
+// 2) От event из аргемента листенера получить тип действия (чекбокс, удаление итд)
+// 3) От event из аргемента листенера получить id задачи
+// 4) Выполнить use case из 2-го пункта для id из 3-го пункта // UseCase(taskId)
+
+function createHtmlForTask(newTask) {
+    return `<div id="${newTask.id}" class="task task-checkbox-toggler">
+        <label class="form">
+        <input data-input="input" type="checkbox" ${newTask.isCompleted ? "checked=checked" : ""} class="real-checkbox">
+            <span class="custom-checkbox"></span>
+            <p class="subtitle">${newTask.description}</p>
+        </label>
+        <div class="button-delete-category">
+        <button class="delete surface-button" type="button" data-action="delete">х</button>
+    ${linkedCategoryForAddTask.outerHTML}
+        </div>
+    </div>`
+}
+
+function renderTaskHtml(taskHtml) {
+    taskList.insertAdjacentHTML(`beforeend`, taskHtml);
+}
 
 
 // Удаляем задачи

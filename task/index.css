@@ -285,6 +285,11 @@ body {
     cursor: pointer;
 }
 
+.subtitle-through {
+    text-decoration: line-through;
+    color: #9b9191;
+}
+
 .button-delete-category {
     display: flex;
     justify-content: center;

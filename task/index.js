@@ -6,7 +6,7 @@ const taskList = document.getElementById('taskList');
 const clearButton = document.getElementById('clearCompleted');
 const counter = document.getElementById('counter');
 const filters = document.getElementById('filters');
-const checkboxies = document.getElementsByClassName('task-checkbox-toggler');
+
 
 // Выбираем категорию
 
@@ -139,21 +139,22 @@ function addTask(event) {
     counter.textContent = i;
 };
 
-Array.from(checkboxies).forEach(checkbox => {
-    checkbox.addEventListener('click', updateTaskIsCompleted);
-});
+// Array.from(checkboxies).forEach(checkbox => {
+//     checkbox.addEventListener('click', updateTaskIsCompleted);
+// });
 
-function updateTaskIsCompleted(e) {
-    const taskId = e.target.getAttribute('id');
-    if (!taskId) {
-        alert('Задача не найдена');
-    }
-    let task = tasks.find(item => item.id === id);
+// function updateTaskIsCompleted(e) {
+//     const taskId = e.target.dataset.taskId;
+//     console.log(taskId);
+//     // if (!taskId) {
+//     //     alert('Задача не найдена');
+//     // }
+//     // let task = tasks.find(item => item.id === id);
 
-    if (task == taskId) {
-        tasks.isCompleted = !tasks.isCompleted;
-    }
-}
+//     // if (task == taskId) {
+//     //     tasks.isCompleted = !tasks.isCompleted;
+//     // }
+// }
 
 // Use Case (пользовательский сценарий, сценарий использования)
 // за реализацию use case отвечает контроллер
@@ -180,7 +181,7 @@ function updateTaskIsCompleted(e) {
 // 4) Выполнить use case из 2-го пункта для id из 3-го пункта // UseCase(taskId)
 
 function createHtmlForTask(newTask) {
-    return `<div id="${newTask.id}" class="task task-checkbox-toggler">
+    return `<div id="${newTask.id}" class="task">
         <label class="form">
         <input data-input="input" type="checkbox" ${newTask.isCompleted ? "checked=checked" : ""} class="real-checkbox">
             <span class="custom-checkbox"></span>
@@ -227,10 +228,29 @@ function deleteTask(event) {
 // Фильтр
 filters.addEventListener(`click`, filtersTask);
 
-function filtersTask(event) {
-
+function filtersTask(e) {
+    if (e.target.dataset.filters === 'active') {
+        taskList
+    }
 }
 
+
+taskList.addEventListener('click', updateTaskIsCompleted);
+function updateTaskIsCompleted(e) {
+    if (e.target.dataset.input !== 'input') return
+
+    const taskText = e.target.nextElementSibling.nextElementSibling;
+    taskText.classList.toggle('subtitle-through');
+
+    const parentNodeDiv = e.target.parentElement.parentElement;
+    const id = Number(parentNodeDiv.id);
+    let task = tasks.find(function (task) {
+        if (task.id === id) {
+            return true;
+        }
+    })
+    task.isCompleted = !task.isCompleted;
+}
 
 
 console.log(tasks)

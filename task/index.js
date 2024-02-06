@@ -8,6 +8,7 @@ const counter = document.getElementById('counter');
 const filters = document.getElementById('filters');
 
 
+
 // Выбираем категорию
 
 let linkedCategoryForAddTask;
@@ -74,7 +75,7 @@ document.getElementById("modal-add-category").addEventListener("click", (e) => {
 
 
 let tasks = [];
-let i = 5;
+let i = 0;
 
 
 // Кнопка очистки всех задач
@@ -139,22 +140,6 @@ function addTask(event) {
     counter.textContent = i;
 };
 
-// Array.from(checkboxies).forEach(checkbox => {
-//     checkbox.addEventListener('click', updateTaskIsCompleted);
-// });
-
-// function updateTaskIsCompleted(e) {
-//     const taskId = e.target.dataset.taskId;
-//     console.log(taskId);
-//     // if (!taskId) {
-//     //     alert('Задача не найдена');
-//     // }
-//     // let task = tasks.find(item => item.id === id);
-
-//     // if (task == taskId) {
-//     //     tasks.isCompleted = !tasks.isCompleted;
-//     // }
-// }
 
 // Use Case (пользовательский сценарий, сценарий использования)
 // за реализацию use case отвечает контроллер
@@ -170,9 +155,6 @@ function addTask(event) {
 // 
 // 
 // MVC (Model - View - Controller) -- паттерн проектирования (архитектурой)
-
-
-
 
 
 // 1) Повесить слушатели (listenner) на класс task (можно сделать другой класс чтобы не мешать с css)
@@ -225,12 +207,23 @@ function deleteTask(event) {
     counter.textContent = i;
 }
 
+
+
+
+
 // Фильтр
 filters.addEventListener(`click`, filtersTask);
 
 function filtersTask(e) {
     if (e.target.dataset.filters === 'active') {
-        taskList
+        const taskText = taskList.querySelectorAll('.subtitle');
+        taskText.forEach(item => {
+            if (item.classList.contains('subtitle-through')) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        })
     }
 }
 

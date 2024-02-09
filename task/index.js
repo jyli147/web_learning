@@ -9,15 +9,6 @@ const filters = document.getElementById('filters');
 
 
 
-// Выбираем категорию
-
-let linkedCategoryForAddTask;
-
-function categoryLinkedCategoryForAddTask(event) {
-    if (event.target.dataset.role === `category`) {
-        linkedCategoryForAddTask = event.target;
-    }
-}
 // Модальное окно add-task
 
 document.getElementById("open-modal").addEventListener("click", function () {
@@ -75,27 +66,32 @@ document.getElementById("modal-add-category").addEventListener("click", (e) => {
 
 
 let tasks = [];
-let i = 0;
+let tasksCounter = tasks.length;
 
 
 // Кнопка очистки всех задач
 
 // Функция для обработки клика по кнопке очистки
 function clearTasks() {
-    // Удаляем все дочерние элементы списка задач
-    while (taskList.firstChild) {
-        taskList.removeChild(taskList.firstChild);
-    }
     // Очищаем массив
     tasks.splice(0, tasks.length);
 
-    i = 0;
-    counter.textContent = i;
+    renderTasks(tasks);
+
+    tasksCounter = tasks.length;
+    counter.textContent = tasksCounter;
 }
 // Добавляем обработчик события клика по кнопке очистки
 clearButton.addEventListener('click', clearTasks);
 
+// Выбираем категорию
+let linkedCategoryForAddTask;
 
+function categoryLinkedCategoryForAddTask(event) {
+    if (event.target.dataset.role === `category`) {
+        linkedCategoryForAddTask = event.target;
+    }
+}
 // Добавляем задачи
 
 form.addEventListener(`submit`, addTask);
@@ -109,35 +105,25 @@ function addTask(event) {
 
     if (input.value.trim() === "") return
 
-    const newCategories = linkedCategoryForAddTask.textContent;
-
     // Описание задачи работа с данными
     const newTask = {
         id: Date.now(),
         description: taskText,
-        categories: newCategories,
+        categories: linkedCategoryForAddTask.textContent,
         isCompleted: false,
     }
-
 
     // Добавляем в массив
     tasks.push(newTask);
 
-    linkedCategoryForAddTask.classList.remove("button");
-    linkedCategoryForAddTask.classList.add("button-right-panel");
-
-    // Разметка для задачи
-    const taskHtml = createHtmlForTask(newTask);
-
-    // Добавить на страницу
-    renderTaskHtml(taskHtml)
+    renderTasks(tasks);
 
     // Очищение инпут и фокус на него
     input.value = "";
     input.focus();
 
-    i++;
-    counter.textContent = i;
+    tasksCounter = tasks.length;
+    counter.textContent = tasksCounter;
 };
 
 
@@ -167,11 +153,13 @@ function createHtmlForTask(newTask) {
         <label class="form">
         <input data-input="input" type="checkbox" ${newTask.isCompleted ? "checked=checked" : ""} class="real-checkbox">
             <span class="custom-checkbox"></span>
-            <p class="subtitle">${newTask.description}</p>
+            <p class="subtitle ${newTask.isCompleted ? 'subtitle-through' : ''}">${newTask.description}</p>
         </label>
         <div class="button-delete-category">
         <button class="delete surface-button" type="button" data-action="delete">х</button>
-    ${linkedCategoryForAddTask.outerHTML}
+        <button type="button"
+        class="button-right-panel surface-button button-urgent">${newTask.categories}</button>
+</div>
         </div>
     </div>`
 }
@@ -180,6 +168,15 @@ function renderTaskHtml(taskHtml) {
     taskList.insertAdjacentHTML(`beforeend`, taskHtml);
 }
 
+function renderTasks(tasks) {
+    while (taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild);
+    }
+
+    for (const task of tasks) {
+        renderTaskHtml(createHtmlForTask(task));
+    }
+}
 
 // Удаляем задачи
 
@@ -201,39 +198,52 @@ function deleteTask(event) {
     })
     tasks.splice(index, 1);
 
-    parentNode.remove();
+    renderTasks(tasks);
 
-    i--;
-    counter.textContent = i;
+    tasksCounter = tasks.length;
+    counter.textContent = tasksCounter;
 }
 
-
-
-
-
 // Фильтр
+let currentFilter = 'all';
 filters.addEventListener(`click`, filtersTask);
 
 function filtersTask(e) {
-    if (e.target.dataset.filters === 'active') {
-        const taskText = taskList.querySelectorAll('.subtitle');
-        taskText.forEach(item => {
-            if (item.classList.contains('subtitle-through')) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        })
+    const nextFilter = e.target.dataset.filters;
+    if (currentFilter === nextFilter) {
+        return;
     }
+    currentFilter = nextFilter;
+    filteredTasks = [];
+
+    switch (currentFilter) {
+        case 'active':
+            filteredTasks = tasks.filter((task) => !task.isCompleted);
+            document.querySelectorAll('.button-filters').forEach((button) => button.style.color = '#44A0A0');
+            document.querySelector('.button-filters-active').style.color = 'white';
+            break;
+        case 'all':
+            filteredTasks = tasks;
+            document.querySelectorAll('.button-filters').forEach((button) => button.style.color = '#44A0A0');
+            document.querySelector('.button-filters-all').style.color = 'white';
+            break;
+        case 'completed':
+            filteredTasks = tasks.filter((task) => task.isCompleted);
+            document.querySelectorAll('.button-filters').forEach((button) => button.style.color = '#44A0A0');
+            document.querySelector('.button-filters-completed').style.color = 'white';
+            break;
+        default:
+            throw Error(`unknown filter type: ${currentFilter}`);
+    }
+    renderTasks(filteredTasks);
 }
+
 
 
 taskList.addEventListener('click', updateTaskIsCompleted);
 function updateTaskIsCompleted(e) {
-    if (e.target.dataset.input !== 'input') return
 
-    const taskText = e.target.nextElementSibling.nextElementSibling;
-    taskText.classList.toggle('subtitle-through');
+    if (e.target.dataset.input !== 'input') return
 
     const parentNodeDiv = e.target.parentElement.parentElement;
     const id = Number(parentNodeDiv.id);
@@ -242,7 +252,9 @@ function updateTaskIsCompleted(e) {
             return true;
         }
     })
+
     task.isCompleted = !task.isCompleted;
+    renderTasks(tasks);
 }
 
 

@@ -738,3 +738,30 @@ myTasksList.toggleTask(task2.id)
 // Смотрим в список
 console.log('\nПосле переключания task2: \n')
 console.log(myTasksList.findAll());
+
+
+
+
+
+// let currentFilter = 'all';
+// let filteredTasks = [];
+
+// function filtersTask(filter) {
+//     currentFilter = filter;
+//     if (filter === 'all') {
+//         filteredTasks = tasks;
+//     } else if (filter === 'completed') {
+//         filteredTasks = tasks.filter(task => task.completed);
+//     } else if (filter === 'active') {
+//         filteredTasks = tasks.filter(task => !task.completed);
+//     }
+//     renderTasks();
+// }
+
+// // Обработчик события клика на кнопках фильтра
+// document.addEventListener('click', function (e) {
+//     if (e.target && e.target.classList.contains('filter')) {
+//         const filter = e.target.dataset.filter;
+//         filtersTask(filter);
+//     }
+// });

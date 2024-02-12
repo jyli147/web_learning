@@ -6,14 +6,14 @@ const taskList = document.getElementById('taskList');
 const clearButton = document.getElementById('clearCompleted');
 const counter = document.getElementById('counter');
 const filters = document.getElementById('filters');
-
+const categoriesAddTask = document.getElementById("categories-for-add-task");
 
 
 // Модальное окно add-task
 
 document.getElementById("open-modal").addEventListener("click", function () {
     document.getElementById("modal").classList.add("open");
-    document.getElementById("categories-for-add-task").addEventListener("click", categoryLinkedCategoryForAddTask);
+    categoriesAddTask.addEventListener("click", categoryLinkedCategoryForAddTask);
 });
 
 window.addEventListener(`keydown`, (e) => {
@@ -23,10 +23,7 @@ window.addEventListener(`keydown`, (e) => {
     document.getElementById("categories-for-add-task").removeEventListener("clic",
         linkedCategoryForAddTask = null
     )
-    // if (e.key === "Escape" && document.getElementById("modal").classList.contains("open")) {
-    //     document.getElementById("modal").classList.remove("open");
-    //     linkedCategoryForAddTask = null;
-    // }
+
 });
 
 document.querySelector("#modal .modal").addEventListener("click", (e) => {
@@ -40,28 +37,6 @@ document.getElementById("modal").addEventListener("click", (e) => {
 // Закрытие модально окна после добавления задачи
 add.addEventListener("click", (e) => {
     document.getElementById("modal").classList.remove("open")
-});
-
-// Модальное окно add-category
-
-document.getElementById("open-modal-add-category").addEventListener("click", function () {
-    document.getElementById("modal-add-category").classList.add("open")
-});
-
-// Закрытие модального окна по Es
-window.addEventListener(`keydown`, (e) => {
-    if (e.key === "Escape") {
-        document.getElementById("modal-add-category").classList.remove("open")
-    }
-});
-
-// Закрытие модального окна вне его поля
-document.querySelector("#modal-add-category .modal").addEventListener("click", (e) => {
-    e._isClickWithInModal = true;
-});
-document.getElementById("modal-add-category").addEventListener("click", (e) => {
-    if (e._isClickWithInModal) return;
-    e.currentTarget.classList.remove("open");
 });
 
 
@@ -84,14 +59,6 @@ function clearTasks() {
 // Добавляем обработчик события клика по кнопке очистки
 clearButton.addEventListener('click', clearTasks);
 
-// Выбираем категорию
-let linkedCategoryForAddTask;
-
-function categoryLinkedCategoryForAddTask(event) {
-    if (event.target.dataset.role === `category`) {
-        linkedCategoryForAddTask = event.target;
-    }
-}
 // Добавляем задачи
 
 form.addEventListener(`submit`, addTask);
@@ -105,11 +72,12 @@ function addTask(event) {
 
     if (input.value.trim() === "") return
 
+
     // Описание задачи работа с данными
     const newTask = {
         id: Date.now(),
         description: taskText,
-        categories: linkedCategoryForAddTask.textContent,
+        categories: linkedCategoryForAddTask,
         isCompleted: false,
     }
 
@@ -238,7 +206,16 @@ function filtersTask(e) {
     renderTasks(filteredTasks);
 }
 
+// Выбираем категорию
+let linkedCategoryForAddTask;
 
+function categoryLinkedCategoryForAddTask(event) {
+
+    if (event.target.dataset.role === `category`) {
+        linkedCategoryForAddTask = event.target;
+
+    }
+}
 
 taskList.addEventListener('click', updateTaskIsCompleted);
 function updateTaskIsCompleted(e) {

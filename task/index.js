@@ -146,17 +146,28 @@ function renderTaskHtml(taskHtml) {
     taskList.insertAdjacentHTML(`beforeend`, taskHtml);
 }
 
-function renderTasks(tasks) {
+// function renderTasks(tasks, filter) {
+//     while (taskList.firstChild) {
+//         taskList.removeChild(taskList.firstChild);
+//     }
+//  
+//         for (const task of tasks) {
+//         renderTaskHtml(createHtmlForTask(task));
+
+// }
+
+function renderTasks(tasks, filter) {
     while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild);
     }
+    const filteredTasks = tasks.filter(function (task) {
+        return filter === 'all' || (filter === 'active' && !task.completed) || (filter === 'completed' && task.completed);
+    });
 
-    for (const task of tasks) {
+    for (const task of filteredTasks) {
         renderTaskHtml(createHtmlForTask(task));
     }
-
 }
-
 // Удаляем задачи
 
 taskList.addEventListener(`click`, deleteTask);

@@ -59,6 +59,17 @@ function clearTasks() {
 // Добавляем обработчик события клика по кнопке очистки
 clearButton.addEventListener('click', clearTasks);
 
+// Выбираем категорию
+let linkedCategoryForAddTask;
+
+function categoryLinkedCategoryForAddTask(event) {
+
+    if (event.target.dataset.role === `category`) {
+        linkedCategoryForAddTask = event.target;
+
+    }
+}
+
 // Добавляем задачи
 
 form.addEventListener(`submit`, addTask);
@@ -85,7 +96,6 @@ function addTask(event) {
     tasks.push(newTask);
 
     renderTasks(tasks);
-
     // Очищение инпут и фокус на него
     input.value = "";
     input.focus();
@@ -144,6 +154,7 @@ function renderTasks(tasks) {
     for (const task of tasks) {
         renderTaskHtml(createHtmlForTask(task));
     }
+
 }
 
 // Удаляем задачи
@@ -204,17 +215,6 @@ function filtersTask(e) {
             throw Error(`unknown filter type: ${currentFilter}`);
     }
     renderTasks(filteredTasks);
-}
-
-// Выбираем категорию
-let linkedCategoryForAddTask;
-
-function categoryLinkedCategoryForAddTask(event) {
-
-    if (event.target.dataset.role === `category`) {
-        linkedCategoryForAddTask = event.target;
-
-    }
 }
 
 taskList.addEventListener('click', updateTaskIsCompleted);

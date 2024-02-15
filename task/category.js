@@ -30,7 +30,7 @@ let categories = [];
 
 formCategories.addEventListener(`submit`, addCategories);
 
-function addCategories(event) {
+function addCategories(e) {
     event.preventDefault();
     const text = inputCategory.value;
     console.log(text)

@@ -163,11 +163,12 @@ function renderTasks(tasks, filter) {
     const filteredTasks = tasks.filter(function (task) {
         return filter === 'all' || (filter === 'active' && !task.completed) || (filter === 'completed' && task.completed);
     });
-
     for (const task of filteredTasks) {
         renderTaskHtml(createHtmlForTask(task));
     }
+    // const targetTasks = tasks.map(filter);
 }
+
 // Удаляем задачи
 
 taskList.addEventListener(`click`, deleteTask);

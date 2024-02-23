@@ -52,7 +52,7 @@
     }
 
     .subtitle {
-        margin-right: 20px;
+        margin-right: 40px;
     }
 
     .button-right-panel {
@@ -67,6 +67,11 @@
         border-left: 1px solid #F6F6F6;
     }
 
+    .delete {
+        position: absolute;
+        right: 40px;
+    }
+
     .custom-checkbox {
         width: 25px;
         height: 25px;
@@ -79,5 +84,30 @@
 
     .subtitle {
         font-size: 16px;
+    }
+
+
+
+    /* Модальное окно */
+    .modal {
+        min-width: 350px;
+        min-height: 450px;
+
+    }
+
+    .modal-button {
+        grid-template-columns: repeat(1, 150px);
+        grid-template-rows: auto;
+        gap: 10px;
+        padding: 15px 0px;
+    }
+
+    .img-modal {
+        width: 120px;
+    }
+
+    .input {
+        width: 250px;
+        margin: 0 auto 15px;
     }
 }

@@ -15,6 +15,10 @@ document.getElementById("open-modal").addEventListener("click", function () {
     document.getElementById("modal").classList.add("open");
     categoriesAddTask.addEventListener("click", categoryLinkedCategoryForAddTask);
 });
+document.getElementById("open-modal-two").addEventListener("click", function () {
+    document.getElementById("modal").classList.add("open");
+    categoriesAddTask.addEventListener("click", categoryLinkedCategoryForAddTask);
+});
 
 window.addEventListener(`keydown`, (e) => {
     if (e.key === "Escape") {
@@ -51,7 +55,7 @@ function clearTasks() {
     // Очищаем массив
     tasks.splice(0, tasks.length);
 
-    renderTasks(tasks);
+    renderTasks(tasks, currentFilter);
 
     tasksCounter = tasks.length;
     counter.textContent = tasksCounter;
@@ -66,7 +70,6 @@ function categoryLinkedCategoryForAddTask(event) {
 
     if (event.target.dataset.role === `category`) {
         linkedCategoryForAddTask = event.target;
-
     }
 }
 
@@ -95,7 +98,7 @@ function addTask(event) {
     // Добавляем в массив
     tasks.push(newTask);
 
-    renderTasks(tasks);
+    renderTasks(tasks, currentFilter);
     // Очищение инпут и фокус на него
     input.value = "";
     input.focus();
@@ -157,12 +160,17 @@ function renderTaskHtml(taskHtml) {
 // }
 
 function renderTasks(tasks, filter) {
+    if (!Array.isArray(tasks) || typeof filter !== 'string') {
+        throw 'tasks and filter are required'
+    }
     while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild);
     }
+
     const filteredTasks = tasks.filter(function (task) {
         return filter === 'all' || (filter === 'active' && !task.completed) || (filter === 'completed' && task.completed);
     });
+
     for (const task of filteredTasks) {
         renderTaskHtml(createHtmlForTask(task));
     }
@@ -189,7 +197,7 @@ function deleteTask(event) {
     })
     tasks.splice(index, 1);
 
-    renderTasks(tasks);
+    renderTasks(tasks, currentFilter);
 
     tasksCounter = tasks.length;
     counter.textContent = tasksCounter;
@@ -226,7 +234,7 @@ function filtersTask(e) {
         default:
             throw Error(`unknown filter type: ${currentFilter}`);
     }
-    renderTasks(filteredTasks);
+    renderTasks(filteredTasks, currentFilter);
 }
 
 taskList.addEventListener('click', updateTaskIsCompleted);
@@ -243,7 +251,7 @@ function updateTaskIsCompleted(e) {
     })
 
     task.isCompleted = !task.isCompleted;
-    renderTasks(tasks);
+    renderTasks(tasks, currentFilter);
 }
 
 

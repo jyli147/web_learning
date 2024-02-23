@@ -11,10 +11,9 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;1,400&family=Open+Sans:wght@400;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./index.css">
-    <link rel="stylesheet" href="./media.css">
     <link rel="stylesheet" href="./modal-add-task.css">
     <link rel="stylesheet" href="./modal-add-category.css">
-
+    <link rel="stylesheet" href="./media.css">
 </head>
 
 <body>
@@ -24,7 +23,7 @@
         </header>
         <main class="work-space">
             <div class="mobile surface-button">
-                <button class="button-add-mobile ">Add new task</button>
+                <button class="button-add-mobile" id="open-modal">Add new task</button>
             </div>
             <section class="categories surface">
                 <header class="header-categories">
@@ -48,7 +47,7 @@
             <section class="tasks">
                 <header class="header-tasks surface">
                     <p class="number-of-tasks"><span id="counter">0</span> tasks</p>
-                    <button class="button-add surface-button" id="open-modal">Add new task</button>
+                    <button class="button-add surface-button" id="open-modal-two">Add new task</button>
                     <button class="button-clear-completed" id="clearCompleted">Clear completed</button>
                 </header>
                 <div class="work-space-task-list surface ">
@@ -70,9 +69,9 @@
                 <form class="form-modal" id="form">
                     <input class="input" type="text" id="input" placeholder="Task description...">
                     <div class="modal-categories">
-                        <img src="./img/category-left-line.png" alt="left line">
+                        <img class="img-modal" src="./img/category-left-line.png" alt="left line">
                         <h2 class="title-categories">Categories</h2>
-                        <img src="./img/category-right-line.png" alt="right line">
+                        <img class="img-modal" src="./img/category-right-line.png" alt="right line">
                     </div>
                     <div id="categories-for-add-task" class="modal-button">
                         <button type="button" data-role="category"

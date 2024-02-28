@@ -1,0 +1,100 @@
+export class Task {
+    #id;
+
+    constructor(id, description, categories, isCompleted) {
+        this.#id = id;
+        this.description = description;
+        this.categories = categories;
+        this.isCompleted = isCompleted;
+    }
+
+    get id() {
+        return this.#id;
+    }
+}
+
+export class TasksStore {
+    #localStorageKey;
+    #internalData
+
+    constructor() {
+        this.#localStorageKey = 'tasks_store'
+    }
+
+    get length() {
+        return this.#internalData.tasks.length;
+    }
+
+    init() {
+        this.#readFromLocalStorage();
+    }
+
+    findAll() {
+        return [...this.#internalData.tasks];
+    }
+
+    addTask(description, categories, isCompleted) {
+        let task = new Task(this.#internalData.lastTaskId + 1, description, categories, isCompleted);
+        this.#internalData.lastTaskId = task.id;
+        this.#internalData.tasks.push(task);
+        this.#saveToLocalStorage()
+
+        return task;
+    }
+
+    toggleTaskById(id) {
+        let task = this.#internalData.tasks.find(item => item.id == id);
+        task.isCompleted = !task.isCompleted;
+        this.#saveToLocalStorage()
+
+        return task;
+    }
+
+    deleteTaskById(id) {
+        let index = this.#internalData.tasks.findIndex(item => item.id == id);
+        let removed = this.#internalData.tasks.splice(index, 1);
+        this.#saveToLocalStorage()
+
+        return removed.length > 0 ? removed[0] : null;
+    }
+
+    deleteAll() {
+        return this.#internalData.tasks.splice(0, this.length);
+    }
+
+    #readFromLocalStorage() {
+        const internalDataSource = window.localStorage.getItem(this.#localStorageKey);
+        const internalDataJson = JSON.parse(internalDataSource);
+        this.#internalData = InternalData.fromJson(internalDataJson);
+    }
+
+    #saveToLocalStorage() {
+        const internalDataJson = this.#internalData.toJson();
+        const internalDataSource = JSON.stringify(internalDataJson);
+        window.localStorage.setItem(this.#localStorageKey, internalDataSource)
+    }
+}
+
+class InternalData {
+    static fromJson(json) {
+        const lastTaskId = json?.lastTaskId ?? 0;
+        const tasks = json?.tasks ?? [];
+        const schemaVersion = json?.schemaVersion ?? 1;
+
+        return new InternalData(lastTaskId, tasks, schemaVersion)
+    }
+
+    constructor(lastTaskId, tasks, schemaVersion) {
+        this.lastTaskId = lastTaskId;
+        this.tasks = tasks;
+        this.schemaVersion = schemaVersion;
+    }
+
+    toJson() {
+        return {
+            lastTaskId: this.lastTaskId,
+            tasks: this.tasks,
+            schemaVersion: this.schemaVersion
+        }
+    }
+}

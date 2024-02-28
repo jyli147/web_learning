@@ -1,5 +1,5 @@
 // Поиск
-const form = document.getElementById(`form`)
+const form = document.getElementById(`form`);
 const add = document.getElementById('add');
 const input = document.getElementById(`input`);
 const taskList = document.getElementById('taskList');

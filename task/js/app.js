@@ -6,10 +6,12 @@ import { UpdateFiltersStoreEvent, FiltersStore } from './filter_store.js'
 class App {
     #tasksStore;
     #categoriesStore;
+    #filtersStore;
 
     constructor() {
         this.#tasksStore = new TasksStore()
         this.#categoriesStore = new CategoriesStore()
+        this.#filtersStore = new FiltersStore()
     }
 
     init() {

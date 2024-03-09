@@ -13,11 +13,24 @@ export class Task {
     }
 }
 
-export class TasksStore {
+export class UpdateTasksStoreEvent extends CustomEvent {
+    static type = 'update_tasks_store_event'
+
+    constructor(tasks) {
+        super(UpdateTasksStoreEvent.type, { detail: { tasks } })
+    }
+
+    get tasks() {
+        return this.detail.tasks;
+    }
+}
+
+export class TasksStore extends EventTarget {
     #localStorageKey;
     #internalData
 
     constructor() {
+        super();
         this.#localStorageKey = 'tasks_store'
     }
 
@@ -71,7 +84,8 @@ export class TasksStore {
     #saveToLocalStorage() {
         const internalDataJson = this.#internalData.toJson();
         const internalDataSource = JSON.stringify(internalDataJson);
-        window.localStorage.setItem(this.#localStorageKey, internalDataSource)
+        window.localStorage.setItem(this.#localStorageKey, internalDataSource);
+        this.dispatchEvent(new UpdateTasksStoreEvent(this.findAll()));
     }
 }
 

@@ -41,18 +41,6 @@ export class CategoriesStore {
         return category;
     }
 
-    // deleteCategoryById(id) {
-    //     let index = this.#internalData.сategories.findIndex(item => item.id == id);
-    //     let removed = this.#internalData.сategories.splice(index, 1);
-    //     this.#saveToLocalStorage()
-
-    //     return removed.length > 0 ? removed[0] : null;
-    // }
-
-    // deleteAll() {
-    //     return this.#internalData.tasks.splice(0, this.length);
-    // }
-
     #readFromLocalStorage() {
         const internalDataSource = window.localStorage.getItem(this.#localStorageKey);
         const internalDataJson = JSON.parse(internalDataSource);

@@ -15,7 +15,6 @@ export class FiltersStore extends Filters {
 
     constructor() {
         super();
-        this.activeFilter = activeFilter;
         this.#localStorageKey = 'filters_store'
     }
 
@@ -50,19 +49,22 @@ class InternalData {
     static fromJson(json) {
         const filteredTasks = json?.tasks ?? [];
         const schemaVersion = json?.schemaVersion ?? 1;
+        const activeFilter = json?.activeFilter ?? 'all';
 
-        return new InternalData(filteredTasks, schemaVersion)
+        return new InternalData(filteredTasks, schemaVersion, activeFilter)
     }
 
-    constructor(filteredTasks, schemaVersion) {
+    constructor(filteredTasks, schemaVersion, activeFilter) {
         this.filteredTasks = filteredTasks;
         this.schemaVersion = schemaVersion;
+        this.actiсveFilter = activeFilter;
     }
 
     toJson() {
         return {
             filteredTasks: this.filteredTasks,
-            schemaVersion: this.schemaVersion
+            schemaVersion: this.schemaVersion,
+            activeFilter: this.activeFilter,
         }
     }
 }

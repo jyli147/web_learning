@@ -765,3 +765,84 @@ console.log(myTasksList.findAll());
 //         filtersTask(filter);
 //     }
 // });
+
+
+// function work(a, b) {
+//   alert(a + b);
+// }
+
+// function spy(func) {
+
+//   function wrapper(...args) {
+//     wrapper.calls.push(args);
+//     return func.apply(this, args);
+//   }
+
+//   wrapper.calls = [];
+
+//   return wrapper;
+// }
+
+
+// work = spy(work);
+
+// console.log(work(4, 2));
+
+
+
+// for (let args of work.calls) {
+//   alert('call:' + args.join()); // "call:1,2", "call:4,5"
+// }
+
+
+// function f(x) {
+//   alert(x);
+// }
+
+// function delay(f, ms) {
+
+//   return function () {
+//     setTimeout(() => f.apply(this, arguments), ms)
+//   }
+
+// }
+
+
+// let f1000 = delay(alert, 1000);
+
+// f1000("test");
+
+// Дано число. Проверьте, отрицательное оно или нет. Выведите об этом информацию в консоль.
+// let x = -1;
+// if (x > 0) {
+//   alert(true);
+// } else {
+//   alert(false);
+// }
+// Дана строка. Выведите в консоль длину этой строки.
+// let x = 'привет';
+// console.log(x.at(- 1));
+// Дано число. Проверьте, четное оно или нет.
+
+// let x = 'Ghbdtn';
+// let y = 'Ghbdddddn';
+// if (x.length[0] === y.length[0]) {
+//   alert(true);
+// } else {
+//   alert(false);
+// }
+// Дана некоторая строка. Найдите позицию первого нуля в строке.
+
+
+// Выведите в консоль все числа в промежутке от 1 до 1000, сумма первой и второй цифры которых равна пяти.
+
+for (let i = 1; i <= 1000; i++) {
+  let firstDigit = Math.floor(i / 10);
+  let secondDigit = i % 10;
+  if (firstDigit + secondDigit === 5) {
+    console.log(i);
+
+  }
+
+}
+

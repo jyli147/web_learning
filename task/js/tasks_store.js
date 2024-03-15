@@ -27,7 +27,7 @@ export class UpdateTasksStoreEvent extends CustomEvent {
 
 export class TasksStore extends EventTarget {
     #localStorageKey;
-    #internalData
+    #internalData;
 
     constructor() {
         super();

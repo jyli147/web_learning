@@ -1,62 +1,68 @@
-export class UpdateFiltersStoreEvent extends CustomEvent {
-    static type = 'current_filter_store_event'
+class Filters {
 
-    constructor(filters) {
-        super(UpdateFiltersStoreEvent.type, { detail: { filters } })
+    constructor(active, all, completed) {
+        this.active = active;
+        this.all = all;
+        this.completed = completed;
     }
 
-    get filters() {
-        return this.detail.filters;
-    }
 }
 
-
-export class FiltersStore extends EventTarget {
+export class FiltersStore extends Filters {
     #localStorageKey;
-    #filteredTasks = [];
+    #internalData;
+
 
     constructor() {
         super();
-        this.#localStorageKey = 'filters_store';
+        this.activeFilter = activeFilter;
+        this.#localStorageKey = 'filters_store'
     }
 
     init() {
         this.#readFromLocalStorage();
     }
 
-    activeFilter(tasks) {
-        this.#filteredTasks = tasks.filter((task) => !task.isCompleted);
-        this.dispatchEvent(new UpdateFiltersStoreEvent(this.#filteredTasks));
-        this.#saveToLocalStorage();
-
-        return this.#filteredTasks;
+    get activeFilter() {
+        return this.#internalData.activeFilter;
     }
 
-    allFilter(tasks) {
-        this.#filteredTasks = tasks;
-        this.dispatchEvent(new UpdateFiltersStoreEvent(this.#filteredTasks));
+    set activeFilter(filter) {
+        this.#internalData.activeFilter = filter;
         this.#saveToLocalStorage();
-
-        return this.#filteredTasks;
-    }
-
-    completedFilter(tasks) {
-        this.#filteredTasks = tasks.filter((task) => task.isCompleted);
-        this.dispatchEvent(new UpdateFiltersStoreEvent(this.#filteredTasks));
-        this.#saveToLocalStorage();
-
-        return this.#filteredTasks;
     }
 
     #readFromLocalStorage() {
-        const filterDataSource = window.localStorage.getItem(this.#localStorageKey);
-        const filterDataJson = JSON.parse(filterDataSource);
-        this.#filteredTasks.fromJson(filterDataJson);
+        const internalDataSource = window.localStorage.getItem(this.#localStorageKey);
+        const internalDataJson = JSON.parse(internalDataSource);
+        this.#internalData = InternalData.fromJson(internalDataJson);
     }
 
     #saveToLocalStorage() {
-        const filterDataJson = this.#filteredTasks.toJson();
-        const filterDataSource = JSON.stringify(filterDataJson);
-        window.localStorage.setItem(this.#localStorageKey, filterDataSource);
+        const internalDataJson = this.#internalData.toJson();
+        const internalDataSource = JSON.stringify(internalDataJson);
+        window.localStorage.setItem(this.#localStorageKey, internalDataSource);
+    }
+
+}
+
+class InternalData {
+    static fromJson(json) {
+        const filteredTasks = json?.tasks ?? [];
+        const schemaVersion = json?.schemaVersion ?? 1;
+
+        return new InternalData(filteredTasks, schemaVersion)
+    }
+
+    constructor(filteredTasks, schemaVersion) {
+        this.filteredTasks = filteredTasks;
+        this.schemaVersion = schemaVersion;
+    }
+
+    toJson() {
+        return {
+            filteredTasks: this.filteredTasks,
+            schemaVersion: this.schemaVersion
+        }
     }
 }

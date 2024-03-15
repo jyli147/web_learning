@@ -1,4 +1,4 @@
-class Filters {
+export class Filters {
 
     constructor(active, all, completed) {
         this.active = active;
@@ -8,13 +8,13 @@ class Filters {
 
 }
 
-export class FiltersStore extends Filters {
+export class FiltersStore {
     #localStorageKey;
     #internalData;
 
 
     constructor() {
-        super();
+        super(active, all, completed);
         this.#localStorageKey = 'filters_store'
     }
 

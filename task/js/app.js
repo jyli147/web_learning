@@ -1,18 +1,20 @@
 import { TasksStore, UpdateTasksStoreEvent } from './tasks_store.js'
 import { CategoriesStore } from './categories_store.js'
-import { FiltersStore } from './filter_store.js'
+import { Filters, FiltersStore } from './filter_store.js'
 
 
 class App {
     #tasksStore;
     #categoriesStore;
     #filtersStore;
+    #Filters
 
 
     constructor() {
         this.#tasksStore = new TasksStore();
         this.#categoriesStore = new CategoriesStore();
         this.#filtersStore = new FiltersStore();
+        this.#Filters = new Filters();
 
     }
 

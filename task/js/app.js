@@ -1,6 +1,6 @@
 import { TasksStore, UpdateTasksStoreEvent } from './tasks_store.js'
 import { CategoriesStore } from './categories_store.js'
-import { Filters, FiltersStore } from './filter_store.js'
+import { Filters, FiltersStore, UpdateFiltersStoreEvent } from './filter_store.js'
 
 
 class App {
@@ -28,60 +28,79 @@ class App {
             this.#renderTasks(e.tasks);
 
         })
-
-        function filtersTask(e) {
-            let returnedCurrentFilter = e.target.dataset.filters;
-            let tasks = this.#tasksStore.findAll();
-
-            for (let i = 0; i < tasks.length; i++) {
-                const filtedTask = tasks[i];
-
-                if (returnedCurrentFilter == null) {
-                    returnedCurrentFilter = filtedTask.isCompleted ? "completed" : "active";
-                    continue;
-                }
-
-                if (filtedTask.isCompleted && returnedCurrentFilter == "completed") {
-                    continue;
-                }
-
-                if (!filtedTask.isCompleted && returnedCurrentFilter == "active") {
-                    continue;
-                }
-
-                returnedCurrentFilter = "all";
-                break;
-            }
-
-            renderTasks(tasks, returnedCurrentFilter);
-        }
-
-        document.getElementById('filters').addEventListener('click', filtersTask);
-
-
-
-
-
-        // if (e.tasks.length == 0) {
-        //     // скрыть/заблокировать фильтры (renderFilters({isBlock:true}))
-        // }
-
-        // добавить слушатель к filtersStore на изменение текущго фильра
-        // вызвать функцию рендеринга
-
-        // this.#filtersStore.activeFilter(this.#tasksStore.findAll());
-
-        // [TasksStore] [CategoriesStore] [FiltersStore]
-        //           |       |              |
-        //           ------ [App]------------
-        // 
-        // 1) пользователь выбрал завершенные задачи
-        // 2) событие попадает App -- App получает конкретный Event и знает что с ним делать
-        // -- выполнение event от 1
-        // 3) App вызывает метод this.#tasksStore.findAll() -- получает все задачи
-        // 4) App вызывает метод FiltersStore.completedFilter и передавет результат из 3
-        // 5) App реагирует на событие UpdateFiltersStoreEvent и вызывает метод рендеринга задач
+        this.#filtersStore.addEventListener(UpdateFiltersStoreEvent.type, (e) => { this.filtersTask(e.filter) });
+        // document.getElementById('filters').addEventListener('click', (e) => { this.filtersTask(e) });
     }
+
+    filtersTask(filter) {
+        let returnedCurrentFilter = filter;
+        let tasks = this.#tasksStore.findAll();
+        let filtersTask = [];
+
+        switch (returnedCurrentFilter) {
+            case 'active':
+                filtersTask = tasks.filter((task) => !task.isCompleted);
+                break;
+            case 'all':
+                filtersTask = tasks;
+                break;
+            case 'completed':
+                filtersTask = tasks.filter((task) => task.isCompleted);
+                break;
+            default:
+                throw Error(`unknown filter type: ${currentFilter}`);
+
+        }
+        this.#renderTasks(filtersTask, returnedCurrentFilter);
+    }
+
+    // for (let i = 0; i < tasks.length; i++) {
+    //     const filtedTask = tasks[i];
+
+    //     if (returnedCurrentFilter == null) {
+    //         returnedCurrentFilter = filtedTask.isCompleted ? "completed" : "active";
+    //         continue;
+    //     }
+
+    //     if (filtedTask.isCompleted && returnedCurrentFilter == "completed") {
+    //         continue;
+    //     }
+
+    //     if (!filtedTask.isCompleted && returnedCurrentFilter == "active") {
+    //         continue;
+    //     }
+
+    //     returnedCurrentFilter = "all";
+    //     break;
+    // }
+
+
+    // document.getElementById('filters').addEventListener('click', filtersTask.bind(this));
+
+
+
+
+
+    // if (e.tasks.length == 0) {
+    //     // скрыть/заблокировать фильтры (renderFilters({isBlock:true}))
+    // }
+
+    // добавить слушатель к filtersStore на изменение текущго фильра
+    // вызвать функцию рендеринга
+
+    // this.#filtersStore.activeFilter(this.#tasksStore.findAll());
+
+    // [TasksStore] [CategoriesStore] [FiltersStore]
+    //           |       |              |
+    //           ------ [App]------------
+    // 
+    // 1) пользователь выбрал завершенные задачи
+    // 2) событие попадает App -- App получает конкретный Event и знает что с ним делать
+    // -- выполнение event от 1
+    // 3) App вызывает метод this.#tasksStore.findAll() -- получает все задачи
+    // 4) App вызывает метод FiltersStore.completedFilter и передавет результат из 3
+    // 5) App реагирует на событие UpdateFiltersStoreEvent и вызывает метод рендеринга задач
+
 
     test() {
         //     console.log('INIT: ')
@@ -92,10 +111,12 @@ class App {
         //     console.log(`this.#tasksStore.length: ${this.#tasksStore.length}`)
 
         const task = this.#tasksStore.addTask('some desc', [], false)
+        const task2 = this.#tasksStore.addTask('some desc', [], true)
         console.log('AFTER ADD: ')
         console.log(`this.#tasksStore.length: ${this.#tasksStore.length}`)
         console.log(this.#tasksStore.findAll())
-
+        console.log(this.filtersTask('active'));
+        console.log(this.#tasksStore.findAll())
 
         //     console.log('AFTER TOGGLE: ')
         //     this.#tasksStore.toggleTaskById(task.id);

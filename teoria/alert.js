@@ -836,13 +836,115 @@ console.log(myTasksList.findAll());
 
 // Выведите в консоль все числа в промежутке от 1 до 1000, сумма первой и второй цифры которых равна пяти.
 
-for (let i = 1; i <= 1000; i++) {
-  let firstDigit = Math.floor(i / 10);
-  let secondDigit = i % 10;
-  if (firstDigit + secondDigit === 5) {
-    console.log(i);
+// for (let i = 1; i <= 1000; i++) {
+//   let firstDigit = Math.floor(i / 10);
+//   let secondDigit = i % 10;
+//   if (firstDigit + secondDigit === 5) {
+//     console.log(i);
 
-  }
+//   }
 
+// }
+
+// Слово палиндром
+
+let a = ['ada', 'dhd', 'ghgh', "довод", "tenet", "итти"]
+
+function isPalindrome(str) {
+  return str === str.split('').reverse().join('');
 }
+
+for (let i of a) {
+  console.log(i + ' это палиндром ' + isPalindrome(i))
+}
+
+// Фраза палиндром
+let b = ["Madam, I’m Adam", "Хил, худ, а дух лих", "А роза упала на лапу азора", "bubbushusuhhhh"];
+
+function isPalindrom(string) {
+  let x = string.replace(/[\W_]/g, '').toLowerCase();
+  let y = x.split('').reverse().join('');
+  return y === x;
+}
+
+function c(s) {
+  return s.split('').reverse().join('');
+}
+
+for (let i of b) {
+  console.log(i + ' это палиндром ' + isPalindrom(i));
+  console.log("Вывод задом на перед: " + c(i));
+}
+
+// // Дано число. Выведите в консоль последнюю цифру этого числа.
+// let s = 1234;
+// console.log(s.toString().slice(-1));
+
+// Дано число. Выведите в консоль сумму первой и последней цифры этого числа.
+let num = 12345;
+let st1 = num.toString().at(1);
+console.log(st1);
+let st2 = num.toString().at(-1);
+console.log(st2);
+let sum = Number(st1) + Number(st2);
+console.log(sum);
+
+// Дано число. Выведите количество цифр в этом числе.
+
+console.log(num.toString().length);
+// Выведите в консоль все целые числа от 1 до 100.
+// for (let i = 1; i <= 1000; i++) {
+//   console.log(i)
+// }
+
+// Выведите в консоль все четные числа из промежутка от 1 до 100.
+// for (let i = 0; i <= 1000; i++) {
+//   if (i % 2 === 0) {
+//     console.log(i)
+//   }
+
+// }
+// Найдите сумму всех целых чисел от 1 до 100.
+// let summ = 0;
+// for (let i = 1; i <= 1000; i++) {
+//   summ += i;
+// }
+// console.log(summ);
+// Дан массив с числами. Найдите сумму квадратов элементов этого массива.
+// let arr = [1, 3, 5, 7, 8, 9, 8];
+// function sum2(number) {
+//   return number **= 2
+// }
+
+// for (arrNum of arr) {
+//   console.log(sum2(arrNum));
+// }
+// Дан массив с числами. Найдите сумму квадратных корней элементов этого массива.
+// let arr = [1, 3, 5, 7, 8, 9, 8];
+// function s(number) {
+//   let square = Math.sqrt(number);
+//   return square;
+// }
+// let t = 0;
+// for (arrNum of arr) {
+//   t += s(arrNum);
+
+
+// } console.log(t);
+
+// Дан массив с числами. Найдите сумму тех элементов этого массива, которые больше нуля и меньше десяти.
+// let arr = [1, 3, 5, 7, 8, 9, 8, 33, 2, 56, 44];
+// let t = 0;
+// for (arrNum of arr) {
+//   if (arrNum > 0 & arrNum < 10) {
+//     t += arrNum;
+//   }
+
+// } console.log(t);
+
+// Дана строка:
+
+// 'abcde'
+// Получите массив букв этой строки.
+let string = 'abcde';
 

@@ -1,20 +1,26 @@
 export class Filters {
-
-    constructor(active, all, completed) {
-        this.active = active;
-        this.all = all;
-        this.completed = completed;
+    constructor(current) {
+        this.current = current;
     }
-
 }
 
-export class FiltersStore {
+export class UpdateFiltersStoreEvent extends CustomEvent {
+    static type = 'update_filters_store_event';
+
+    constructor(filter) {
+        super(UpdateFiltersStoreEvent.type, { detail: { filter } })
+    }
+    get filter() {
+        return this.detail.filter;
+    }
+}
+
+export class FiltersStore extends EventTarget {
     #localStorageKey;
     #internalData;
 
-
     constructor() {
-        super(active, all, completed);
+        super();
         this.#localStorageKey = 'filters_store'
     }
 
@@ -23,7 +29,7 @@ export class FiltersStore {
     }
 
     get activeFilter() {
-        return this.#internalData.activeFilter;
+        return Filters(this.#internalData.activeFilter);
     }
 
     set activeFilter(filter) {
@@ -41,28 +47,26 @@ export class FiltersStore {
         const internalDataJson = this.#internalData.toJson();
         const internalDataSource = JSON.stringify(internalDataJson);
         window.localStorage.setItem(this.#localStorageKey, internalDataSource);
+        this.dispatchEvent(new UpdateTasksStoreEvent(this.#internalData.activeFilter));
     }
 
 }
 
 class InternalData {
     static fromJson(json) {
-        const filteredTasks = json?.tasks ?? [];
         const schemaVersion = json?.schemaVersion ?? 1;
         const activeFilter = json?.activeFilter ?? 'all';
 
-        return new InternalData(filteredTasks, schemaVersion, activeFilter)
+        return new InternalData(schemaVersion, activeFilter)
     }
 
-    constructor(filteredTasks, schemaVersion, activeFilter) {
-        this.filteredTasks = filteredTasks;
+    constructor(schemaVersion, activeFilter) {
         this.schemaVersion = schemaVersion;
-        this.actiсveFilter = activeFilter;
+        this.activeFilter = activeFilter;
     }
 
     toJson() {
         return {
-            filteredTasks: this.filteredTasks,
             schemaVersion: this.schemaVersion,
             activeFilter: this.activeFilter,
         }

@@ -137,7 +137,7 @@ function createHtmlForTask(newTask) {
             <p class="subtitle ${newTask.isCompleted ? 'subtitle-through' : ''}">${newTask.description}</p>
         </label>
         <div class="button-delete-category">
-        <button class="delete surface-button" type="button" data-action="delete">х</button>
+        <button id="delete" class="delete" surface-button" type="button" data-action="delete">х</button>
         <button type="button"
         class="button-right-panel surface-button button-urgent">${newTask.categories}</button>
 </div>

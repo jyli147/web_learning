@@ -85,6 +85,10 @@ export class TasksStore extends EventTarget {
         const internalDataJson = this.#internalData.toJson();
         const internalDataSource = JSON.stringify(internalDataJson);
         window.localStorage.setItem(this.#localStorageKey, internalDataSource);
+        this.#notifyUpdateTasksStoreEvent()
+    }
+
+    #notifyUpdateTasksStoreEvent() {
         this.dispatchEvent(new UpdateTasksStoreEvent(this.findAll()));
     }
 }

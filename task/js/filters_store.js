@@ -7,11 +7,12 @@ export class Filters {
 export class UpdateFiltersStoreEvent extends CustomEvent {
     static type = 'update_filters_store_event';
 
-    constructor(filter) {
-        super(UpdateFiltersStoreEvent.type, { detail: { filter } })
+    constructor(activeFilter) {
+        super(UpdateFiltersStoreEvent.type, { detail: { activeFilter } })
     }
-    get filter() {
-        return this.detail.filter;
+
+    get activeFilter() {
+        return this.detail.activeFilter;
     }
 }
 
@@ -29,11 +30,11 @@ export class FiltersStore extends EventTarget {
     }
 
     get activeFilter() {
-        return Filters(this.#internalData.activeFilter);
+        return new Filters(this.#internalData.activeFilter);
     }
 
-    set activeFilter(filter) {
-        this.#internalData.activeFilter = filter;
+    set activeFilter(nextActiveFilter) {
+        this.#internalData.activeFilter = nextActiveFilter;
         this.#saveToLocalStorage();
     }
 
@@ -47,7 +48,11 @@ export class FiltersStore extends EventTarget {
         const internalDataJson = this.#internalData.toJson();
         const internalDataSource = JSON.stringify(internalDataJson);
         window.localStorage.setItem(this.#localStorageKey, internalDataSource);
-        this.dispatchEvent(new UpdateTasksStoreEvent(this.#internalData.activeFilter));
+        this.#notifyUpdateUpdateFiltersStoreEvent()
+    }
+
+    #notifyUpdateUpdateFiltersStoreEvent() {
+        this.dispatchEvent(new UpdateFiltersStoreEvent(new Filters(this.#internalData.activeFilter)));
     }
 
 }

@@ -328,34 +328,21 @@ body {
     height: 50px;
 }
 
+.button-filters {
+    font-family: 'Open Sans';
+    font-size: 1.25rem;
+    font-weight: 800;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
 .button-filters-active {
-    color: #44A0A0;
-    font-family: 'Open Sans';
-    font-size: 1.25rem;
-    font-weight: 800;
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-
-.button-filters-all {
     color: #F6F6F6;
-    font-family: 'Open Sans';
-    font-size: 1.25rem;
-    font-weight: 800;
-    border: none;
-    background: none;
-    cursor: pointer;
 }
 
-.button-filters-completed {
+.button-filters-not-active {
     color: #44A0A0;
-    font-family: 'Open Sans';
-    font-size: 1.25rem;
-    font-weight: 800;
-    border: none;
-    background: none;
-    cursor: pointer;
 }
 
 .mobile {

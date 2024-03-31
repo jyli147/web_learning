@@ -46,20 +46,15 @@
             </section>
             <section class="tasks">
                 <header class="header-tasks surface">
-                    <p class="number-of-tasks"><span id="counter">0</span> tasks</p>
+                    <p class="number-of-tasks">
+                        <span id="counter">0</span> tasks
+                    </p>
                     <button class="button-add surface-button" id="open-modal-two">Add new task</button>
                     <button class="button-clear-completed" id="clearCompleted">Clear completed</button>
                 </header>
                 <div class="work-space-task-list surface ">
-                    <div class="task-list scroll" id="taskList">
-                    </div>
-                    <footer id="filters" class="filters">
-                        <button data-filters="active" type="button"
-                            class="button-filters-active button-filters">Active</button>
-                        <button data-filters="all" type="button" class="button-filters-all button-filters">All</button>
-                        <button data-filters="completed" type="button"
-                            class="button-filters-completed button-filters">Сompleted</button>
-                    </footer>
+                    <div class="task-list scroll" id="taskList"></div>
+                    <footer id="filters" class="filters"></footer>
                 </div>
             </section>
         </main>

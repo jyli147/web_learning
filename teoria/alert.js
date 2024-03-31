@@ -946,5 +946,25 @@ console.log(num.toString().length);
 
 // 'abcde'
 // Получите массив букв этой строки.
-let string = 'abcde';
+// let string = 'abcde';
+// let arr = Array.from(string);
+// console.log(arr);
 
+// Дан некоторый массив, например, вот такой:
+
+// [1, 2, 3, 4, 5, 6]
+// Найдите сумму первой половины элементов этого массива.
+
+// let arr = [1, 2, 3, 4, 5, 6];
+// const arr2 = arr.slice(arr.length / 2);
+// console.log(arr2);
+// let suum = 0;
+// function summ(n) {
+//   return suum += n;
+// }
+// for (arrn of arr2) {
+//   console.log(summ(arrn))
+// }
+
+// Дан массив с числами. Подсчитайте количество отрицательных чисел в этом массиве.
+let arr = [1, 2, 3, 4, 5, 6, -9, -8];

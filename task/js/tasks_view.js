@@ -1,48 +1,75 @@
 export class UpdateTaskDeleteViewEvent extends CustomEvent {
     static type = 'update_task_delete_view_event'
 
-    constructor(taskDelete) {
-        super(UpdateTaskDeleteViewEvent.type, { detail: { taskDelete } })
+    constructor(id) {
+        super(UpdateTaskDeleteViewEvent.type, { detail: { id } })
     }
 
-    get taskDelete() {
-        return this.detail.taskDelete;
+    get id() {
+        return this.detail.id;
     }
 
 }
 export class UpdateTaskIsCompletedViewEvent extends CustomEvent {
     static type = 'update_task_is_completed_view_event'
 
-    constructor(isCompleted) {
-        super(UpdateTaskIsCompletedViewEvent.type, { detail: { isCompleted } })
+    constructor(id) {
+        super(UpdateTaskIsCompletedViewEvent.type, { detail: { id } })
     }
 
-    get isCompleted() {
-        return this.detail.isCompleted;
+    get id() {
+        return this.detail.id;
     }
 
 }
 
 export class TasksView extends EventTarget {
-
-    get #$taskDelete() {
-        return document.getElementById('delete');
-    }
-
-    get #$isCompleted() {
-        return document.getElementById('input');
+    get #$taskList() {
+        return document.getElementById('taskList');
     }
 
     init() {
-        this.#$taskDelete.addEventListener('click', (e) => {
-            this.dispatchEvent(new UpdateTaskDeleteViewEvent(e.target));
-        });
-        this.#$isCompleted.addEventListener('click', (e) => {
-            this.dispatchEvent(new UpdateTaskIsCompletedViewEvent(e.target));
+        this.#$taskList.addEventListener('click', (e) => {
+            const actionType = this.#findTargetActionType(e.target);
+            const taskId = this.#findTargetTaskId(e.target);
+            const dispatch = this.#taskElementActionToDispatchMap[actionType]
+
+            if (dispatch !== null && dispatch !== undefined) {
+                return dispatch(taskId)
+            }
         });
     }
 
-    render(tasks, filter = 'all') {
+    #taskElementActionToDispatchMap = {
+        "delete": (taskId) => this.dispatchEvent(new UpdateTaskDeleteViewEvent(taskId)),
+        "toggle-id-completed": (taskId) => this.dispatchEvent(new UpdateTaskIsCompletedViewEvent(taskId)),
+    }
+
+    #findTargetActionType(element) {
+        if (element.id == 'taskList') {
+            return null
+        }
+
+        if (element.dataset.action_type !== null && element.dataset.action_type !== undefined) {
+            return element.dataset.action_type
+        }
+
+        return this.#findTargetActionType(element.parentNode)
+    }
+
+    #findTargetTaskId(element) {
+        if (element.id == 'taskList') {
+            return null
+        }
+
+        if (element.dataset.task_id !== null && element.dataset.task_id !== undefined) {
+            return element.dataset.task_id
+        }
+
+        return this.#findTargetTaskId(element.parentNode)
+    }
+
+    render(tasks, filter) {
         if (!Array.isArray(tasks) || typeof filter !== 'string') {
             throw 'tasks and filter are required'
         }
@@ -72,19 +99,17 @@ export class TasksView extends EventTarget {
         }
     }
 
-    get #$taskList() {
-        return document.getElementById('taskList');
-    }
+
 
     #createHtmlForTask(task) {
-        return `<div id="${task.id}" class="task">
-        <label class="form">
-        <input id="input" data-input="input" type="checkbox" ${task.isCompleted ? "checked=checked" : ""} class="real-checkbox">
+        return `<div id="${task.id}" class="task" data-task_id="${task.id}">
+        <label class="form" data-action_type="toggle-id-completed" >
+            <input id="input" data-input="input" type="checkbox" ${task.isCompleted ? "checked=checked" : ""} class="real-checkbox">
             <span class="custom-checkbox"></span>
-            <p class="subtitle ${task.isCompleted ? 'subtitle-through' : ''}">${task.description}</p>
+            <p class="subtitle ${task.isCompleted ? 'subtitle-through' : ''}" >${task.description}</p>
         </label>
             <div class="button-delete-category">
-                <button id="delete" class="delete surface-button" type="button" data-action="delete">х</button>
+                <button id="delete" class="delete surface-button" type="button"  data-action_type="delete">х</button>
                 <button type="button" class="button-right-panel surface-button button-urgent">${task.categories}</button>
             </div>
         </div>`

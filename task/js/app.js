@@ -46,6 +46,8 @@ class App {
         this.#tasksCounterView.render(this.#tasksStore.findAll().length);
 
         // RUNTIME RENDER
+
+        // STORE EVENTS
         this.#tasksStore.addEventListener(UpdateTasksStoreEvent.type, (e) => {
             this.#tasksView.render(e.tasks, this.#filtersStore.activeFilter?.current)
             this.#tasksCounterView.render(e.tasks.length);
@@ -56,21 +58,28 @@ class App {
             this.#filtersView.render(e.activeFilter);
         });
 
+        // VIEW EVENTS
         this.#filtersView.addEventListener(UpdateFiltersViewEvent.type, (e) => {
             this.#filtersStore.activeFilter = e.nextFilter;
         })
+
         this.#tasksView.addEventListener(UpdateTaskDeleteViewEvent.type, (e) => {
-            this.#tasksStore.deleteTaskById(e.target);
-            this.#tasksStore.render(this.#tasksStore.findAll())
+            this.#tasksStore.deleteTaskById(e.id);
         })
+
         this.#tasksView.addEventListener(UpdateTaskIsCompletedViewEvent.type, (e) => {
-            this.#tasksStore.toggleTaskById(e.target.id);
-            this.#tasksStore.render(this.#tasksStore.findAll())
+            this.#tasksStore.toggleTaskById(e.id);
         })
+
         this.#tasksClearCompletedView.addEventListener(UpdateTasksClearCompletedViewEvent.type, (e) => {
-            this.#tasksStore.deleteAll(e.target);
-            this.#tasksClearCompletedView.render();
+            this.#tasksStore.deleteAll();
         })
+
+        // for (let i = 0; i < 100; i++) {
+        //     let isCompleted = i % 2 == 0;
+
+        //     this.#tasksStore.addTask('desciption: 1', [], isCompleted)
+        // }
     }
 }
 

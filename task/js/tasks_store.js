@@ -72,7 +72,8 @@ export class TasksStore extends EventTarget {
     }
 
     deleteAll() {
-        return this.#internalData.tasks.splice(0, this.length);
+        this.#internalData.tasks.splice(0, this.length);
+        this.#saveToLocalStorage()
     }
 
     #readFromLocalStorage() {
@@ -96,8 +97,16 @@ export class TasksStore extends EventTarget {
 class InternalData {
     static fromJson(json) {
         const lastTaskId = json?.lastTaskId ?? 0;
-        const tasks = json?.tasks ?? [];
         const schemaVersion = json?.schemaVersion ?? 1;
+
+        const tasks = (json?.tasks ?? []).map((taskJsonSource, index) => {
+            return new Task(
+                taskJsonSource.id ?? lastTaskId + index,
+                taskJsonSource.description,
+                taskJsonSource.categories,
+                taskJsonSource.isCompleted
+            )
+        });
 
         return new InternalData(lastTaskId, tasks, schemaVersion)
     }
@@ -109,9 +118,18 @@ class InternalData {
     }
 
     toJson() {
+        let preparedTasks = this.tasks.map((task) => {
+            return {
+                id: task.id,
+                description: task.description,
+                categories: task.categories,
+                isCompleted: task.isCompleted,
+            }
+        });
+
         return {
             lastTaskId: this.lastTaskId,
-            tasks: this.tasks,
+            tasks: preparedTasks,
             schemaVersion: this.schemaVersion
         }
     }

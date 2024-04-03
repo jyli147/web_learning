@@ -20,7 +20,7 @@ export class TasksClearCompletedView extends EventTarget {
     render(clearCompleted) {
 
         this.#removeOld();
-
+        debugger
         this.#renderHtml(this.#createHtmlForClearCompleted(clearCompleted));
     }
 

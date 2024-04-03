@@ -80,11 +80,11 @@ class App {
 
         })
 
-        for (let i = 0; i < 100; i++) {
-            let isCompleted = i % 2 == 0;
+        // for (let i = 0; i < 100; i++) {
+        //     let isCompleted = i % 2 == 0;
 
-            this.#tasksStore.addTask('desciption: 1', [], isCompleted)
-        }
+        //     this.#tasksStore.addTask('desciption: 1', [], isCompleted)
+        // }
     }
 }
 

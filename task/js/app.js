@@ -51,11 +51,14 @@ class App {
         this.#tasksStore.addEventListener(UpdateTasksStoreEvent.type, (e) => {
             this.#tasksView.render(e.tasks, this.#filtersStore.activeFilter?.current)
             this.#tasksCounterView.render(e.tasks.length);
+            this.#tasksClearCompletedView.render(e.tasks > 0)
+
         });
 
         this.#filtersStore.addEventListener(UpdateFiltersStoreEvent.type, (e) => {
             this.#tasksView.render(this.#tasksStore.findAll(), e.activeFilter.current)
             this.#filtersView.render(e.activeFilter);
+
         });
 
         // VIEW EVENTS
@@ -65,6 +68,7 @@ class App {
 
         this.#tasksView.addEventListener(UpdateTaskDeleteViewEvent.type, (e) => {
             this.#tasksStore.deleteTaskById(e.id);
+
         })
 
         this.#tasksView.addEventListener(UpdateTaskIsCompletedViewEvent.type, (e) => {
@@ -73,13 +77,14 @@ class App {
 
         this.#tasksClearCompletedView.addEventListener(UpdateTasksClearCompletedViewEvent.type, (e) => {
             this.#tasksStore.deleteAll();
+
         })
 
-        // for (let i = 0; i < 100; i++) {
-        //     let isCompleted = i % 2 == 0;
+        for (let i = 0; i < 100; i++) {
+            let isCompleted = i % 2 == 0;
 
-        //     this.#tasksStore.addTask('desciption: 1', [], isCompleted)
-        // }
+            this.#tasksStore.addTask('desciption: 1', [], isCompleted)
+        }
     }
 }
 

@@ -201,7 +201,7 @@ body {
 }
 
 .button-clear-completed {
-    color: #44A0A0;
+    /* color: #44A0A0; */
     font-family: 'Open Sans';
     font-size: 1.25rem;
     font-weight: 700;
@@ -209,6 +209,15 @@ body {
     background: none;
     cursor: pointer;
 }
+
+.button-clear-completed-active {
+    color: #F6F6F6;
+}
+
+.button-clear-completed-not-active:disabled {
+    color: #44A0A0;
+}
+
 
 .work-space-task-list {
     display: flex;

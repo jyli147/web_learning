@@ -14,8 +14,31 @@ export class TasksClearCompletedView extends EventTarget {
     }
 
     get #$clearCompleted() {
-        return document.getElementById('clearCompleted');
+        return document.getElementById('clear-completed');
     }
 
-    render() { }
+    render(clearCompleted) {
+
+        this.#removeOld();
+
+        this.#renderHtml(this.#createHtmlForClearCompleted(clearCompleted));
+    }
+
+    #createHtmlForClearCompleted(clearCompleted) {
+        let classesForClearCompleted = `button-clear-completed ${clearCompleted ? 'button-clear-completed-active' : 'button-clear-completed-not-active:disabled'}`;;
+        return `
+        <button class="button-clear-completed" id="clear-completed" class="${classesForClearCompleted}">Clear completed</button>
+         `;
+
+    }
+
+    #renderHtml(html) {
+        this.#$clearCompleted.insertAdjacentHTML(`beforeend`, html);
+    }
+    #removeOld() {
+        while (this.#$clearCompleted.firstChild) {
+            this.#$clearCompleted.removeChild(this.#$clearCompleted.firstChild);
+        }
+    }
 }
+

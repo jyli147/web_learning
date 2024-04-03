@@ -26,7 +26,6 @@ export class FiltersView extends EventTarget {
         return document.getElementById('filters');
     }
 
-
     #createHtmlForFilters(currentFilter) {
         let classesForActive = `button-filters ${currentFilter.current == 'active' ? 'button-filters-active' : 'button-filters-not-active'}`;
         let classesForAll = `button-filters ${currentFilter.current == 'all' ? 'button-filters-active' : 'button-filters-not-active'}`;

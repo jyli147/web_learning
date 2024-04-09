@@ -44,15 +44,16 @@ class App {
         this.#tasksView.render(this.#tasksStore.findAll(), this.#filtersStore.activeFilter?.current)
         this.#filtersView.render(this.#filtersStore.activeFilter);
         this.#tasksCounterView.render(this.#tasksStore.findAll().length);
-
+        this.#tasksClearCompletedView.render(this.#tasksStore.findAll().length > 0);
         // RUNTIME RENDER
 
         // STORE EVENTS
         this.#tasksStore.addEventListener(UpdateTasksStoreEvent.type, (e) => {
             this.#tasksView.render(e.tasks, this.#filtersStore.activeFilter?.current)
-            this.#tasksCounterView.render(e.tasks.length);
-            this.#tasksClearCompletedView.render(e.tasks > 0)
-
+            debugger
+            this.#tasksCounterView.render(e.tasks.length)
+            debugger
+            this.#tasksClearCompletedView.render(e.tasks.length > 0)
         });
 
         this.#filtersStore.addEventListener(UpdateFiltersStoreEvent.type, (e) => {
@@ -80,11 +81,11 @@ class App {
 
         })
 
-        // for (let i = 0; i < 100; i++) {
-        //     let isCompleted = i % 2 == 0;
+        //     for (let i = 0; i < 100; i++) {
+        //         let isCompleted = i % 2 == 0;
 
-        //     this.#tasksStore.addTask('desciption: 1', [], isCompleted)
-        // }
+        //         this.#tasksStore.addTask('desciption: 1', [], isCompleted)
+        //     }
     }
 }
 

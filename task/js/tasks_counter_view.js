@@ -12,7 +12,6 @@ export class TasksCounterView {
         return document.getElementById('counter');
     }
 
-
     #createHTML(tasksAmount) {
         return tasksAmount;
     }
@@ -26,4 +25,6 @@ export class TasksCounterView {
             this.#$tasksCounter.removeChild(this.#$tasksCounter.firstChild);
         }
     }
+
 }
+

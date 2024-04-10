@@ -5,6 +5,7 @@ import { TasksView, UpdateTaskDeleteViewEvent, UpdateTaskIsCompletedViewEvent } 
 import { FiltersView, UpdateFiltersViewEvent } from './filters_view.js';
 import { TasksCounterView } from './tasks_counter_view.js';
 import { TasksClearCompletedView, UpdateTasksClearCompletedViewEvent } from './tasks_clear_completed_view.js'
+import { TasksCounterStore } from './tasks_counter_store.js';
 
 
 class App {
@@ -15,6 +16,7 @@ class App {
     #filtersView;
     #tasksCounterView;
     #tasksClearCompletedView;
+    #tasksCounterStore
 
 
     constructor() {
@@ -27,8 +29,11 @@ class App {
         this.#filtersView = new FiltersView();
 
         this.#tasksCounterView = new TasksCounterView();
+        this.#tasksCounterStore = new TasksCounterStore();
 
         this.#tasksClearCompletedView = new TasksClearCompletedView();
+
+
     }
 
     init() {
@@ -39,6 +44,7 @@ class App {
         this.#tasksView.init()
         this.#filtersView.init()
         this.#tasksClearCompletedView.init()
+        this.#tasksCounterStore.init()
 
         // FIRST RENDER
         this.#tasksView.render(this.#tasksStore.findAll(), this.#filtersStore.activeFilter?.current)
@@ -50,15 +56,15 @@ class App {
         // STORE EVENTS
         this.#tasksStore.addEventListener(UpdateTasksStoreEvent.type, (e) => {
             this.#tasksView.render(e.tasks, this.#filtersStore.activeFilter?.current)
-            debugger
-            this.#tasksCounterView.render(e.tasks.length)
-            debugger
             this.#tasksClearCompletedView.render(e.tasks.length > 0)
+            this.#tasksCounterView.render(this.#tasksCounterStore.findAmountOfTasksByFilter(e.tasks, this.#filtersStore.activeFilter.current));
+
         });
 
         this.#filtersStore.addEventListener(UpdateFiltersStoreEvent.type, (e) => {
-            this.#tasksView.render(this.#tasksStore.findAll(), e.activeFilter.current)
             this.#filtersView.render(e.activeFilter);
+            this.#tasksView.render(this.#tasksStore.findAll(), e.activeFilter.current)
+            this.#tasksCounterView.render(this.#tasksCounterStore.findAmountOfTasksByFilter(this.#tasksStore.findAll(), e.activeFilter.current));
 
         });
 
@@ -81,7 +87,7 @@ class App {
 
         })
 
-        //     for (let i = 0; i < 100; i++) {
+        //     for (let i = 0; i < 10; i++) {
         //         let isCompleted = i % 2 == 0;
 
         //         this.#tasksStore.addTask('desciption: 1', [], isCompleted)

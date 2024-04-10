@@ -49,7 +49,7 @@ class App {
         // FIRST RENDER
         this.#tasksView.render(this.#tasksStore.findAll(), this.#filtersStore.activeFilter?.current)
         this.#filtersView.render(this.#filtersStore.activeFilter);
-        this.#tasksCounterView.render(this.#tasksStore.findAll().length);
+        this.#tasksCounterView.render(this.#tasksCounterStore.findAmountOfTasksByFilter(this.#tasksStore.findAll(), this.#filtersStore.activeFilter.current));
         this.#tasksClearCompletedView.render(this.#tasksStore.findAll().length > 0);
         // RUNTIME RENDER
 
@@ -65,7 +65,6 @@ class App {
             this.#filtersView.render(e.activeFilter);
             this.#tasksView.render(this.#tasksStore.findAll(), e.activeFilter.current)
             this.#tasksCounterView.render(this.#tasksCounterStore.findAmountOfTasksByFilter(this.#tasksStore.findAll(), e.activeFilter.current));
-
         });
 
         // VIEW EVENTS

@@ -7,6 +7,7 @@ export class TasksCounterStore {
     }
 
     init() {
+
         this.#readFromLocalStorage();
     }
 
@@ -15,18 +16,19 @@ export class TasksCounterStore {
 
         switch (filter) {
             case 'active':
-                this.#internalData.filteredTasks = tasks.filter((task) => !task.isCompleted);
+                this.#internalData.filteredCounterTasks = tasks.filter((task) => !task.isCompleted);
                 break;
             case 'all':
-                this.#internalData.filteredTasks = tasks;
+                this.#internalData.filteredCounterTasks = tasks;
                 break;
             case 'completed':
-                this.#internalData.filteredTasks = tasks.filter((task) => task.isCompleted);
+                this.#internalData.filteredCounterTasks = tasks.filter((task) => task.isCompleted);
                 break;
 
         }
+
         this.#saveToLocalStorage();
-        return this.#internalData.filteredTasks.length;
+        return this.#internalData.filteredCounterTasks.length;
     }
 
 
@@ -46,20 +48,21 @@ export class TasksCounterStore {
 
 class InternalData {
     static fromJson(json) {
-        const filteredTasks = json?.tasks ?? [];
+        const filteredCounterTasks = json?.filteredCounterTasks ?? [];
         const schemaVersion = json?.schemaVersion ?? 1;
 
-        return new InternalData(filteredTasks, schemaVersion)
+        return new InternalData(filteredCounterTasks, schemaVersion)
     }
 
-    constructor(filteredTasks, schemaVersion) {
-        this.filteredTasks = filteredTasks;
+    constructor(filteredCounterTasks, schemaVersion) {
+        this.filteredCounterTasks = filteredCounterTasks;
         this.schemaVersion = schemaVersion;
+
     }
 
     toJson() {
         return {
-            filteredTasks: this.filteredTasks,
+            filteredCounterTasks: this.filteredCounterTasks,
             schemaVersion: this.schemaVersion
         }
     }

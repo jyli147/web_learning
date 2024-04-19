@@ -69,6 +69,15 @@ export class TasksView extends EventTarget {
         return this.#findTargetTaskId(element.parentNode)
     }
 
+
+    get #$init() {
+        return document.getElementById('input');
+    }
+
+    taskText() {
+        return this.#$init.value;
+    }
+
     render(tasks, filter) {
         if (!Array.isArray(tasks) || typeof filter !== 'string') {
             throw 'tasks and filter are required'

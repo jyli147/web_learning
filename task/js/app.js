@@ -4,8 +4,10 @@ import { FiltersStore, UpdateFiltersStoreEvent } from './filters_store.js'
 import { TasksView, UpdateTaskDeleteViewEvent, UpdateTaskIsCompletedViewEvent } from './tasks_view.js';
 import { FiltersView, UpdateFiltersViewEvent } from './filters_view.js';
 import { TasksCounterView } from './tasks_counter_view.js';
-import { TasksClearCompletedView, UpdateTasksClearCompletedViewEvent } from './tasks_clear_completed_view.js'
+import { TasksClearCompletedView, UpdateTasksClearCompletedViewEvent } from './tasks_clear_completed_view.js';
 import { TasksCounterStore } from './tasks_counter_store.js';
+import { ButtonAddTasksView, UpdateButtonAddTasksViewEvent } from './button_add_tasks_view.js';
+import { ModalView, UpdateCloseEscapeModalViewEvent, UpdateCloseOutsideModalViewEvent, UpdateCloseSubmitModalViewEvent } from './modal_view.js'
 
 
 class App {
@@ -17,7 +19,8 @@ class App {
     #tasksCounterView;
     #tasksClearCompletedView;
     #tasksCounterStore
-
+    #buttonAddTasksView
+    #modalView
 
     constructor() {
         this.#tasksStore = new TasksStore();
@@ -33,6 +36,10 @@ class App {
 
         this.#tasksClearCompletedView = new TasksClearCompletedView();
 
+        this.#buttonAddTasksView = new ButtonAddTasksView();
+
+        this.#modalView = new ModalView();
+
 
     }
 
@@ -45,6 +52,8 @@ class App {
         this.#filtersView.init()
         this.#tasksClearCompletedView.init()
         this.#tasksCounterStore.init()
+        this.#buttonAddTasksView.init()
+        this.#modalView.init()
 
         // FIRST RENDER
         this.#tasksView.render(this.#tasksStore.findAll(), this.#filtersStore.activeFilter?.current)
@@ -74,7 +83,6 @@ class App {
 
         this.#tasksView.addEventListener(UpdateTaskDeleteViewEvent.type, (e) => {
             this.#tasksStore.deleteTaskById(e.id);
-
         })
 
         this.#tasksView.addEventListener(UpdateTaskIsCompletedViewEvent.type, (e) => {
@@ -83,8 +91,29 @@ class App {
 
         this.#tasksClearCompletedView.addEventListener(UpdateTasksClearCompletedViewEvent.type, (e) => {
             this.#tasksStore.deleteAll();
-
         })
+
+        this.#buttonAddTasksView.addEventListener(UpdateButtonAddTasksViewEvent.type, (e) => {
+            this.#modalView.openModal(e);
+        })
+
+        this.#modalView.addEventListener(UpdateCloseEscapeModalViewEvent.type, (e) => {
+            this.#modalView.closeModal(e);
+        })
+        this.#modalView.addEventListener(UpdateCloseOutsideModalViewEvent.type, (e) => {
+            this.#modalView.closeModal(e);
+        })
+
+        this.#modalView.addEventListener(UpdateCloseSubmitModalViewEvent.type, (e) => {
+            this.#tasksStore.addTask(this.#tasksView.taskText(e),);
+            this.#modalView.closeModal();
+        })
+
+
+
+
+
+
 
         //     for (let i = 0; i < 10; i++) {
         //         let isCompleted = i % 2 == 0;

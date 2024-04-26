@@ -69,16 +69,8 @@ export class TasksView extends EventTarget {
         return this.#findTargetTaskId(element.parentNode)
     }
 
-
-    get #$init() {
-        return document.getElementById('input');
-    }
-
-    taskText() {
-        return this.#$init.value;
-    }
-
     render(tasks, filter) {
+
         if (!Array.isArray(tasks) || typeof filter !== 'string') {
             throw 'tasks and filter are required'
         }
@@ -108,8 +100,6 @@ export class TasksView extends EventTarget {
         }
     }
 
-
-
     #createHtmlForTask(task) {
         return `<div id="${task.id}" class="task" data-task_id="${task.id}">
         <label class="form" data-action_type="toggle-id-completed" >
@@ -128,3 +118,5 @@ export class TasksView extends EventTarget {
         this.#$taskList.insertAdjacentHTML(`beforeend`, taskHtml);
     }
 }
+
+

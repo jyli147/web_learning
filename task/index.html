@@ -31,15 +31,10 @@
                     <h2 class="title-categories">Categories</h2>
                     <img src="./img/right-line (1).png" alt="right line">
                 </header>
-                <div id="categories-add" class="categories-buttons scroll">
-                    <button type="button" class="button surface-button button-completed">Completed</button>
-                    <button type="button" class="button surface-button button-urgent">Urgent</button>
-                    <button type="button" class="button surface-button button-important">Important</button>
-                    <button type="button" class="button surface-button button-later">Later</button>
-                    <button type="button" class="button surface-button button-to-study">To study</button>
+                <div id="categories_list" class="categories-buttons scroll">
                 </div>
                 <footer class="footer-categories">
-                    <button class="button-add-category surface-button" id="open-modal-add-category">Add
+                    <button class="button-add-category surface-button" id="add-category">Add
                         category</button>
                 </footer>
 
@@ -58,11 +53,11 @@
                 </div>
             </section>
         </main>
-        <div class="modal-box" id="modal">
+        <div class="modal-box" id="modal_add_task">
             <div class="modal">
                 <h1 class="modal-title">CREATE TASK</h1>
                 <form class="form-modal" id="form">
-                    <input class="input" type="text" id="input" placeholder="Task description...">
+                    <input class="input" type="text" id="modal_add_task__input" placeholder="Task description...">
                     <div class="modal-categories">
                         <img class="img-modal" src="./img/category-left-line.png" alt="left line">
                         <h2 class="title-categories">Categories</h2>
@@ -84,26 +79,28 @@
                 </form>
             </div>
         </div>
-        <div class="modal-box" id="modal-add-category">
+        <div class="modal-box" id="modal_add_category">
             <div class="modal">
                 <h1 class="modal-title">CREATE CATEGORY</h1>
                 <form class="form-modal" id="form-categories">
-                    <input class="input" type="text" id="input-category" placeholder="Category description...">
+                    <input class="input" type="text" id="modal-add-category__input"
+                        placeholder="Category description...">
                     <div class="modal-categories">
                         <img src="./img/category-left-line.png" alt="left line">
                         <h2 class="title-categories">Colors</h2>
                         <img src="./img/category-right-line.png" alt="right line">
                     </div>
                     <div class="modal-button-category" id="color-select">
-                        <button type="button" class="button surface-button button-urgent" data-color="red">Red</button>
-                        <button type="button" class="button surface-button button-important"
-                            data-color="yellow">Yellow</button>
-                        <button type="button" class="button surface-button button-later"
-                            data-color="purple">Purple</button>
-                        <button type="button" class="button surface-button button-completed"
-                            data-color="green">Green</button>
+                        <button type="button" data-color="red" class="button surface-button button-urgent"
+                            data-color="#FF0000">Red</button>
+                        <button type="button" data-color="yellow" class="button surface-button button-important"
+                            data-color="#FFFF00">Yellow</button>
+                        <button type="button" data-color="purple" class="button surface-button button-later"
+                            data-color="#FF00FF">Purple</button>
+                        <button type="button" data-color="green" class="button surface-button button-completed"
+                            data-color="#00FF00">Green</button>
                     </div>
-                    <button class="submit" type="submit" id="add-category">CREATE CATEGORY</button>
+                    <button class="submit" type="submit" id="submit__add-category">CREATE CATEGORY</button>
                 </form>
             </div>
         </div>

@@ -12,16 +12,29 @@ export class Category {
     }
 }
 
-export class CategoriesStore {
+export class UpdateCategoriesStoreEvent extends CustomEvent {
+    static type = 'update_categoriess_store_event'
+
+    constructor(categories) {
+        super(UpdateCategoriesStoreEvent.type, { detail: { categories } })
+    }
+
+    get categories() {
+        return this.detail.categories;
+    }
+}
+
+export class CategoriesStore extends EventTarget {
     #localStorageKey;
     #internalData
 
     constructor() {
-        this.#localStorageKey = 'сategories_store'
+        super();
+        this.#localStorageKey = 'categories_store'
     }
 
     get length() {
-        return this.#internalData.сategories.length;
+        return this.#internalData.categories.length;
     }
 
     init() {
@@ -29,13 +42,13 @@ export class CategoriesStore {
     }
 
     findAll() {
-        return [...this.#internalData.сategories];
+        return [...this.#internalData.categories];
     }
 
     addCategory(description, color) {
         let category = new Category(this.#internalData.lastCategoryId + 1, description, color);
         this.#internalData.lastCategoryId = category.id;
-        this.#internalData.сategories.push(category);
+        this.#internalData.categories.push(category);
         this.#saveToLocalStorage()
 
         return category;
@@ -51,26 +64,48 @@ export class CategoriesStore {
         const internalDataJson = this.#internalData.toJson();
         const internalDataSource = JSON.stringify(internalDataJson);
         window.localStorage.setItem(this.#localStorageKey, internalDataSource)
+        this.#notifyUpdateCategoriesStoreEvent()
+    }
+    #notifyUpdateCategoriesStoreEvent() {
+        this.dispatchEvent(new UpdateCategoriesStoreEvent(this.findAll()));
     }
 }
 
 class InternalData {
     static fromJson(json) {
         const lastCategoryId = json?.lastCategoryId ?? 0;
-        const сategories = json?.сategories ?? [];
+        const schemaVersion = json?.schemaVersion ?? 1;
 
-        return new InternalData(lastCategoryId, сategories)
+        const categories = (json?.categories ?? []).map((categoryJsonSource, index) => {
+            return new Category(
+                categoryJsonSource.id ?? lastTaskId + index,
+                categoryJsonSource.description,
+                categoryJsonSource.color,
+            )
+        });
+
+        return new InternalData(lastCategoryId, categories, schemaVersion)
     }
 
-    constructor(lastCategoryId, сategories) {
+    constructor(lastCategoryId, categories, schemaVersion) {
         this.lastCategoryId = lastCategoryId;
-        this.сategories = сategories;
+        this.categories = categories;
+        this.schemaVersion = schemaVersion;
     }
 
     toJson() {
+        let preparedCategories = this.categories.map((category) => {
+            return {
+                id: category.id,
+                description: category.description,
+                color: category.color,
+            }
+        });
+
         return {
             lastCategoryId: this.lastCategoryId,
-            сategories: this.сategories,
+            categories: preparedCategories,
+            schemaVersion: this.schemaVersion,
         }
     }
 }

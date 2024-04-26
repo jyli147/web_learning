@@ -12,6 +12,7 @@ export class UpdateFiltersViewEvent extends CustomEvent {
 
 export class FiltersView extends EventTarget {
     init() {
+
         this.#$filters.addEventListener('click', (e) => {
             this.dispatchEvent(new UpdateFiltersViewEvent(e.target.dataset.filters));
         });

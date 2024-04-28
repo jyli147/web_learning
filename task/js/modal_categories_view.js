@@ -10,16 +10,32 @@ export class UpdateCloseModalCategoriesViewEvent extends CustomEvent {
 export class AddCategoryRequestModalViewEvent extends CustomEvent {
     static type = 'add_category_request_modal_view_event'
 
-    constructor(categoryDescription) {
-        super(AddCategoryRequestModalViewEvent.type, { detail: { categoryDescription } })
+    constructor(categoryDescription, color) {
+        super(AddCategoryRequestModalViewEvent.type, { detail: { categoryDescription, color } })
     }
 
     get categoryDescription() {
         return this.detail.categoryDescription;
     }
 
+    get color() {
+        return this.detail.color;
+    }
+
     get categoryId() {
         return null;
+    }
+}
+
+export class UpdateColorCategoriesViewEvent extends CustomEvent {
+    static type = 'update_color_categories_view_event'
+
+    constructor(color) {
+        super(UpdateColorCategoriesViewEvent.type, { detail: { color } })
+    }
+
+    get color() {
+        return this.detail.color;
     }
 }
 
@@ -39,12 +55,16 @@ export class ModalCategoriesView extends EventTarget {
             this.dispatchEvent(new UpdateCloseModalCategoriesViewEvent(e));
         });
 
+        let color;
+        this.#$colorList.addEventListener('click', (e) => {
+            this.dispatchEvent(new UpdateColorCategoriesViewEvent(e.target.dataset.color));
+            color = e.target.dataset.color
+        });
 
         this.#$submit.addEventListener("click", (e) => {
             e.preventDefault();
             const categoryDescription = this.#getCategoryDescription();
-
-            this.dispatchEvent(new AddCategoryRequestModalViewEvent(categoryDescription));
+            this.dispatchEvent(new AddCategoryRequestModalViewEvent(categoryDescription, color));
         });
 
     }
@@ -74,6 +94,10 @@ export class ModalCategoriesView extends EventTarget {
 
     closeModal() {
         this.#$modalCategories.classList.remove("open");
+    }
+
+    get #$colorList() {
+        return document.getElementById('color-select');
     }
 
 }

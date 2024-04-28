@@ -25,6 +25,7 @@ export class AddTaskRequestModalViewEvent extends CustomEvent {
 
 export class ModalTasksView extends EventTarget {
     init() {
+
         window.addEventListener(`keydown`, (e) => {
             if (e.key === "Escape") {
                 this.dispatchEvent(new UpdateCloseModalTasksViewEvent(e));

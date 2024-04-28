@@ -1,6 +1,6 @@
 import { TasksStore, UpdateTasksStoreEvent } from './tasks_store.js'
 import { Category, CategoriesStore, UpdateCategoriesStoreEvent } from './categories_store.js'
-import { CategoriesView, UpdateColorCategoriesViewEvent } from './categories_view.js'
+import { CategoriesView } from './categories_view.js'
 import { FiltersStore, UpdateFiltersStoreEvent } from './filters_store.js'
 import { TasksView, UpdateTaskDeleteViewEvent, UpdateTaskIsCompletedViewEvent } from './tasks_view.js';
 import { FiltersView, UpdateFiltersViewEvent } from './filters_view.js';
@@ -10,7 +10,7 @@ import { TasksCounterStore } from './tasks_counter_store.js';
 import { ButtonAddTasksView, UpdateButtonAddTasksViewEvent } from './button_add_tasks_view.js';
 import { ButtonAddCategoryView, UpdateButtonAddCategoryViewEvent } from './button_add_category_view.js'
 import { ModalTasksView, UpdateCloseModalTasksViewEvent, AddTaskRequestModalViewEvent } from './modal_task_view.js'
-import { ModalCategoriesView, UpdateCloseModalCategoriesViewEvent, AddCategoryRequestModalViewEvent } from './modal_categories_view.js'
+import { ModalCategoriesView, UpdateCloseModalCategoriesViewEvent, AddCategoryRequestModalViewEvent, UpdateColorCategoriesViewEvent } from './modal_categories_view.js'
 
 
 
@@ -136,7 +136,8 @@ class App {
         })
 
         this.#modalCategoriesView.addEventListener(AddCategoryRequestModalViewEvent.type, (e) => {
-            this.#categoriesStore.addCategory(e.categoryDescription);
+            this.#categoriesStore.addCategory(e.categoryDescription, e.color);
+
             this.#modalCategoriesView.closeModal(e);
         })
 

@@ -31,7 +31,22 @@ export class CategoriesView extends EventTarget {
 
     #createHtmlForCategory(category) {
 
-        return `<button id="${category.id} type="button" class="button surface-button ${category.color}">${category.description}</button>`
+        let color;
+        switch (category.color) {
+            case 'red':
+                color = "button-urgent";
+                break;
+            case 'yellow':
+                color = "button-important";
+                break;
+            case 'purple':
+                color = "button-later";
+                break;
+            case 'green':
+                color = "button-completed";
+                break;
+        }
+        return `<button id="${category.id} type="button" class="button surface-button ${color}">${category.description}</button>`
     }
 
     #renderCategoryHtml(categoryHtml) {

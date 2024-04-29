@@ -137,7 +137,6 @@ class App {
 
         this.#modalCategoriesView.addEventListener(AddCategoryRequestModalViewEvent.type, (e) => {
             this.#categoriesStore.addCategory(e.categoryDescription, e.color);
-
             this.#modalCategoriesView.closeModal(e);
         })
 

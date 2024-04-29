@@ -58,7 +58,7 @@ export class ModalCategoriesView extends EventTarget {
         let color;
         this.#$colorList.addEventListener('click', (e) => {
             this.dispatchEvent(new UpdateColorCategoriesViewEvent(e.target.dataset.color));
-            color = e.target.dataset.color
+            color = e.target.dataset.color;
         });
 
         this.#$submit.addEventListener("click", (e) => {

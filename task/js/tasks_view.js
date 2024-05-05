@@ -101,6 +101,7 @@ export class TasksView extends EventTarget {
     }
 
     #createHtmlForTask(task) {
+
         return `<div id="${task.id}" class="task" data-task_id="${task.id}">
         <label class="form" data-action_type="toggle-id-completed" >
             <input id="input" data-input="input" type="checkbox" ${task.isCompleted ? "checked=checked" : ""} class="real-checkbox">
@@ -109,7 +110,7 @@ export class TasksView extends EventTarget {
         </label>
             <div class="button-delete-category">
                 <button id="delete" class="delete surface-button" type="button"  data-action_type="delete">х</button>
-                <button type="button" class="button-right-panel surface-button button-urgent">${task.categories}</button>
+                ${task.categories}
             </div>
         </div>`
     }

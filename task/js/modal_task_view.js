@@ -6,7 +6,6 @@ export class UpdateCloseModalTasksViewEvent extends CustomEvent {
     }
 }
 
-
 export class AddTaskRequestModalViewEvent extends CustomEvent {
     static type = 'add_task_request_modal_view_event'
 
@@ -18,9 +17,6 @@ export class AddTaskRequestModalViewEvent extends CustomEvent {
         return this.detail.taskDescription;
     }
 
-    get categoryId() {
-        return null;
-    }
 }
 
 export class ModalTasksView extends EventTarget {
@@ -40,18 +36,18 @@ export class ModalTasksView extends EventTarget {
             this.dispatchEvent(new UpdateCloseModalTasksViewEvent(e));
         });
 
-        // event - AddNewTaskRequestEvent (1. Данные 2. app можно закрыть окно)
-        // AddNewTaskRequestEvent.taskDescription
-        // AddNewTaskRequestEvent.taskCategory
-        // AddNewTaskRequestEvent
-        // To grab all dependencies fields and
         this.#$submit.addEventListener("click", (e) => {
             e.preventDefault();
             const taskDescription = this.#getTaskDescription();
             const isValidTaskDescription = this.#validateTaskDescription(taskDescription)
 
             if (!isValidTaskDescription) {
-                alert('Неверное значение поля "TaskDescription"')
+                this.#$modalAddTaskInput.classList.toggle('input-border');
+
+                setTimeout(() => {
+                    this.#$modalAddTaskInput.classList.toggle('input-border');
+                }, 10000);
+
                 return;
             }
 

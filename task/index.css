@@ -65,6 +65,11 @@ body {
     background-color: #2297a7;
 }
 
+.input-border {
+    border-color: #ff0000;
+
+}
+
 .header-title {
     color: #E9C597;
     text-align: center;

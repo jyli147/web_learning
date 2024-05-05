@@ -5,12 +5,15 @@
     justify-content: center;
     align-self: center;
     gap: 20px;
-    padding: 31px 36px 104px 44px;
+    padding: 0 36px 0 44px;
     margin: 0;
 }
 
-.submit {
-    margin: 0 auto;
+.submit__add-category {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
     width: 182px;
     height: 40px;
     border-radius: 10px;
@@ -20,5 +23,8 @@
     font-weight: 800;
     line-height: 200%;
     color: #44A0A0;
-    margin-bottom: 26px;
+    margin: 40px 0 26px;
+    font-family: "Open Sans";
+    font-size: 17px;
+    font-weight: 800;
 }

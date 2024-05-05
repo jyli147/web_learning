@@ -95,6 +95,7 @@ class App {
 
         this.#categoriesStore.addEventListener(UpdateCategoriesStoreEvent.type, (e) => {
             this.#categoriesView.render(e.categories);
+
         })
 
         // VIEW EVENTS
@@ -131,7 +132,9 @@ class App {
         })
 
         this.#modalTasksView.addEventListener(AddTaskRequestModalViewEvent.type, (e) => {
-            this.#tasksStore.addTask(e.taskDescription);
+            debugger
+            this.#tasksStore.addTask(e.taskDescription, this.#categoriesView.findTargetCategoryId(e.target), isCompleted = false);
+            debugger
             this.#modalTasksView.closeModal();
         })
 

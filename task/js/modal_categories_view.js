@@ -21,10 +21,6 @@ export class AddCategoryRequestModalViewEvent extends CustomEvent {
     get color() {
         return this.detail.color;
     }
-
-    get categoryId() {
-        return null;
-    }
 }
 
 export class UpdateColorCategoriesViewEvent extends CustomEvent {
@@ -64,9 +60,23 @@ export class ModalCategoriesView extends EventTarget {
         this.#$submit.addEventListener("click", (e) => {
             e.preventDefault();
             const categoryDescription = this.#getCategoryDescription();
+            const isValidateCategoryDescription = this.#validateCategoryDescription(categoryDescription);
+
+            if (!isValidateCategoryDescription) {
+                this.#$modalAddCategoryInput.classList.toggle('input-border');
+
+                setTimeout(() => {
+                    this.#$modalAddCategoryInput.classList.toggle('input-border');
+                }, 10000);
+
+                return;
+            }
             this.dispatchEvent(new AddCategoryRequestModalViewEvent(categoryDescription, color));
         });
 
+    }
+    #validateCategoryDescription(categoryDescription) {
+        return categoryDescription.length > 0;
     }
 
     get #$modalAddCategoryInput() {

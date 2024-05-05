@@ -1,17 +1,11 @@
-
-
-{/* <button type="button" class="button surface-button button-completed">Completed</button>
-                    <button type="button" class="button surface-button button-urgent">Urgent</button>
-                    <button type="button" class="button surface-button button-important">Important</button>
-                    <button type="button" class="button surface-button button-later">Later</button>
-                    <button type="button" class="button surface-button button-to-study">To study</button> */}
-
-
 export class CategoriesView extends EventTarget {
     get #$categoriesList() {
         return document.getElementById('categories_list');
     }
 
+    get #$modalAddTaskCategories() {
+        return document.getElementById('categories-for-add-task');
+    }
 
     init() {
 
@@ -24,9 +18,14 @@ export class CategoriesView extends EventTarget {
             this.#$categoriesList.removeChild(this.#$categoriesList.firstChild);
         }
 
+        while (this.#$modalAddTaskCategories.firstChild) {
+            this.#$modalAddTaskCategories.removeChild(this.#$modalAddTaskCategories.firstChild);
+        }
+
         for (const category of categories) {
             this.#renderCategoryHtml(this.#createHtmlForCategory(category));
         }
+
     }
 
     #createHtmlForCategory(category) {
@@ -46,10 +45,24 @@ export class CategoriesView extends EventTarget {
                 color = "button-completed";
                 break;
         }
-        return `<button id="${category.id} type="button" class="button surface-button ${color}">${category.description}</button>`
+        return `<button data-category_id="${category.id}" id="${category.id} type="button" class="button surface-button ${color}">${category.description}</button>`
     }
 
     #renderCategoryHtml(categoryHtml) {
         this.#$categoriesList.insertAdjacentHTML(`beforeend`, categoryHtml);
+        this.#$modalAddTaskCategories.insertAdjacentHTML(`beforeend`, categoryHtml);
+
+    }
+
+    findTargetCategoryId(element) {
+        if (element.id == 'categories-for-add-task') {
+            return null
+        }
+
+        if (element.dataset.category_id !== null && element.dataset.category_id !== undefined) {
+            return element.dataset.category_id
+        }
+
+        return this.findTargetCategoryId(element.parentNode)
     }
 }

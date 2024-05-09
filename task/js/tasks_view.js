@@ -101,17 +101,27 @@ export class TasksView extends EventTarget {
     }
 
     #createHtmlForTask(task) {
+        let category = task.categories;
+        let categoryHtml = '';
+        if (category !== null && category !== undefined) {
+            categoryHtml = `
+            <button data-category_id="${category.id}" id="${category.id} type="button" class="button-right-panel surface-button" style="background-color: ${category.color}">
+                    ${category.description ?? 'unknown'}
+                </button>
+            `
+        }
 
         return `<div id="${task.id}" class="task" data-task_id="${task.id}">
-        <label class="form" data-action_type="toggle-id-completed" >
-            <input id="input" data-input="input" type="checkbox" ${task.isCompleted ? "checked=checked" : ""} class="real-checkbox">
-            <span class="custom-checkbox"></span>
-            <p class="subtitle ${task.isCompleted ? 'subtitle-through' : ''}" >${task.description}</p>
-        </label>
+            <label class="form" data-action_type="toggle-id-completed" >
+                <input id="input" data-input="input" type="checkbox" ${task.isCompleted ? "checked=checked" : ""} class="real-checkbox">
+                <span class="custom-checkbox"></span>
+                <p class="subtitle ${task.isCompleted ? 'subtitle-through' : ''}" >${task.description}</p>
+            </label>
             <div class="button-delete-category">
                 <button id="delete" class="delete surface-button" type="button"  data-action_type="delete">х</button>
-                ${task.categories}
+                ${categoryHtml}
             </div>
+            
         </div>`
     }
 
@@ -119,5 +129,7 @@ export class TasksView extends EventTarget {
         this.#$taskList.insertAdjacentHTML(`beforeend`, taskHtml);
     }
 }
+
+
 
 

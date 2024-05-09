@@ -45,6 +45,10 @@ export class CategoriesStore extends EventTarget {
         return [...this.#internalData.categories];
     }
 
+    findTargetCategoryId(targetCategoryId) {
+        return this.#internalData.categories.find((category) => category.id === targetCategoryId)
+    }
+
     addCategory(description, color) {
         let category = new Category(this.#internalData.lastCategoryId + 1, description, color);
         this.#internalData.lastCategoryId = category.id;

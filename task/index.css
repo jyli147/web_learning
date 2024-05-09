@@ -66,8 +66,7 @@ body {
 }
 
 .input-border {
-    border-color: #ff0000;
-
+    border-color: #ff0000 !important;
 }
 
 .header-title {
@@ -121,7 +120,6 @@ body {
     font-family: 'Open Sans';
     font-size: 1.25rem;
     font-weight: 400;
-    line-height: 10px;
     border: none;
     margin: 5px 0 5px;
     flex-shrink: 0;

@@ -116,7 +116,7 @@ class App {
         })
 
         this.#buttonAddTasksView.addEventListener(UpdateButtonAddTasksViewEvent.type, (e) => {
-            this.#modalTasksView.openModal(e);
+            this.#modalTasksView.openModal(this.#categoriesStore.findAll());
         })
 
         this.#buttonAddCategoryView.addEventListener(UpdateButtonAddCategoryViewEvent.type, (e) => {
@@ -132,9 +132,12 @@ class App {
         })
 
         this.#modalTasksView.addEventListener(AddTaskRequestModalViewEvent.type, (e) => {
-            debugger
-            this.#tasksStore.addTask(e.taskDescription, this.#categoriesView.findTargetCategoryId(e.target), isCompleted = false);
-            debugger
+            this.#tasksStore.addTask(
+                e.taskDescription,
+                this.#categoriesStore.findTargetCategoryId(e.categoryId),
+                false,
+            );
+
             this.#modalTasksView.closeModal();
         })
 

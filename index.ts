@@ -71,10 +71,31 @@
 
 
 // Сделайте функцию, которая параметром будет принимать число и строку и обрезать эту строку до длины, заданной первым параметром.
-function trim(a: number, b: string): string {
+// function trim(a: number, b: string): string {
 
-    return b.slice(0, a);
+//     return b.slice(0, a);
+// }
+// let d: string = 'Привет';
+// let p: number = 2;
+// console.log(trim(p, d));
+
+// Сделайте функцию, которая параметром будет принимать число и возвращать сумму его цифр.
+// let result: number = 0;
+// function sum(number: number): number {
+//     while (number > 0) {
+//         result += number % 10;
+//         number = Math.floor(number / 10);
+//     }
+//     return result
+// }
+
+// console.log(sum(98));
+
+// Сделайте функцию, которая параметром будет принимать число и удалять из него нули.
+
+function result(number: number | string): any {
+    let str = +number.toString().split("").filter(i => +i != 0).join("")
+
+    return str;
 }
-let d: string = 'Привет';
-let p: number = 2;
-console.log(trim(p, d));
+console.log(result(120909888));

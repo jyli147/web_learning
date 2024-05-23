@@ -136,3 +136,15 @@
 //     return arr;
 // }
 // console.log(random(4, 1, 8))
+
+// Дан текст со знаками препинаний:
+
+// 'aaa bbb, ccc. Xxx - eee bbb, kkk!'
+// Получите массив слов из такого текста.
+
+function getWordsFromText(text: string): string[] | null {
+
+    return text.match(/\b\w+\b/g);
+}
+
+console.log(getWordsFromText('aaa bbb, ccc. Xxx - eee bbb, kkk!'))

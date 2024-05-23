@@ -93,9 +93,46 @@
 
 // Сделайте функцию, которая параметром будет принимать число и удалять из него нули.
 
-function result(number: number | string): any {
-    let str = +number.toString().split("").filter(i => +i != 0).join("")
+// function result(number: number | string): any {
+//     let str = +number.toString().split("").filter(i => +i != 0).join("")
 
-    return str;
-}
-console.log(result(120909888));
+//     return str;
+// }
+// console.log(result(120909888));
+
+
+// Сделайте функцию, которая параметром будет принимать массив и удалять из него все дубли.
+
+// function render(arr: any[]): any[] {
+//     return [...new Set(arr)];
+// }
+// console.log(render([1, 2, 2, 3, 4, 5, 5]))
+
+// Сделайте функцию, которая параметром будет принимать массив
+// с числами и возвращать максимальное и минимальное значение из этого массива в виде следующего объекта:
+
+// {
+// 	max: 9,
+// 	min: 1,
+// }
+// function render(arr: number[]): { max: number, min: number } {
+//     let min: number = Infinity;
+//     let max: number = 0;
+//     for (let arrNumber of arr) {
+//         min = Math.min(min, arrNumber);
+//         max = Math.max(max, arrNumber);
+//     }
+//     return { max, min };
+// }
+// console.log(render([1, 2, 2, 3, 4, 5, 5]))
+
+// Сделайте функцию, которая заполнит массив N случайными числами из заданного промежутка.
+
+// function random(N: number, min: number, max: number): number[] {
+//     let arr: number[] = [];
+//     for (let i = 0; i < N; i++) {
+//         arr.push(Math.floor(Math.random() * (max - min + 1)) + min);
+//     }
+//     return arr;
+// }
+// console.log(random(4, 1, 8))

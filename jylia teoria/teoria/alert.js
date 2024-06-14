@@ -968,3 +968,14 @@ console.log(num.toString().length);
 
 // Дан массив с числами. Подсчитайте количество отрицательных чисел в этом массиве.
 let arr = [1, 2, 3, 4, 5, 6, -9, -8];
+
+
+
+function fib(n) {
+  return n * fib(n - 1)
+}
+
+function main() {
+  console.log(fib(10))
+}
+main()

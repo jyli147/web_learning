@@ -45,3 +45,10 @@
     border-radius: 20px;
     border: solid 1px black;
 }
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

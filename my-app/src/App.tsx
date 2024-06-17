@@ -28,12 +28,13 @@ function App() {
   const getMovie = async (id: string): Promise<Movie> => {
     const response = await fetch(`https://www.omdbapi.com/?&apikey=24a33c8f&i=${id}`);
     const data = await response.json();
-
+    
     return {
       title: data['Title'],
       description: data['Plot'],
       posterUrl: data['Poster'],
     };
+    
   };
 
   const getMovies = async (title: string): Promise<Movie[]> => {
@@ -67,7 +68,7 @@ function App() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button  className='form__button' onClick={handleSearch}></button>
+        <button type='button' className='form__button' onClick={handleSearch}></button>
       </form>
       <div>
         {movies.length < 0

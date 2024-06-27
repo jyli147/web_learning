@@ -7,10 +7,10 @@ interface Movie {
   
 const MovieComponent = ({ title, description, posterUrl }: Movie) => {
     return (
-      <div>
-        <img src={posterUrl} alt={title} />
-        <h3>{title}</h3>
-        <p>{description}</p>
+      <div className='movie-component'>
+        <img className='movie-component-img' src={posterUrl} alt={title} />
+        <h3 className='movie-component-title'>{title}</h3>
+        <p className='movie-component-description'>{description}</p>
       </div>
     );
   };

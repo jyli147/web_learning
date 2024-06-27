@@ -329,7 +329,25 @@ git branch покажет список веток, у тебя основная 
 
 
 
-
+### Реакт
+Функцию онклик можно вызывать по разному
+если оборачиваешь в стрелочную функцию то можно вызывать с несколькими параметрами
+```javascript
+function App() {
+	function show1() {
+		alert(1);
+	}
+	
+	function show2(text) {
+		alert(text);
+	}
+	
+	return <div>
+		<button onClick={show1}>act1</button>
+    <button onClick={() => show2('juli')}>act2</button>
+    <button onClick={() =>  show2('li') }>act3</button>
+	</div>;
+}
 
 ### Header
 

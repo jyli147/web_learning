@@ -46,9 +46,24 @@
     border: solid 1px black;
 }
 
-.card{
+.movies{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    
+}
+.movie-component{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 5px;
+    width: 440px;
+    height: 447px;
+}
+
+.movie-component-img{
+    width: 440px;
+    height: 353px;
+    object-fit: cover;
 }

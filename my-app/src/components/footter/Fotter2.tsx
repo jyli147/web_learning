@@ -1,16 +1,15 @@
 import React from 'react';
 import MovieComponent from './MovieComponent';
+import { Movie } from '../../App';
 
-
-interface Movie {
-    title: string,
-    description: string,
-    posterUrl: string
-}
   
 function Fotter2(props: { movies: Movie[] }) {
+    if(props.movies.length <= 0) {
+      return null
+    }
+
     return (
-      <div>
+      <div className='movies'>
         {props.movies.map((movie) => (
           <MovieComponent
             key={movie.title}
@@ -20,6 +19,7 @@ function Fotter2(props: { movies: Movie[] }) {
           />
         ))}
       </div>
+      
     );
   }
 export default Fotter2;

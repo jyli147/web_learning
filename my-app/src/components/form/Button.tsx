@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Button = () => {
+const Button = ({ ...props}) => {
     return (
-        <button className='form__button'></button>
+        <button type='submit' className='form__button' {...props}>
+         </button>
     );
 };
 

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-
-const Input = () => {
+const Input = ({...props}) => {
     return (
-        <input  type="text" placeholder='Название фильма...' className='input' />
-    );
+        <input
+            {...props}
+            className='input'
+            type="text"/>
+    )       
 };
 
 export default Input;

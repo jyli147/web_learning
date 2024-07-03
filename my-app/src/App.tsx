@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './components/App.css';
 import Header from './components/header';
 import Fotter from './components/footter/Fotter';
-import Fotter2 from './components/footter/Fotter2';
-import Fotter3 from './components/footter/Fotter3';
 import Form from './components/form/Form';
+import { text } from 'node:stream/consumers';
+import  {  DNA  }  from  'react-loader-spinner' 
 
 export interface Movie {
   id: string;
@@ -15,11 +15,9 @@ export interface Movie {
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
-  
   const [searchTerm, setSearchTerm] = useState('');
-    
   const [didRequest, setDidRequest] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
 
   const searchMovies = async (title: string): Promise<string[]> => {
     const response = await fetch(`https://www.omdbapi.com/?&apikey=24a33c8f&s=${title}`)
@@ -57,28 +55,31 @@ function App() {
   };
 
    const handleSearch = async () => {
-    setDidRequest(true);
+     setIsLoading(true);
+     setDidRequest(true);
     try {
         const foundMovies = await getMovies(searchTerm);
-        setMovies(foundMovies);
+      setMovies(foundMovies);
     } catch (error) {
         console.error('Ошибка при загрузке фильмов:', error);
-    }
-};
-    
-
+    } finally {
+        setIsLoading(false);
+      }
+   };
+  
   useEffect(() => {
     handleSearch();
-
     return () => {}
   }, [searchTerm]);
+
+
 
   return (
     <div className="App">
       <Header />
-      <Form onSearch={(value) => { setSearchTerm(value) }}/>
-      <Fotter2 movies={movies} />
-        </div>
+      <Form onSearch={(value) => { setSearchTerm(value) }} />
+      <Fotter movies={movies} didRequest={didRequest} isLoading={isLoading} />
+    </div>
   );
 }
 

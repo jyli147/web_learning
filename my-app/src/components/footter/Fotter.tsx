@@ -15,7 +15,7 @@ const Fotter = (props: FotterProps) => {
     return (
         <div>
             {props.didRequest===false? <h1>Найдется любой фильм</h1>: <h1></h1>}
-            {props.isLoading ? <DNA /> : null }
+            {props.isLoading ? <DNA/> : null }
             {props.movies.length > 0 ? <Fotter2 movies={props.movies} /> :
             <h1 style={{ textAlign: 'center' }}>К сожалению, ничего не найдено</h1>}
         </div>

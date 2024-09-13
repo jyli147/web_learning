@@ -349,6 +349,10 @@ function App() {
 	</div>;
 }
 
+
+### Для загрузки проекта на реакт vite 
+npm create vite@latest
+
 ### Header
 
 * 1
@@ -363,3 +367,26 @@ function App() {
 
 
 [def]: https://www.example.com/image.jpg
+
+
+
+let b = ["Madam, I’m Adam", "Хил, худ, а дух лих", "А роза упала на лапу азора", "bubbushusuhhhh"];
+
+function isPalindrom(string) {
+  let x = string.replace(/[\W_]/g, '').toLowerCase();
+  let y = x.split('').reverse().join('');
+  return y === x;
+}
+
+function c(s) {
+  return s.split('').reverse().join('');
+}
+
+for (let i of b) {
+  console.log(i + ' это палиндром ' + isPalindrom(i));
+  console.log("Вывод задом на перед: " + c(i));
+}
+
+ установка редакс ts 
+ npm install @reduxjs/toolkit react-redux @types/react-redux
+llet fdfn= 4;

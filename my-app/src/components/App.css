@@ -27,6 +27,7 @@
 
 .form {
     width: 100%;
+    padding: 0 15px 0 15px;
     height: 60px;
     display: flex;
     justify-content: space-between;
@@ -36,6 +37,7 @@
 
 .input {
     width: 100%;
+    max-width: 1322px;
     height: 28px;
 }
 
@@ -50,7 +52,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 24px;
-    
+    max-width: 1410px;
+    padding: 0 15px 0 15px;
 }
 .movie-component{
     display: flex;
@@ -58,22 +61,27 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
-    width: 440px;
-    height: 447px;
+    max-width: 440px;
+    width: 100%;
+    max-height: 447px;
 }
 
 .movie-component-img{
-    width: 440px;
+    width: 100%;
     height: 353px;
-    object-fit: contain;
+    /* object-fit: contain; */
 }
 
 .movie-component-title{
     height: 54px;
     align-items: center;
+    font-size: 20px;
 }
 
-.movie-component-description{
-height: 28px;
-align-items: center;
+.movie-component-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 16px;
 }

@@ -18,11 +18,11 @@ const Form = (props: FormProps) => {
             e.preventDefault();
             props.onSearch(value);
     }
-    function handleClick(e: MouseEvent<HTMLButtonElement>) {
+        function handleClick(e: MouseEvent<HTMLButtonElement>) {
         props.onSearch(value);
        
     }
-    function handleClickEnter(e: KeyboardEvent) {
+        function handleClickEnter(e: KeyboardEvent) {
         if(e.key === 'Enter'){
             props.onSearch(value);
           }

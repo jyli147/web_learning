@@ -1,0 +1,20 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    width: 100%;
+}
+
+.title{
+color: rgb(60, 59, 63);
+font-family: 'SF Pro Rounded', sans-serif;
+font-size: 26px;
+font-weight: 700;
+line-height: 31px;
+}
+
+.img{
+width: 29.97px;
+height: 30px;
+}

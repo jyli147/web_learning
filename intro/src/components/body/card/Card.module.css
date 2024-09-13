@@ -1,0 +1,68 @@
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 21.88rem;
+    height: 21.88rem;
+    padding: 5px;
+}
+
+.img {
+width: 21.88rem;
+height: 13.5rem;
+border-radius: 1rem 1rem 0rem 0rem;
+object-fit: cover;
+}
+
+.heading{
+color: rgb(60, 59, 63);
+font-family: 'Roboto', sans-serif;
+font-size: 1.06rem;
+font-weight: 400;
+line-height: 1.25rem;
+text-align: center;
+}
+
+.subtitle{
+color: rgb(96, 93, 98);
+font-family: 'SF Pro Rounded', sans-serif;
+font-size: 1.13rem;
+font-weight: 400;
+line-height: 1.31rem;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+text-align: center;
+}
+
+.footer{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+gap: 10;
+padding: 0.5rem;
+}
+
+.price{
+color: rgb(142, 55, 0);
+font-family: 'SF Pro Rounded', sans-serif;
+font-size: 1.13rem;
+font-weight: 400;
+line-height: 1.31rem;
+}
+
+.button{
+width: 10.75rem;
+height: 2.31rem;
+border-radius: 0.5rem;
+box-shadow: 0rem 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
+background: rgb(60, 24, 167);
+color: rgb(253, 248, 255);
+font-family: 'SF Pro Rounded',sans-serif;
+font-size: 1.13rem;
+font-weight: 400;
+line-height: 1.31rem;
+text-align: center;
+}

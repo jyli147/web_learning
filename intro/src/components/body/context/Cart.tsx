@@ -2,7 +2,7 @@
 import { useAction } from '../../../hooks/useAction';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { Product } from '../../../type';
-import styles from './Card.module.css'
+import styles from '../card/Card.module.css'
 import { FC } from "react";
 
 const Cart: FC = () => {

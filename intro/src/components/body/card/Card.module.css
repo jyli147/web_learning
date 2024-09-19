@@ -1,5 +1,6 @@
 .card{
     display: flex;
+    flex-direction: column ;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -12,7 +13,7 @@
 width: 21.88rem;
 height: 13.5rem;
 border-radius: 1rem 1rem 0rem 0rem;
-object-fit: cover;
+object-fit: fill;
 }
 
 .heading{

@@ -9,6 +9,7 @@ import {
 import { Provider } from 'react-redux';
 
 import Cart from './components/body/context/Cart.tsx';
+// stores / store.ts
 import { store } from './components/store/store.ts';
 
 
@@ -26,11 +27,11 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById('root')!).render(
-  <QueryClientProvider client={queryClient}>
-    <Provider store={store}>
-    <StrictMode>
-    <RouterProvider router={router} />
-      </StrictMode>
-    </Provider>
-  </QueryClientProvider>
+  <StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </QueryClientProvider>
+  </StrictMode>
 )

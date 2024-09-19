@@ -5,14 +5,10 @@ import { Product } from '../../../type';
 import style from './Content.module.css'
 import Categories from './Categories/Categories';
 
-
-
 const Content = () => {
-
   const { data, error, isLoading } = useQuery<Product[], string>([' products'], () => ProductService.getProducts())
-  
-     
-    return (
+
+  return (
       <div className={style.content}>
         <Categories></Categories>
         <div className={style.cards}>

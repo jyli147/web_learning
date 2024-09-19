@@ -2,8 +2,9 @@ import { useQuery } from 'react-query';
 import { Category } from '../../../../type';
 import { CategoryService } from '../../../../services/productService';
 
+
 const Categories = () => {
-    const { data, error, isLoading } = useQuery<Category[], string>(['categories'], () => CategoryService.getCategories());
+  const { data, error, isLoading } = useQuery<Category[], string>(['categories'], () => CategoryService.getCategories());
     
   if (error) {
     return <div>Error: {error}</div>;
@@ -19,8 +20,8 @@ const Categories = () => {
 
   return (
     <nav>
-      {data.map((item, index) => (
-        <div key={index}>{item.category}</div>
+      {data.map((item) => (
+        <div key={item.id}>{item.category}</div>
       ))}
     </nav>
   );

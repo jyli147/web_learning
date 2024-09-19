@@ -14,5 +14,6 @@ export interface Rating {
 }
 
 export interface Category{
-    category: string;
+    id: string;
+    category: String;
 }

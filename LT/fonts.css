@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url(./font/Montserrat-Light.ttf);
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Optimal";
+  src: url(./font/Optimal\ Regular.ttf);
+  font-weight: 400;
+}

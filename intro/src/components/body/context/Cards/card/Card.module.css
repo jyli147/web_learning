@@ -1,0 +1,93 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	min-width: 350px;
+	height: 350px;
+	padding: 15px;
+	border-radius: 16px;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+	background: rgb(255, 251, 255);
+	overflow: hidden;
+}
+
+.card:hover {
+	box-shadow: 0px 0px 5px 5px #00ebff;
+}
+
+.img {
+	object-fit: contain;
+	padding: 5px;
+	max-width: 350px;
+	max-height: 216px;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+}
+.heading {
+	color: rgb(60, 59, 63);
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.06rem;
+	font-weight: 400;
+	line-height: 1.25rem;
+	max-height: 21px;
+
+	text-overflow: ellipsis;
+	white-space: nowrap; /* Для однострочного текста */
+	padding: 0 15px 10px 15px;
+	text-align: center; /* Целевое выравнивание текста */
+	text-wrap: nowrap;
+}
+
+.subtitle {
+	color: rgb(96, 93, 98);
+	font-family: 'SF Pro Rounded', sans-serif;
+	font-size: 1.13rem;
+	font-weight: 400;
+	line-height: 1.31rem;
+	max-height: 36px; /* Убедитесь, что высота соответствующая */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: normal; /* Позволяет выполнять перенос строк */
+	padding: 0 15px;
+	text-align: center; /* Целевое выравнивание текста */
+	text-wrap: nowrap;
+}
+.footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10;
+	padding: 0.5rem;
+	width: 100%;
+}
+
+.price {
+	color: rgb(142, 55, 0);
+	font-family: 'SF Pro Rounded', sans-serif;
+	font-size: 1.13rem;
+	font-weight: 400;
+	line-height: 1.31rem;
+}
+
+.button {
+	width: 10.75rem;
+	height: 2.31rem;
+	border-radius: 0.5rem;
+	box-shadow: 0rem 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
+	background: rgb(60, 24, 167);
+	color: rgb(253, 248, 255);
+	font-family: 'SF Pro Rounded', sans-serif;
+	font-size: 1.13rem;
+	font-weight: 400;
+	line-height: 1.31rem;
+	text-align: center;
+}

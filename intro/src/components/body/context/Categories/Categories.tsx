@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query';
 import { Category } from '../../../../type';
 import { CategoryService } from '../../../../services/productService';
+import style from './categories.module.css'
 
 
 const Categories = () => {
@@ -19,10 +20,14 @@ const Categories = () => {
   }
 
   return (
-    <nav>
+    <nav className={style.categories} >
+     
       {data.map((item) => (
-        <div key={item.id}>{item.category}</div>
+       
+          <button key={item.id} className={style.category}>{item.category}</button>
+        
       ))}
+     
     </nav>
   );
 };

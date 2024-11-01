@@ -1,0 +1,23 @@
+@font-face{
+   font-family: "Commissioner", sans-serif;
+   src: url(./fonts/Commissioner-Light.woff);
+   font-weight: 300;
+}
+
+@font-face{
+    font-family: "Commissioner", sans-serif;
+    src: url(./fonts/Commissioner-Regular.woff);
+    font-weight: 400;
+ }
+
+@font-face{
+    font-family: "Commissioner", sans-serif;
+    src: url(./fonts/Commissioner-Medium.woff);
+    font-weight: 500;
+ }
+ @font-face{
+    font-family: "Commissioner", sans-serif;
+    src: url(./fonts/Commissioner-SemiBold.woff2);
+    font-weight: 600;
+ }
+ 

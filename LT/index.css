@@ -6,6 +6,9 @@
 a {
   text-decoration: none;
 }
+ul {
+  list-style: none;
+}
 
 :root {
   --light-yellow: #e3c37a;
@@ -43,9 +46,10 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.header__logo {
   padding: 26px 0 24px 0;
 }
-
 .header__logo img {
   max-width: 100%;
   height: auto;
@@ -64,9 +68,11 @@ a {
   line-height: 150%;
   text-align: center;
   color: var(--disable-gray);
+  padding: 24px 0 31px 0;
 }
 .nav:hover {
   color: var(--light-yellow);
+  border-bottom: 1px solid var(--light-yellow);
 }
 .header__tell a {
   font-family: "Optimal", sans-serif;
@@ -188,6 +194,7 @@ a {
 
 .content-background {
   background: var(--ng-light-gray);
+  background-size: contain;
 }
 .content-bg {
   background: url(./image/Фон.png);
@@ -207,6 +214,10 @@ a {
 }
 .content__image {
   max-width: 387px;
+}
+.content__image img {
+  width: 100%;
+  height: 100%;
 }
 
 .content__details {
@@ -472,6 +483,9 @@ h2 span {
 
 /* ---------------------------- */
 
+.reviews {
+  position: relative;
+}
 .reviews-bg {
   background: var(--ng-light-gray);
 }
@@ -577,9 +591,10 @@ h2 span {
 
 .swiper-button-prev {
   background: url(./image/Arrow-right.svg) no-repeat;
-  background-position: left 0 bottom 50%;
-  width: 48px !important;
   height: 48px !important;
+  width: 48px !important;
+  left: var(--swiper-navigation-sides-offset, 0) !important;
+  top: var(--swiper-navigation-top-offset, 60%) !important;
 }
 .swiper-button-prev::after {
   display: none;
@@ -590,9 +605,8 @@ h2 span {
 
   width: 48px !important;
   height: 48px !important;
-  position: absolute;
-  top: 0;
-  left: 0;
+  right: var(--swiper-navigation-sides-offset, 0) !important;
+  top: var(--swiper-navigation-top-offset, 60%) !important;
 }
 .swiper-button-next::after {
   display: none;

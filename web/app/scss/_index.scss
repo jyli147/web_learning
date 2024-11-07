@@ -1,0 +1,64 @@
+:root {
+    --font-family: "Gotham", sans-serif;
+    --second-family: "Gotham Black", sans-serif;
+    --third-family: "Anton", sans-serif;
+    --font3: "Poppins", sans-serif;
+}
+
+%flex__center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+%flex__space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.bg {
+    background: #000;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1560px;
+}
+
+.header {
+    @extend %flex__space-between;
+}
+
+.header__nav {
+    @extend %flex__space-between;
+    padding: 60px 0 40px 0;
+    gap: 30px;
+
+    li {
+        a {
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 100%;
+            letter-spacing: -0.05em;
+            color: #fff;
+        }
+    }
+}

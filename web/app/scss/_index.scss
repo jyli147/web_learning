@@ -62,3 +62,12 @@ a {
         }
     }
 }
+
+.header__info {
+    @extend %flex__space-between;
+    gap: 20px;
+
+    div {
+        background-image: url(../images/toogle.svg);
+    }
+}

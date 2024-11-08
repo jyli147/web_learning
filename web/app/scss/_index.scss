@@ -3,6 +3,24 @@
     --second-family: "Gotham Black", sans-serif;
     --third-family: "Anton", sans-serif;
     --font3: "Poppins", sans-serif;
+
+    --background-button: #925ff0;
+    --background-image-a: url(../images/toggle.svg);
+    --background: #000;
+    --color-text: #fff;
+    --invert: invert(0);
+
+}
+
+.with {
+    --background-button: #292929;
+    --background-image-a: url(../images/toggle-with.svg);
+    --background: #fff;
+    --color-text: #292929;
+    --invert: invert(1);
+
+
+
 }
 
 %flex__center {
@@ -28,12 +46,14 @@ ul {
     list-style: none;
 }
 
-a {
+a,
+button {
     text-decoration: none;
+    border: none;
 }
 
 .bg {
-    background: #000;
+    background: var(--background);
 }
 
 .container {
@@ -44,30 +64,147 @@ a {
 
 .header {
     @extend %flex__space-between;
+    height: 120px;
+    padding-bottom: 60px;
+}
+
+.header__logo img {
+    filter: var(--invert);
 }
 
 .header__nav {
     @extend %flex__space-between;
-    padding: 60px 0 40px 0;
+
     gap: 30px;
 
-    li {
-        a {
-            font-family: var(--font-family);
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 100%;
-            letter-spacing: -0.05em;
-            color: #fff;
-        }
+    li a {
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: -0.05em;
+        color: var(--color-text);
     }
+
 }
 
 .header__info {
     @extend %flex__space-between;
     gap: 20px;
 
-    div {
-        background-image: url(../images/toogle.svg);
+    button {
+        border-radius: 32px;
+        padding: 4px;
+        width: 56px;
+        height: 32px;
+        background-image: var(--background-image-a);
+        background-size: contain;
+        background-repeat: no-repeat;
+
+    }
+
+    a {
+        @extend %flex__center;
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        letter-spacing: -0.05em;
+        text-transform: capitalize;
+        color: #fff;
+
+        background: var(--background-button);
+        border-radius: 4px;
+        min-width: 133px;
+        min-height: 40px;
+    }
+}
+
+
+.hero {
+    display: flex;
+    padding-bottom: 143px;
+
+}
+
+.hero__left {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: flex-start;
+}
+
+
+.hero__title {
+    max-width: 660px;
+    padding-top: 41.5px;
+
+    h1 {
+        font-family: var(--third-family);
+        font-weight: 400;
+        font-size: 132px;
+        line-height: 90%;
+        letter-spacing: -0.03em;
+        color: var(--color-text);
+
+        max-width: 660px;
+    }
+
+    p {
+        font-family: var(--third-family);
+        font-weight: 400;
+        font-size: 81px;
+        line-height: 90%;
+        letter-spacing: -0.03em;
+        background: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-wrap: nowrap
+    }
+}
+
+
+
+.hero__contact {
+    @extend %flex__space-between;
+    gap: 69.6px;
+
+    &-link img {
+        filter: var(--invert);
+    }
+
+}
+
+.hero__button {
+    @extend %flex__center;
+    min-width: 660px;
+    min-height: 52px;
+    background: #292929;
+    gap: 8px;
+
+    p {
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: -0.05em;
+        color: #fff;
+    }
+
+}
+
+.hero__portal img {
+    padding: 41.5px 19px 0 0;
+    filter: var(--invert);
+}
+
+.hero__img {
+    max-width: 694px;
+    height: auto;
+
+    img {
+        width: 100%;
+        height: 100%;
     }
 }

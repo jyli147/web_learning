@@ -276,16 +276,20 @@ button {
 
 .portfolio {
     padding-bottom: 200px;
+}
 
-    h3 {
-        font-family: var(--third-family);
-        font-weight: 400;
-        font-size: 64px;
-        line-height: 100%;
-        text-transform: uppercase;
-        color: var(--color-title);
-        padding-bottom: 36px;
-    }
+h3 {
+    font-family: var(--third-family);
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: var(--color-title);
+
+}
+
+.portfolio-pd {
+    padding-bottom: 36px;
 }
 
 .portfolio__card {
@@ -295,7 +299,7 @@ button {
 
 
     &-item {
-        border: 1px solid var(--border-stat);
+        border: 1px solid #737373;
         border-radius: 10px;
         padding: 30px;
         max-width: 360px;
@@ -363,4 +367,76 @@ button {
     letter-spacing: -0.05em;
     text-transform: capitalize;
     color: #fff;
+}
+
+// ----------------------------------
+
+
+.skills {
+    padding-bottom: 200px;
+
+    .skills-pd {
+        padding-bottom: 50px;
+    }
+}
+
+.skills__card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    &-item {
+        border: 1px solid #737373;
+        border-radius: 10px;
+        padding: 40px 50px 60px 40px;
+        max-width: 755px;
+        height: auto;
+        background: var(--background-card);
+        display: flex;
+        gap: 20px;
+
+    }
+}
+
+.skills__card-stat {
+    position: relative;
+
+    span {
+        position: absolute;
+        margin: 0 auto;
+        top: 42%;
+        left: 37%;
+        font-family: var(--second-family);
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 100%;
+        letter-spacing: -0.05em;
+        color: var(--color-text);
+    }
+}
+
+.skills__card-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.skills__card-title {
+    font-family: var(--second-family);
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -0.05em;
+    color: var(--color-text)
+}
+
+.skills__card-subtext {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: -0.05em;
+    color: var(--color-text);
 }

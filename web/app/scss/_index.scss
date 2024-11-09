@@ -15,6 +15,7 @@
     --color-stat-text: #c8fec7;
     --color-title: #fff;
     --background-card: #0b0b0b;
+    --background-blockquote: url(../images/blockquote-bl.png);
 }
 
 .with {
@@ -28,6 +29,7 @@
     --color-stat-text: #64c661;
     --color-title: #000;
     --background-card: #fff;
+    --background-blockquote: url(../images/blockquote-with.png);
 
 
 
@@ -439,4 +441,41 @@ h3 {
     line-height: 100%;
     letter-spacing: -0.05em;
     color: var(--color-text);
+}
+
+
+// ---------------------------------------
+.blockquote-pg {
+    background-image: var(--background-blockquote);
+}
+
+.flex-center {
+    @extend %flex__center;
+}
+
+.blockquote {
+    @extend %flex__center;
+    flex-direction: column;
+    gap: 60px;
+    padding: 147px 0;
+    max-width: 1094px;
+
+    p {
+        font-family: var(--font3);
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 105%;
+        letter-spacing: -0.05em;
+        color: #fff;
+    }
+
+    span {
+        font-family: var(--font3);
+        font-style: italic;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 105%;
+        letter-spacing: -0.05em;
+        color: #fff;
+    }
 }

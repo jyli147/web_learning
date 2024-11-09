@@ -16,6 +16,11 @@
     --color-title: #fff;
     --background-card: #0b0b0b;
     --background-blockquote: url(../images/blockquote-bl.png);
+    --background-second-top: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
+    --background-second-bottom: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
+    --display: none;
+    --background-third--top: linear-gradient(90deg, #e0c3fc 0%, #8ec5fc 100%);
+
 }
 
 .with {
@@ -30,9 +35,10 @@
     --color-title: #000;
     --background-card: #fff;
     --background-blockquote: url(../images/blockquote-with.png);
-
-
-
+    --background-second-top: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
+    --background-second-bottom: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
+    --display: block;
+    --background-third--top: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
 }
 
 %flex__center {
@@ -403,6 +409,10 @@ h3 {
 .skills__card-stat {
     position: relative;
 
+    .svg-bg {
+        fill: var(--background-card)
+    }
+
     span {
         position: absolute;
         margin: 0 auto;
@@ -447,6 +457,7 @@ h3 {
 // ---------------------------------------
 .blockquote-pg {
     background-image: var(--background-blockquote);
+    background-repeat: no-repeat
 }
 
 .flex-center {
@@ -479,3 +490,224 @@ h3 {
         color: #fff;
     }
 }
+
+// ------------------------
+
+.about {
+    padding: 200px 0 343px 0;
+}
+
+.about__card {
+    display: flex;
+}
+
+.revers {
+    flex-direction: row-reverse;
+}
+
+.about-left {
+    flex: 0 1 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 50%;
+}
+
+.about__title {
+    @extend %flex__center;
+    gap: 38px;
+    padding-bottom: 76px;
+
+    a svg path {
+        stroke: var(--color-title)
+    }
+}
+
+.about__subtext {
+    font-family: var(--second-family);
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 100%;
+    letter-spacing: -0.05em;
+    color: var(--color-text);
+    max-width: 665px;
+
+    &-first {
+        background: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    &-second--top {
+        background: var(--background-second-top);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    &-second--boottom {
+        background: var(--background-second-top);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+}
+
+.about__subtext-third {
+    flex: 0 1 50%;
+    display: flex;
+    align-items: center;
+
+    &--top {
+        background: var(--background-third--top);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    &--boottom {
+        background: linear-gradient(89deg, #ffe76a 19.79%, #65c8ff 23.44%, #65c8ff 50%, #65c8ff 71.88%, #f00 71.89%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.about-right {
+    flex: 0 1 50%;
+    position: relative;
+
+    img {
+        width: 100%;
+    }
+
+    .about__right-svg-first {
+        position: absolute;
+        top: 13%;
+        left: 24%;
+    }
+
+    .about__right-svg-third {
+        position: absolute;
+        top: 16px;
+        right: 30.25px;
+    }
+
+    .position {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .about__right-svg-second {
+        display: var(--display);
+        position: absolute;
+        top: 5%;
+        left: 22%;
+
+    }
+}
+
+// ----------------------------------------------
+
+.footer-bg {
+    background: #292929;
+    border-bottom: 1px solid #e6e6e6;
+
+}
+
+.footer {
+    position: relative;
+}
+
+
+
+.footer__top {
+    background: #a87ff3;
+    border-radius: 15px;
+    height: 180px;
+    position: relative;
+    display: none;
+
+
+
+    &-left {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    &-img {
+        position: absolute;
+        bottom: 0;
+        left: -32px;
+        z-index: 4;
+    }
+
+    &-right {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    p {
+        font-family: var(--font-family);
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 100%;
+        letter-spacing: -0.05em;
+        color: #fff;
+        max-width: 1011px;
+        margin: 0 auto;
+        padding: 68px 0 68px 50px;
+    }
+}
+
+.footer__bottom {
+    padding: 146px 0 0 0;
+
+    @extend %flex__space-between;
+
+
+}
+
+.footer__logo {
+    width: 164px;
+    height: 60px;
+    margin-bottom: 29.62px;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.footer__nav {
+
+    @extend %flex__space-between;
+    gap: 30px;
+
+    .text-nav {
+
+
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: -0.05em;
+        color: #fff;
+    }
+}
+
+// Как сделать отступ внизу после линии 

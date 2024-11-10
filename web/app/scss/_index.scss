@@ -211,9 +211,12 @@ button {
 
 }
 
-.hero__portal img {
+.hero__portal {
     padding: 41.5px 19px 0 0;
-    filter: var(--invert);
+
+    svg path {
+        fill: var(--color-text)
+    }
 }
 
 .hero__img {
@@ -619,25 +622,37 @@ h3 {
 }
 
 // ----------------------------------------------
+.padding {
+    padding: 146px 0 47px 0;
+    background: #292929;
+}
 
 .footer-bg {
     background: #292929;
-    border-bottom: 1px solid #e6e6e6;
+}
 
+.border {
+    border-bottom: 1px solid #e6e6e6;
 }
 
 .footer {
     position: relative;
 }
 
+.footer-pos {
+    display: flex;
+    position: absolute;
+    top: -236px;
+    left: 0;
 
+}
 
 .footer__top {
     background: #a87ff3;
     border-radius: 15px;
     height: 180px;
     position: relative;
-    display: none;
+    flex: 0 0 100%;
 
 
 
@@ -675,8 +690,6 @@ h3 {
 }
 
 .footer__bottom {
-    padding: 146px 0 0 0;
-
     @extend %flex__space-between;
 
 
@@ -699,8 +712,6 @@ h3 {
     gap: 30px;
 
     .text-nav {
-
-
         font-family: var(--font-family);
         font-weight: 400;
         font-size: 20px;
@@ -709,5 +720,3 @@ h3 {
         color: #fff;
     }
 }
-
-// Как сделать отступ внизу после линии 

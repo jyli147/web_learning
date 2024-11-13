@@ -12,7 +12,6 @@ function styles() {
     .pipe(sourcemaps.init())
     .pipe(concat("style.min.css"))
     .pipe(scss({ outputStyle: "compressed" }))
-
     .pipe(sourcemaps.write("."))
     .pipe(dest("./dist/css"));
 }
@@ -28,17 +27,17 @@ function markup() {
   return src("src/index.html").pipe(dest("./dist"));
 }
 
-function building() {
-  return src(
-    [
-      "src/dist/style.min.css",
-      "src/dist/main.min.js",
-      "src/dist/*.html",
-      "src / images/**/ *",
-    ],
-    { base: "src" }
-  ).pipe(dest("dist"));
-}
+// function building() {
+//   return src(
+//     [
+//       "src/dist/style.min.css",
+//       "src/dist/main.min.js",
+//       "src/dist/*.html",
+//       "src / images/**/ *",
+//     ],
+//     { base: "src" }
+//   ).pipe(dest("dist"));
+// }
 
 function cleanDist() {
   return src("dist").pipe(clean());
@@ -46,6 +45,10 @@ function cleanDist() {
 
 function copyImages() {
   return src("src/images/**/*").pipe(dest("./dist/images"));
+}
+
+function copyFonts() {
+  return src("src/fonts/**/*").pipe(dest("./dist/fonts"));
 }
 
 function watching() {
@@ -68,6 +71,7 @@ exports.markup = markup;
 exports.script = script;
 exports.styles = styles;
 exports.copyImages = copyImages;
+exports.copyFonts = copyFonts;
 
 exports.watching = watching;
 exports.startServer = startServer;
@@ -76,6 +80,6 @@ exports.cleanDist = cleanDist;
 
 exports.default = series(
   cleanDist,
-  parallel(styles, markup, script, copyImages),
+  parallel(styles, markup, script, copyImages, copyFonts),
   parallel(startServer, watching)
 );

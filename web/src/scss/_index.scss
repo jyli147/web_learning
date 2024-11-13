@@ -54,6 +54,20 @@
     flex-direction: row;
 }
 
+@mixin visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+    clip-path: inset(100%) !important;
+    clip: rect(0 0 0 0) !important;
+    overflow: hidden !important;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -213,6 +227,10 @@ button {
 
 .hero__portal {
     padding: 41.5px 19px 0 0;
+
+    // @include tablet {
+    //     display: none;
+    // }
 
     svg path {
         fill: var(--color-text)
@@ -644,7 +662,6 @@ h3 {
     position: absolute;
     top: -236px;
     left: 0;
-
 }
 
 .footer__top {

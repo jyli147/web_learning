@@ -1,43 +1,81 @@
-const { src, dest, watch, parallel } = require("gulp");
+const { src, dest, watch, parallel, series } = require("gulp");
 
 const scss = require("gulp-sass")(require("sass"));
 const concat = require("gulp-concat");
 const uglify = require("gulp-uglify-es").default;
-const browserSync = require("browser-sync").create();
+const sourcemaps = require("gulp-sourcemaps");
+const clean = require("gulp-clean");
+const server = require("gulp-server-livereload");
 
 function styles() {
-  return src("app/scss/style.scss")
+  return src("src/scss/style.scss")
+    .pipe(sourcemaps.init())
     .pipe(concat("style.min.css"))
     .pipe(scss({ outputStyle: "compressed" }))
-    .pipe(dest("app/css"))
-    .pipe(browserSync.stream());
+
+    .pipe(sourcemaps.write("."))
+    .pipe(dest("./dist/css"));
 }
 
 function script() {
-  return src("app/js/main.js")
+  return src("src/js/main.js")
     .pipe(concat("main.min.js"))
     .pipe(uglify())
-    .pipe(dest("app/js"))
-    .pipe(browserSync.stream());
+    .pipe(dest("./dist/js"));
+}
+
+function markup() {
+  return src("src/index.html").pipe(dest("./dist"));
+}
+
+function building() {
+  return src(
+    [
+      "src/dist/style.min.css",
+      "src/dist/main.min.js",
+      "src/dist/*.html",
+      "src / images/**/ *",
+    ],
+    { base: "src" }
+  ).pipe(dest("dist"));
+}
+
+function cleanDist() {
+  return src("dist").pipe(clean());
+}
+
+function copyImages() {
+  return src("src/images/**/*").pipe(dest("./dist/images"));
 }
 
 function watching() {
-  watch(["app/scss/*.scss"], styles);
-  watch(["app/js/main.js"], script);
-  watch(["app/*.html"]).on("change", browserSync.reload);
+  watch(["src/scss/**/*.scss"], styles);
+  watch(["src/js/main.js"], script);
+  watch(["src/**/*.html"], markup);
+  watch(["src/images/**/*"], copyImages);
 }
 
-function browsersync() {
-  browserSync.init({
-    server: {
-      baseDir: "app/",
-    },
-  });
+function startServer() {
+  return src("./dist/").pipe(
+    server({
+      livereload: true,
+      open: true,
+    })
+  );
 }
 
+exports.markup = markup;
 exports.script = script;
 exports.styles = styles;
-exports.watching = watching;
-exports.browsersync = browsersync;
+exports.copyImages = copyImages;
 
-exports.default = parallel(styles, script, browsersync, watching);
+exports.watching = watching;
+exports.startServer = startServer;
+
+exports.cleanDist = cleanDist;
+
+exports.default = series(
+  cleanDist,
+  parallel(styles, markup, script, copyImages),
+  parallel(startServer, watching)
+);

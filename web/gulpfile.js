@@ -44,11 +44,13 @@ function cleanDist() {
 }
 
 function copyImages() {
-  return src("src/images/**/*").pipe(dest("./dist/images"));
+  return src("src/images/**/*", { encoding: false }).pipe(
+    dest("./dist/images")
+  );
 }
 
 function copyFonts() {
-  return src("src/fonts/**/*").pipe(dest("./dist/fonts"));
+  return src("src/fonts/**/*", { encoding: false }).pipe(dest("./dist/fonts"));
 }
 
 function watching() {
@@ -81,5 +83,6 @@ exports.cleanDist = cleanDist;
 exports.default = series(
   cleanDist,
   parallel(styles, markup, script, copyImages, copyFonts),
+
   parallel(startServer, watching)
 );

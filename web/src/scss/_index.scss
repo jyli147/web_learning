@@ -1,44 +1,65 @@
-:root {
-    --font-family: "Gotham", sans-serif;
-    --second-family: "Gotham Black", sans-serif;
-    --third-family: "Anton", sans-serif;
-    --font3: "Poppins", sans-serif;
+$desktop: 1560px;
+$desktop-s: 1400px;
+$tablet: 1054px;
 
-    --background-button: #925ff0;
-    --background-image-a: url(../images/toggle.svg);
-    --background: #000;
-    --color-text: #fff;
 
-    --invert: invert(0);
-    --background-stat: #0b0b0b;
-    --border-stat: #000;
-    --color-stat-text: #c8fec7;
-    --color-title: #fff;
-    --background-card: #0b0b0b;
-    --background-blockquote: url(../images/blockquote-bl.png);
-    --background-second-top: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
-    --background-second-bottom: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
-    --display: none;
-    --background-third--top: linear-gradient(90deg, #e0c3fc 0%, #8ec5fc 100%);
+$mobile: 510px;
 
+
+@mixin desktop {
+    @media (max-width: $desktop) {
+        @content;
+    }
 }
 
-.with {
-    --background-button: #292929;
-    --background-image-a: url(../images/toggle-with.svg);
-    --background: #fff;
-    --color-text: #292929;
-    --invert: invert(1);
-    --background-stat: #f6fff6;
-    --border-stat: #646464;
-    --color-stat-text: #64c661;
-    --color-title: #000;
-    --background-card: #fff;
-    --background-blockquote: url(../images/blockquote-with.png);
-    --background-second-top: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
-    --background-second-bottom: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
-    --display: block;
-    --background-third--top: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
+@mixin desktop-s {
+    @media (max-width: $desktop-s) {
+        @content;
+    }
+}
+
+@mixin range {
+    @media (max-width: $desktop) and (min-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin tablet-above {
+    @media (min-width: $tablet-above) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin mobile-above {
+    @media (min-width: $mobile-above) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content;
+    }
+}
+
+@mixin hover {
+    @media (hover: hover) {
+        &:hover {
+            @content;
+        }
+    }
+
+    @media (hover: none) {
+        &:active {
+            @content;
+        }
+    }
 }
 
 %flex__center {
@@ -157,6 +178,10 @@ button {
     display: flex;
     padding-bottom: 153px;
 
+    @include tablet {
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .hero__left {
@@ -164,6 +189,10 @@ button {
     flex-direction: column;
     gap: 40px;
     justify-content: flex-start;
+
+    @include range {
+        gap: 20px;
+    }
 }
 
 
@@ -180,6 +209,9 @@ button {
         color: var(--color-text);
         padding-bottom: 18px;
 
+        @include range () {
+            font-size: (calc(120px + (200 - 120) * (100vw - 1054px) / (1560 - 1054)));
+        }
     }
 
     p {
@@ -192,6 +224,11 @@ button {
         background-clip: text;
         -webkit-text-fill-color: transparent;
         display: inline;
+        text-wrap: nowrap;
+
+        @include range() {
+            font-size: (calc(67px + (114 - 67) * (100vw - 1054px) / (1560 - 1054)));
+        }
     }
 }
 
@@ -199,7 +236,6 @@ button {
 
 .hero__contact {
     @extend %flex__space-between;
-    gap: 69.6px;
 
     &-link img {
         filter: var(--invert);
@@ -209,7 +245,6 @@ button {
 
 .hero__button {
     @extend %flex__center;
-    min-width: 660px;
     min-height: 52px;
     background: #292929;
     gap: 8px;
@@ -225,12 +260,15 @@ button {
 
 }
 
+
+
 .hero__portal {
     padding: 41.5px 19px 0 0;
 
-    // @include tablet {
-    //     display: none;
-    // }
+    @include tablet() {
+        @include visually-hidden;
+    }
+
 
     svg path {
         fill: var(--color-text)
@@ -241,9 +279,13 @@ button {
     max-width: 694px;
     height: auto;
 
+    @include tablet() {
+        @include visually-hidden;
+    }
+
     img {
         width: 100%;
-        height: 100%;
+        height: auto;
     }
 }
 
@@ -263,6 +305,10 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include tablet {
+        padding: 82px 50px;
+    }
 }
 
 .statistics__text {
@@ -273,7 +319,7 @@ button {
     .statistics__title {
         font-family: var(--third-family);
         font-weight: 400;
-        font-size: 128px;
+        font-size: clamp(64px, 8.205vw, 128px);
         line-height: 90%;
         text-transform: uppercase;
         color: var(--color-stat-text);
@@ -286,7 +332,7 @@ button {
     .statistics__subtext {
         font-family: var(--second-family);
         font-weight: 500;
-        font-size: 36px;
+        font-size: clamp(22px, 2.3vw, 36px);
         line-height: 100%;
         letter-spacing: -0.05em;
         color: var(--color-stat-text);
@@ -294,6 +340,12 @@ button {
         display: flex;
         justify-content: center;
 
+    }
+}
+
+.statistics__icon {
+    @include tablet() {
+        @include visually-hidden;
     }
 }
 

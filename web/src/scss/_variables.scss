@@ -1,0 +1,42 @@
+:root {
+    --font-family: "Gotham", sans-serif;
+    --second-family: "Gotham Black", sans-serif;
+    --third-family: "Anton", sans-serif;
+    --font3: "Poppins", sans-serif;
+
+    --background-button: #925ff0;
+    --background-image-a: url(../images/toggle.svg);
+    --background: #000;
+    --color-text: #fff;
+
+    --invert: invert(0);
+    --background-stat: #0b0b0b;
+    --border-stat: #000;
+    --color-stat-text: #c8fec7;
+    --color-title: #fff;
+    --background-card: #0b0b0b;
+    --background-blockquote: url(../images/blockquote-bl.png);
+    --background-second-top: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
+    --background-second-bottom: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
+    --display: none;
+    --background-third--top: linear-gradient(90deg, #e0c3fc 0%, #8ec5fc 100%);
+
+}
+
+.with {
+    --background-button: #292929;
+    --background-image-a: url(../images/toggle-with.svg);
+    --background: #fff;
+    --color-text: #292929;
+    --invert: invert(1);
+    --background-stat: #f6fff6;
+    --border-stat: #646464;
+    --color-stat-text: #64c661;
+    --color-title: #000;
+    --background-card: #fff;
+    --background-blockquote: url(../images/blockquote-with.png);
+    --background-second-top: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
+    --background-second-bottom: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
+    --display: block;
+    --background-third--top: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
+}

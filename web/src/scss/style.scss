@@ -1,3 +1,4 @@
-@use "src/scss/_fonts.scss";
-@use "src/scss/_media.scss";
-@use "src/scss/_index.scss";
+@use "_fonts";
+@use "variables";
+@use "_index";
+// @forward"_media";

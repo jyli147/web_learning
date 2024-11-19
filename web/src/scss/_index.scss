@@ -1,8 +1,6 @@
 $desktop: 1560px;
 $desktop-s: 1400px;
 $tablet: 1054px;
-
-
 $mobile: 510px;
 
 
@@ -87,7 +85,6 @@ $mobile: 510px;
     clip: rect(0 0 0 0) !important;
     overflow: hidden !important;
 }
-
 
 * {
     margin: 0;
@@ -221,8 +218,8 @@ button {
         line-height: 90%;
         letter-spacing: -0.03em;
         background: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+        --webkit-background-clip: text;
+        --webkit-text-fill-color: transparent;
         display: inline;
         text-wrap: nowrap;
 
@@ -616,22 +613,22 @@ h3 {
     &-first {
         background: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
         background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        --webkit-background-clip: text;
+        --webkit-text-fill-color: transparent;
     }
 
     &-second--top {
         background: var(--background-second-top);
         background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        --webkit-background-clip: text;
+        --webkit-text-fill-color: transparent;
     }
 
     &-second--boottom {
         background: var(--background-second-top);
         background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        --webkit-background-clip: text;
+        --webkit-text-fill-color: transparent;
     }
 
 }
@@ -644,15 +641,15 @@ h3 {
     &--top {
         background: var(--background-third--top);
         background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        --webkit-background-clip: text;
+        --webkit-text-fill-color: transparent;
     }
 
     &--boottom {
         background: linear-gradient(89deg, #ffe76a 19.79%, #65c8ff 23.44%, #65c8ff 50%, #65c8ff 71.88%, #f00 71.89%);
         background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        --webkit-background-clip: text;
+        --webkit-text-fill-color: transparent;
     }
 }
 

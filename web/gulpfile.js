@@ -7,11 +7,21 @@ const sourcemaps = require("gulp-sourcemaps");
 const clean = require("gulp-clean");
 const server = require("gulp-server-livereload");
 
+// styles {scss, sourcemap, autoprefix, minification}
+// images-raster {webp, avif, jpg/jpeg}
+// images-vector {sprite}
+// fonts {woff, woff2}
+
+// templates (markup)
+// scripts
+
+// optimisation (cache, args plugins)
+
 function styles() {
   return src("src/scss/style.scss")
     .pipe(sourcemaps.init())
-    .pipe(concat("style.min.css"))
     .pipe(scss({ outputStyle: "compressed" }))
+    .pipe(concat("style.min.css"))
     .pipe(sourcemaps.write("."))
     .pipe(dest("./dist/css"));
 }
@@ -36,12 +46,8 @@ function markup() {
 //       "src / images/**/ *",
 //     ],
 //     { base: "src" }
-//   ).pipe(dest("dist"));
+//   ).pipe(dest("bild"));
 // }
-
-function cleanDist() {
-  return src("dist").pipe(clean());
-}
 
 function copyImages() {
   return src("src/images/**/*", { encoding: false }).pipe(
@@ -53,6 +59,11 @@ function copyFonts() {
   return src("src/fonts/**/*", { encoding: false }).pipe(dest("./dist/fonts"));
 }
 
+function cleanDist() {
+  return src("dist", { allowEmpty: true }).pipe(clean());
+}
+
+/// Наблюдатель, смотрит за исходными файлами и запускает целевые задачи
 function watching() {
   watch(["src/scss/**/*.scss"], styles);
   watch(["src/js/main.js"], script);

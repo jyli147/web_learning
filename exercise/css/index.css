@@ -250,11 +250,19 @@ button {
   background: no-repeat url(../images/background1.jpg);
   background-size: cover;
   color: var(--color-white);
+  transition: box-shadow 0.3s ease-in-out;
 }
 .blog__card-mountains {
   background: no-repeat url(../images/background2.png);
   background-size: cover;
   color: var(--color-white);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.blog__card-mountains:hover {
+  box-shadow: 4px 8px 40px 0 rgba(8, 24, 111, 0.2);
+}
+.blog__card-space:hover {
+  box-shadow: 4px 8px 40px 0 rgba(8, 24, 111, 0.2);
 }
 
 .blog__card-category {
@@ -300,6 +308,10 @@ button {
   background: var(--color-white);
   border-radius: 20px;
   min-height: 180px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.blog__item-half:hover {
+  box-shadow: 4px 8px 40px 0 rgba(8, 24, 111, 0.2);
 }
 .blog__item-half-title {
   padding: 20px 0 0 0;

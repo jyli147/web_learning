@@ -1,78 +1,115 @@
-const { src, dest, watch, parallel, series } = require("gulp");
+import gulp, { series, parallel, watch, src, dest } from "gulp";
 
-const scss = require("gulp-sass")(require("sass"));
-const concat = require("gulp-concat");
-const uglify = require("gulp-uglify-es").default;
-const sourcemaps = require("gulp-sourcemaps");
-const clean = require("gulp-clean");
-const server = require("gulp-server-livereload");
+import * as sass from "sass";
+import gulpSass from "gulp-sass";
+const scss = gulpSass(sass);
+import autoprefixer from "gulp-autoprefixer";
+import sourcemaps from "gulp-sourcemaps";
+import concat from "gulp-concat";
+import uglifyEs from "gulp-uglify-es";
+const uglify = uglifyEs.default;
+import imagemin from "gulp-imagemin";
+import newer from "gulp-newer";
+import ttf2woff2 from "gulp-ttf2woff2";
+import fonter from "gulp-fonter";
+import clean from "gulp-clean";
+import server from "gulp-server-livereload";
+import avif from "gulp-avif";
+import webp from "gulp-webp";
+// import svgSprite from "gulp-svg-sprite";
+// import include from "gulp-include";
 
-// styles {scss, sourcemap, autoprefix, minification}
-// images-raster {webp, avif, jpg/jpeg}
-// images-vector {sprite}
-// fonts {woff, woff2}
+// // styles {scss, sourcemap, autoprefix, minification}
+// // images-raster {webp, avif, jpg/jpeg}
+// // images-vector {sprite}
+// // fonts {woff, woff2}
 
-// templates (markup)
-// scripts
+// // templates (markup)
+// // scripts
 
-// optimisation (cache, args plugins)
+// // optimisation (cache, args plugins)
+
+const path = {
+  bild: {
+    js: "./dist/js/",
+    css: "./dist/css/",
+    html: "./dist/",
+    img: "./dist/img/",
+    fonts: "./dist/fonts/",
+    // libs: "./dist/libs/",
+  },
+  src: {
+    js: "./src/js/main.min.js",
+    css: "./src/scss/*.scss",
+    html: "./src/*.html",
+    img: "./src/img/*.{jpg,jpeg,png}",
+    fonts: "./src/fonts/*.{ttf,otf}",
+    // libs: "./libs/**/*.*",
+  },
+  watch: {
+    js: "./src/js/**/*.js",
+    css: "./src/scss/**/*.scss",
+    html: "./src/**/*.html",
+    img: "./src/img/*.*",
+    fonts: "./src/fonts/*.*",
+    // libs: "./libs/**/*.*",
+  },
+};
+
+function script() {
+  return gulp
+    .src(path.src.js)
+    .pipe(concat("main.min.js"))
+    .pipe(uglify())
+    .pipe(dest(path.bild.js));
+}
 
 function styles() {
-  return src("src/scss/style.scss")
+  return gulp
+    .src(path.src.css)
     .pipe(sourcemaps.init())
+    .pipe(autoprefixer())
     .pipe(scss({ outputStyle: "compressed" }))
     .pipe(concat("style.min.css"))
     .pipe(sourcemaps.write("."))
-    .pipe(dest("./dist/css"));
+    .pipe(dest(path.bild.css));
 }
 
-function script() {
-  return src("src/js/main.js")
-    .pipe(concat("main.min.js"))
-    .pipe(uglify())
-    .pipe(dest("./dist/js"));
-}
-
-function markup() {
-  return src("src/index.html").pipe(dest("./dist"));
-}
-
-// function building() {
-//   return src(
-//     [
-//       "src/dist/style.min.css",
-//       "src/dist/main.min.js",
-//       "src/dist/*.html",
-//       "src / images/**/ *",
-//     ],
-//     { base: "src" }
-//   ).pipe(dest("bild"));
+// function libs() {
+//   return gulp.src(path.src.libs).pipe(dest(path.bild.libs));
 // }
 
-function copyImages() {
-  return src("src/images/**/*", { encoding: false }).pipe(
-    dest("./dist/images")
-  );
+function html() {
+  return gulp.src(path.src.html).pipe(dest(path.bild.html));
 }
 
-function copyFonts() {
-  return src("src/fonts/**/*", { encoding: false }).pipe(dest("./dist/fonts"));
+function img() {
+  return gulp
+    .src(path.src.img, { encoding: false })
+    .pipe(newer(path.bild.img))
+    .pipe(avif({ quality: 50 }))
+    .pipe(dest(path.bild.img))
+
+    .pipe(src(path.src.img), { encoding: false })
+    .pipe(newer(path.bild.img))
+    .pipe(imagemin())
+    .pipe(dest(path.bild.img))
+
+    .pipe(src(path.src.img, { encoding: false }))
+    .pipe(newer(path.bild.img))
+    .pipe(webp())
+    .pipe(dest(path.bild.img))
+
+    .pipe(src("./src/img/*.svg", { encoding: false }))
+    .pipe(dest(path.bild.img));
 }
 
 function cleanDist() {
-  return src("dist", { allowEmpty: true }).pipe(clean());
-}
-
-/// Наблюдатель, смотрит за исходными файлами и запускает целевые задачи
-function watching() {
-  watch(["src/scss/**/*.scss"], styles);
-  watch(["src/js/main.js"], script);
-  watch(["src/**/*.html"], markup);
-  watch(["src/images/**/*"], copyImages);
+  return src("./dist", { allowEmpty: true }).pipe(clean());
 }
 
 function startServer() {
-  return src("./dist/").pipe(
+  return gulp.src("./dist/").pipe(
     server({
       livereload: true,
       open: true,
@@ -80,20 +117,41 @@ function startServer() {
   );
 }
 
-exports.markup = markup;
-exports.script = script;
-exports.styles = styles;
-exports.copyImages = copyImages;
-exports.copyFonts = copyFonts;
+// async function fonts() {
+//   return gulp
+//     .src(path.src.fonts, { encoding: false })
+//     .pipe(
+//       fonter({
+//         formats: ["woff", "ttf"],
+//       })
+//     )
+//     .pipe(src("./src/fonts/*.ttf"))
+//     .pipe(ttf2woff2())
+//     .pipe(dest(path.bild.fonts))
+//     .pipe(src("./src/fonts/*.woff2"))
+//     .pipe(dest(path.bild.fonts));
+// }
 
-exports.watching = watching;
-exports.startServer = startServer;
+// Только для этого проекта
+function fonts() {
+  return gulp
+    .src("./src/fonts/*.*", { encoding: false })
+    .pipe(dest(path.bild.fonts));
+}
 
-exports.cleanDist = cleanDist;
+function watching() {
+  // watch(path.watch.libs, libs);
+  watch(path.watch.html, html);
+  watch(path.watch.css, styles);
+  watch(path.watch.fonts, fonts);
+  watch(path.watch.js, script);
+  watch(path.watch.img, img);
+}
 
-exports.default = series(
+const mainTasks = series(
   cleanDist,
-  parallel(styles, markup, script, copyImages, copyFonts),
-
+  parallel(styles, html, script, img, fonts),
   parallel(startServer, watching)
 );
+
+gulp.task("default", mainTasks);

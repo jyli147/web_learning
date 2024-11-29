@@ -218,8 +218,9 @@ button {
         line-height: 90%;
         letter-spacing: -0.03em;
         background: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
-        --webkit-background-clip: text;
-        --webkit-text-fill-color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         display: inline;
         text-wrap: nowrap;
 

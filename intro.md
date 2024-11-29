@@ -390,3 +390,287 @@ for (let i of b) {
  установка редакс ts 
  npm install @reduxjs/toolkit react-redux @types/react-redux
 llet fdfn= 4;
+
+
+аккордеон .accordion {
+  padding-top: var(--padding-top);
+}
+
+.accordion__title {
+  padding-bottom: 41px;
+}
+
+.accordion__body {
+  padding: 24px 0;
+  border-top: 1px solid var(--extralight-gray);
+  border-bottom: 1px solid var(--extralight-gray);
+}
+
+.accordion__details {
+  padding-bottom: 24px;
+  color: var(--black);
+}
+
+.accordion__summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accordion__summary:hover {
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.accordion__summary:hover svg circle {
+  stroke: var(--primary);
+}
+
+.accordion__summary:hover svg path {
+  fill: var(--primary);
+}
+
+.accordion__content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition-duration: 0.3s;
+}
+
+.accordion__content-body {
+  overflow: hidden;
+}
+
+.accordion__details[open] + .accordion__content {
+  grid-template-rows: 1fr;
+}
+
+.accordion__details[open] .accordion__summary svg {
+  transform: rotate(42deg);
+  transition: transform 0.3s ease;
+}
+
+.accordion__question {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 178%;
+  color: inherit;
+}
+.accordion__content-answer {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 178%;
+  color: var(--dark-gray);
+
+  max-width: 936px;
+}
+
+<div class="accordion__container">
+          <div class="accordion__body">
+            <details name="faq" class="accordion__details" role="definition">
+              <summary class="accordion__summary">
+                <span
+                  class="accordion__question"
+                  role="term"
+                  aria-details="faq-3"
+                >
+                  Подтверждено: сознание наших соотечественников не замутнено
+                  пропагандой?</span
+                >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17 11H13V7C13 6.73478 12.8946 6.48043 12.7071 6.29289C12.5196 6.10536 12.2652 6 12 6C11.7348 6 11.4804 6.10536 11.2929 6.29289C11.1054 6.48043 11 6.73478 11 7V11H7C6.73478 11 6.48043 11.1054 6.29289 11.2929C6.10536 11.4804 6 11.7348 6 12C6 12.2652 6.10536 12.5196 6.29289 12.7071C6.48043 12.8946 6.73478 13 7 13H11V17C11 17.2652 11.1054 17.5196 11.2929 17.7071C11.4804 17.8946 11.7348 18 12 18C12.2652 18 12.5196 17.8946 12.7071 17.7071C12.8946 17.5196 13 17.2652 13 17V13H17C17.2652 13 17.5196 12.8946 17.7071 12.7071C17.8946 12.5196 18 12.2652 18 12C18 11.7348 17.8946 11.4804 17.7071 11.2929C17.5196 11.1054 17.2652 11 17 11Z"
+                    fill="#191C1F"
+                  />
+                  <circle
+                    class="accordion__summary-svg"
+                    cx="12"
+                    cy="12"
+                    r="11"
+                    stroke="#191C1F"
+                    stroke-width="2"
+                  />
+                </svg>
+              </summary>
+            </details>
+            <div class="accordion__content" id="faq-3" role="definition">
+              <div class="accordion__content-body">
+                <p class="accordion__content-answer">
+                  В частности, дальнейшее развитие различных форм деятельности
+                  позволяет выполнить важные задания по разработке дальнейших
+                  направлений развития. Предварительные выводы неутешительны:
+                  экономическая повестка сегодняшнего дня говорит о возможностях
+                  существующих финансовых и административных условий.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+
+
+
+
+        плесхолдер
+        /* .input:focus + .data__form-placeholder,
+.input:not(:focus):valid + .data__form-placeholder {
+  top: 8px;
+  font-size: 14px;
+  line-height: 171%;
+  color: var(--gray);
+} */ когда плейсхолдер проходит валидацию, но когда она пройдена опускается
+
+
+.input:focus + .data__form-placeholder,
+.input:not(:placeholder-shown) + .data__form-placeholder,
+.input:valid + .data__form-placeholder {
+  top: 8px;
+  font-size: 14px;
+  line-height: 171%;
+  color: var(--gray);
+} не опускается когда проходит валидацию
+
+старая сборка gulp 
+import gulp, { series, parallel, watch, src, dest } from "gulp";
+
+import * as sass from "sass";
+import gulpSass from "gulp-sass";
+const scss = gulpSass(sass);
+import autoprefixer from "gulp-autoprefixer";
+
+import sourcemaps from "gulp-sourcemaps";
+import concat from "gulp-concat";
+import uglifyEs from "gulp-uglify-es";
+const uglify = uglifyEs.default;
+import imagemin from "gulp-imagemin";
+import newer from "gulp-newer";
+// import { deleteAsync as del } from "del";
+// import fileinclude from "gulp-file-include";
+// import gulpif from "gulp-if";
+import ttf2woff from "gulp-ttf2woff";
+import ttf2woff2 from "gulp-ttf2woff2";
+import fonter from "gulp-fonter";
+
+// const { src, dest, watch, parallel, series } = require("gulp");
+// import gulp from 'gulp';
+// const scss = require("gulp-sass")(require("sass"));
+// const concat = require(concat );
+// const uglify = require("gulp-uglify-es").default;
+// const sourcemaps = require("gulp-sourcemaps");
+import clean from "gulp-clean";
+import server from "gulp-server-livereload";
+import avif from "gulp-avif";
+import webp from "gulp-webp";
+import svgSprite from "gulp-svg-sprite";
+import include from "gulp-include";
+// import autoprefixer from "gulp-autoprefixer";
+
+// // styles {scss, sourcemap, autoprefix, minification}
+// // images-raster {webp, avif, jpg/jpeg}
+// // images-vector {sprite}
+// // fonts {woff, woff2}
+
+// // templates (markup)
+// // scripts
+
+// // optimisation (cache, args plugins)
+
+// function styles() {
+//   return src("src/scss/style.scss")
+//     .pipe(sourcemaps.init())
+//     .pipe(autoprefixer())
+//     .pipe(scss({ outputStyle: "compressed" }))
+//     .pipe(concat("style.min.css"))
+//     .pipe(sourcemaps.write("."))
+//     .pipe(dest("./dist/css"));
+// }
+
+// // async function styles() {
+// //   const autoprefixer = (await import("gulp-autoprefixer")).default;
+// //   return src("src/scss/style.scss")
+// //     .pipe(sourcemaps.init())
+// //     .pipe(autoprefixer({ overrideBrowserslist: ["last 10 versions"] }))
+// //     .pipe(scss({ outputStyle: "compressed" }))
+// //     .pipe(concat("style.min.css"))
+// //     .pipe(sourcemaps.write("."))
+// //     .pipe(dest("./dist/css"));
+// // }
+
+// function script() {
+//   return src("src/js/main.js")
+//     .pipe(concat("main.min.js"))
+//     .pipe(uglify())
+//     .pipe(dest("./dist/js"));
+// }
+
+// function markup() {
+//   return src("src/index.html").pipe(dest("./dist"));
+// }
+
+// // function building() {
+// //   return src(
+// //     [
+// //       "src/dist/style.min.css",
+// //       "src/dist/main.min.js",
+// //       "src/dist/*.html",
+// //       "src / images/**/ *",
+// //     ],
+// //     { base: "src" }
+// //   ).pipe(dest("bild"));
+// // }
+
+// function copyImages() {
+//   return src("src/images/**/*", { encoding: false }).pipe(
+//     dest("./dist/images")
+//   );
+// }
+
+// function copyFonts() {
+//   return src("src/fonts/**/*", { encoding: false }).pipe(dest("./dist/fonts"));
+// }
+
+// function cleanDist() {
+//   return src("dist", { allowEmpty: true }).pipe(clean());
+// }
+
+// /// Наблюдатель, смотрит за исходными файлами и запускает целевые задачи
+// function watching() {
+//   watch(["src/scss/**/*.scss"], styles);
+//   watch(["src/js/main.js"], script);
+//   watch(["src/**/*.html"], markup);
+//   watch(["src/images/**/*"], copyImages);
+// }
+
+// function startServer() {
+//   return src("./dist/").pipe(
+//     server({
+//       livereload: true,
+//       open: true,
+//     })
+//   );
+// }
+
+// exports.markup = markup;
+// exports.script = script;
+// exports.styles = styles;
+// exports.copyImages = copyImages;
+// exports.copyFonts = copyFonts;
+
+// exports.watching = watching;
+// exports.startServer = startServer;
+
+// exports.cleanDist = cleanDist;
+
+// exports.default = series(
+//   cleanDist,
+//   parallel(styles, markup, script, copyImages, copyFonts),
+
+//   parallel(startServer, watching)
+// );

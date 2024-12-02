@@ -510,13 +510,24 @@ h3 {
   font-weight: 400;
   font-size: 18px;
   line-height: 178%;
-  color: var(--dark-gray);
+  color: var(--black);
   padding: 0 16px;
   cursor: pointer;
   outline: none;
   transition:
     background-color 0.2s,
     border 0.2s;
+}
+
+.input::placeholder {
+  color: var(--white);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.input:focus::placeholder {
+  color: var(--mid-grey);
+  opacity: 1;
 }
 
 .input:focus,

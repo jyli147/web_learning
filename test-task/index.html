@@ -28,16 +28,18 @@
         <nav class="header__menu">
           <ul class="header__menu-list">
             <li class="header__menu-item">
-              <a class="header__menu-link" href="/">Как это работает</a>
+              <a class="header__menu-link" href="#work">Как это работает</a>
             </li>
             <li class="header__menu-item">
-              <a class="header__menu-link" href="/">3-й блок</a>
+              <a class="header__menu-link" href="#statistics">3-й блок</a>
             </li>
             <li class="header__menu-item">
-              <a class="header__menu-link" href="/">Вопросы и ответы</a>
+              <a class="header__menu-link" href="#accordion"
+                >Вопросы и ответы</a
+              >
             </li>
             <li class="header__menu-item">
-              <a class="header__menu-link" href="/">Форма</a>
+              <a class="header__menu-link" href="#data">Форма</a>
             </li>
           </ul>
         </nav>
@@ -49,6 +51,7 @@
           <span class="visually-hidden">Открыть новигационное меню</span>
         </button>
       </header>
+
       <article class="hero">
         <div class="hero__text">
           <h1>
@@ -62,7 +65,7 @@
     </div>
 
     <main>
-      <section class="work container">
+      <section id="work" class="work container">
         <h2>Как это работает</h2>
         <div class="work__card">
           <div class="work__card-item">
@@ -128,7 +131,7 @@
         </div>
       </section>
 
-      <section class="statistics container">
+      <section id="statistics" class="statistics container">
         <h2 class="visually-hidden">Статистические данные</h2>
         <div class="statistics__text">
           <h3>Круто, ты дошел до третьего блока</h3>
@@ -311,7 +314,7 @@
         </div>
       </section>
 
-      <section class="accordion container">
+      <section id="accordion" class="accordion container">
         <h2 class="accordion__title">Вопросы и ответы</h2>
         <div class="accordion__container">
           <div class="accordion__body">
@@ -689,7 +692,7 @@
         </div>
       </section>
 
-      <section class="data container">
+      <section id="data" class="data container">
         <h2 class="data__title">Отправь форму</h2>
         <form class="data__form" name="form" method="POST" novalidate>
           <p class="field">

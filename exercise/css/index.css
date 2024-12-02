@@ -325,6 +325,7 @@ button {
   border-radius: 20px;
   min-height: 180px;
   transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .blog__item-half:hover {

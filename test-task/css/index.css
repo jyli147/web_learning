@@ -427,12 +427,18 @@ h3 {
   transition: transform 0.3s ease;
 }
 
+.accordion__details:not([open]) .accordion__summary svg {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
 .accordion__question {
   font-weight: 600;
   font-size: 18px;
   line-height: 178%;
   color: inherit;
 }
+
 .accordion__content-answer {
   font-weight: 400;
   font-size: 18px;
@@ -517,6 +523,10 @@ h3 {
   transition:
     background-color 0.2s,
     border 0.2s;
+}
+
+.input:focus {
+  cursor: text;
 }
 
 .input::placeholder {

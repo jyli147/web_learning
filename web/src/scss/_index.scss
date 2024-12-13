@@ -1,64 +1,6 @@
-$desktop: 1560px;
-$desktop-s: 1400px;
-$tablet: 1054px;
-$mobile: 510px;
-
-
-@mixin desktop {
-    @media (max-width: $desktop) {
-        @content;
-    }
-}
-
-@mixin desktop-s {
-    @media (max-width: $desktop-s) {
-        @content;
-    }
-}
-
-@mixin range {
-    @media (max-width: $desktop) and (min-width: $tablet) {
-        @content;
-    }
-}
-
-@mixin tablet-above {
-    @media (min-width: $tablet-above) {
-        @content;
-    }
-}
-
-@mixin tablet {
-    @media (max-width: $tablet) {
-        @content;
-    }
-}
-
-@mixin mobile-above {
-    @media (min-width: $mobile-above) {
-        @content;
-    }
-}
-
-@mixin mobile {
-    @media (max-width: $mobile) {
-        @content;
-    }
-}
-
-@mixin hover {
-    @media (hover: hover) {
-        &:hover {
-            @content;
-        }
-    }
-
-    @media (hover: none) {
-        &:active {
-            @content;
-        }
-    }
-}
+@use "./fonts" as *;
+@use "./variables" as *;
+@use "./media" as *;
 
 %flex__center {
     display: flex;
@@ -110,6 +52,10 @@ button {
     margin: 0 auto;
     padding: 0 15px;
     max-width: 1560px;
+
+    @include desktop {
+        max-width: 894px;
+    }
 }
 
 .header {
@@ -175,7 +121,7 @@ button {
     display: flex;
     padding-bottom: 153px;
 
-    @include tablet {
+    @include desktop {
         justify-content: center;
         align-items: center;
     }
@@ -187,7 +133,7 @@ button {
     gap: 40px;
     justify-content: flex-start;
 
-    @include range {
+    @include desktop {
         gap: 20px;
     }
 }
@@ -206,9 +152,7 @@ button {
         color: var(--color-text);
         padding-bottom: 18px;
 
-        @include range () {
-            font-size: (calc(120px + (200 - 120) * (100vw - 1054px) / (1560 - 1054)));
-        }
+
     }
 
     p {
@@ -224,9 +168,7 @@ button {
         display: inline;
         text-wrap: nowrap;
 
-        @include range() {
-            font-size: (calc(67px + (114 - 67) * (100vw - 1054px) / (1560 - 1054)));
-        }
+
     }
 }
 
@@ -263,7 +205,7 @@ button {
 .hero__portal {
     padding: 41.5px 19px 0 0;
 
-    @include tablet() {
+    @include desktop() {
         @include visually-hidden;
     }
 
@@ -277,7 +219,9 @@ button {
     max-width: 694px;
     height: auto;
 
-    @include tablet() {
+
+
+    @include desktop() {
         @include visually-hidden;
     }
 
@@ -291,6 +235,10 @@ button {
 // ---------------------
 .pd {
     padding-bottom: 210px;
+
+    @include desktop {
+        padding-bottom: 200px;
+    }
 }
 
 .statistics {
@@ -304,7 +252,7 @@ button {
     justify-content: space-between;
     align-items: center;
 
-    @include tablet {
+    @include desktop {
         padding: 82px 50px;
     }
 }
@@ -325,6 +273,10 @@ button {
 
         display: flex;
         justify-content: center;
+
+        @include desktop {
+            font-size: 64px;
+        }
     }
 
     .statistics__subtext {
@@ -338,11 +290,15 @@ button {
         display: flex;
         justify-content: center;
 
+        @include desktop {
+            font-size: 22px;
+            text-align: center
+        }
     }
 }
 
 .statistics__icon {
-    @include tablet() {
+    @include desktop() {
         @include visually-hidden;
     }
 }
@@ -387,6 +343,10 @@ h3 {
         display: flex;
         gap: 23px;
         flex-direction: column;
+
+        @include desktop {
+            max-width: 417px;
+        }
     }
 }
 
@@ -394,6 +354,14 @@ h3 {
     border-radius: 10px;
     max-width: 300px;
     height: auto;
+
+    @include desktop {
+        min-width: 357px;
+    }
+
+    img {
+        width: 100%;
+    }
 
 }
 
@@ -446,6 +414,10 @@ h3 {
     letter-spacing: -0.05em;
     text-transform: capitalize;
     color: #fff;
+
+    @include desktop {
+        min-width: 357px;
+    }
 }
 
 // ----------------------------------
@@ -474,6 +446,9 @@ h3 {
         display: flex;
         gap: 20px;
 
+        @include desktop {
+            max-width: 864px;
+        }
     }
 }
 
@@ -559,6 +534,10 @@ h3 {
         line-height: 105%;
         letter-spacing: -0.05em;
         color: #fff;
+
+        @include desktop {
+            text-align: center;
+        }
     }
 }
 
@@ -597,9 +576,23 @@ h3 {
     gap: 38px;
     padding-bottom: 76px;
 
-    a svg path {
-        stroke: var(--color-title)
+    @include desktop {
+        padding-bottom: 100px;
     }
+
+    a svg {
+        @include desktop {
+            width: 103px;
+            height: 29px;
+        }
+
+        path {
+            stroke: var(--color-title);
+
+
+        }
+    }
+
 }
 
 .about__subtext {
@@ -610,6 +603,10 @@ h3 {
     letter-spacing: -0.05em;
     color: var(--color-text);
     max-width: 665px;
+
+    @include desktop {
+        font-size: 28px;
+    }
 
     &-first {
         background: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
@@ -660,6 +657,7 @@ h3 {
 
     img {
         width: 100%;
+        object-fit: cover;
     }
 
     .about__right-svg-first {

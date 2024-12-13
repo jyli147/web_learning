@@ -17,7 +17,7 @@ import server from "gulp-server-livereload";
 import avif from "gulp-avif";
 import webp from "gulp-webp";
 // import svgSprite from "gulp-svg-sprite";
-// import include from "gulp-include";
+import include from "gulp-include";
 
 // // styles {scss, sourcemap, autoprefix, minification}
 // // images-raster {webp, avif, jpg/jpeg}
@@ -41,7 +41,7 @@ const path = {
   src: {
     js: "./src/js/main.min.js",
     css: "./src/scss/*.scss",
-    html: "./src/*.html",
+    html: "./src/html/pages/*.html",
     img: "./src/img/*.{jpg,jpeg,png}",
     fonts: "./src/fonts/*.{ttf,otf}",
     // libs: "./libs/**/*.*",
@@ -80,7 +80,14 @@ function styles() {
 // }
 
 function html() {
-  return gulp.src(path.src.html).pipe(dest(path.bild.html));
+  return gulp
+    .src(path.src.html)
+    .pipe(
+      include({
+        includePaths: "./src/html/components",
+      }),
+    )
+    .pipe(dest(path.bild.html));
 }
 
 function img() {
@@ -90,8 +97,8 @@ function img() {
     .pipe(avif({ quality: 50 }))
     .pipe(dest(path.bild.img))
 
-    .pipe(src(path.src.img), { encoding: false })
-    .pipe(newer(path.bild.img))
+    .pipe(src(path.src.img, { encoding: false }))
+    .pipe(newer(path.bild.img)) //Необходимо для того чтобы картинки минифицированные не повторялись
     .pipe(imagemin())
     .pipe(dest(path.bild.img))
 
@@ -113,9 +120,11 @@ function startServer() {
     server({
       livereload: true,
       open: true,
-    })
+    }),
   );
 }
+
+// Конвертация шрифтов
 
 // async function fonts() {
 //   return gulp
@@ -151,7 +160,7 @@ function watching() {
 const mainTasks = series(
   cleanDist,
   parallel(styles, html, script, img, fonts),
-  parallel(startServer, watching)
+  parallel(startServer, watching),
 );
 
 gulp.task("default", mainTasks);

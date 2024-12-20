@@ -588,8 +588,6 @@ h3 {
 
         path {
             stroke: var(--color-title);
-
-
         }
     }
 
@@ -606,6 +604,10 @@ h3 {
 
     @include desktop {
         font-size: 28px;
+    }
+
+    @include tablet-above {
+        padding: 0 15px;
     }
 
     &-first {
@@ -630,6 +632,8 @@ h3 {
     }
 
 }
+
+
 
 .about__subtext-third {
     flex: 0 1 50%;
@@ -664,6 +668,10 @@ h3 {
         position: absolute;
         top: 13%;
         left: 24%;
+
+        @include tablet-above {
+            display: none;
+        }
     }
 
     .about__right-svg-third {
@@ -710,6 +718,7 @@ h3 {
     position: absolute;
     top: -236px;
     left: 0;
+    right: 0;
 }
 
 .footer__top {
@@ -751,6 +760,16 @@ h3 {
         max-width: 1011px;
         margin: 0 auto;
         padding: 68px 0 68px 50px;
+
+        @include desktop {
+            max-width: 600px;
+            padding: 57px 0 68px 119px;
+        }
+
+        @include tablet-above {
+            max-width: 478px;
+            padding: 57px 0 68px 75px;
+        }
     }
 }
 

@@ -1,0 +1,130 @@
+@use '../base/config.scss' as *;
+
+
+.aside {
+    flex: 0 1 16%;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+
+    @include desktop-s {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding-top: 80px;
+    }
+
+    @include tablet {
+        padding-top: 60px;
+    }
+
+    @include mobile {
+        flex-direction: column;
+    }
+}
+
+
+.background-corelDraw {
+    background: url(../img/aside1.png);
+}
+
+.background-team {
+    background: url(../img/aside2.png);
+}
+
+.background-design {
+    background: url(../img/aside3.png);
+}
+
+.aside__card {
+    max-width: 220px;
+    height: 221px;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+        max-width: 176px;
+    }
+
+    @include mobile {
+        max-width: 220px;
+    }
+
+    &-gradient {
+        flex: 0 1 50%;
+        margin-top: 110px;
+        background: linear-gradient(180deg, rgba(23, 20, 34, 0) 0%, rgba(23, 20, 34, 0.9) 100%);
+    }
+
+    &-content {
+        border: 0.96px solid $white;
+        border-radius: 24px;
+        min-width: 207px;
+        height: 35px;
+        display: flex;
+        gap: 9px;
+        padding-left: 14px;
+        align-items: center;
+        position: relative;
+        margin: 60px 6px 14px 6px;
+
+        @include tablet {
+            margin: 23px 6px 14px 6px;
+            min-width: 163px;
+            padding-left: 7px;
+        }
+
+        @include mobile {
+            min-width: 207px;
+            margin: 60px 6px 14px 6px;
+            padding-left: 14px;
+        }
+    }
+
+    &-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-overtext {
+        font-weight: 700;
+        font-size: 9px;
+        line-height: 140%;
+        text-transform: uppercase;
+        text-align: center;
+        color: $white;
+
+        @include tablet {
+            font-size: 7px;
+        }
+
+        @include mobile {
+            font-size: 9px;
+        }
+    }
+
+    &-subtext {
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 140%;
+        text-align: center;
+        color: $white;
+
+        @include tablet {
+            font-size: 12px;
+        }
+
+        @include mobile {
+            font-size: 13px;
+        }
+    }
+
+    &-link {
+        position: absolute;
+        top: -9px;
+        right: -13px;
+    }
+}

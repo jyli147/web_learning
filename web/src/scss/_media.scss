@@ -1,6 +1,6 @@
 $desktop: 1560px;
 $desktop-s: 1400px;
-$tablet-above: 1025px;
+$tablet-above: 1024px;
 $tablet: 894px;
 
 $mobile-above: 481px;
@@ -20,7 +20,7 @@ $mobile: 480px;
 }
 
 @mixin tablet-above {
-    @media (min-width: $tablet-above) {
+    @media (max-width: $tablet-above) {
         @content;
     }
 }

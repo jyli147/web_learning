@@ -1,0 +1,104 @@
+@use '../base/config.scss' as *;
+
+.header {
+    background: linear-gradient(132deg, #9e0b37 0%, #ffc531 71.98%, #9e0b37 100%);
+
+
+    &-container {
+        @extend %flex__space-between;
+        height: 80px;
+    }
+}
+
+.header__menu-list {
+    display: flex;
+    gap: 72px;
+    align-items: center;
+
+    @include tablet {
+        display: none;
+    }
+
+}
+
+.header__menu-link {
+    color: $white;
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.header__menu-link:hover::after {
+    width: 100%;
+    opacity: 50%;
+}
+
+.header__menu-link::after {
+    content: "";
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    translate: -50%;
+    width: 0;
+    height: 2px;
+    background-color: $burgundy;
+    transition-duration: 0.2s;
+}
+
+.menu-item-svg {
+    display: flex;
+    gap: 12px;
+}
+
+.header__button {
+    display: flex;
+    align-items: end;
+    gap: 42px;
+}
+
+.button {
+    font-weight: 500;
+    color: #fff;
+    @extend %flex__center;
+    height: 49px;
+
+    @include tablet {
+        display: none;
+    }
+}
+
+.header__button-registration {
+
+    border-radius: 40px;
+    min-width: 160px;
+
+    box-shadow: inset 4px 4px 6px 0 rgba(255, 255, 255, 0.5), 4px 4px 20px 0 rgba(223, 80, 23, 0.8);
+    background: rgba(158, 11, 55, 0.7);
+    font-size: 17px;
+}
+
+.burger-button {
+    width: 62px;
+    aspect-ratio: 1;
+    position: relative;
+    border-radius: 5px;
+    background-color: transparent;
+    border: none;
+}
+
+.burger-button::after {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    translate: -50% -50%;
+    cursor: pointer;
+    content: "";
+    width: 35.5%;
+    height: 2px;
+    background-color: $white;
+    border-radius: 5px;
+    box-shadow: 0 12px 0 $white;
+}

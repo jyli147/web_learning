@@ -1,0 +1,62 @@
+@use "variables" as *;
+@use "mediaqueries" as *;
+
+html {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: $white;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family;
+}
+
+.container {
+  max-width: 1450px;
+  padding: 0 15px;
+  margin: 0 auto;
+
+  @include desktop {
+    max-width: 1255px;
+  }
+
+  @include desktop-s {
+    max-width: 1024px;
+  }
+
+  @include tablet {
+    max-width: 768px;
+  }
+
+  @include mobile {
+    max-width: 320px;
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+%flex__center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%flex__space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

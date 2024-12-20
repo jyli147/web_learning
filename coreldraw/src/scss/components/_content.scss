@@ -1,0 +1,302 @@
+@use '../base/config.scss' as *;
+
+.background {
+    background: #171422;
+}
+
+.inner {
+    display: flex;
+    gap: 20px;
+    padding-top: 100px;
+    padding-bottom: 80px;
+
+    @include desktop-s {
+        flex-direction: column;
+    }
+
+    @include tablet {
+        padding-bottom: 40px;
+    }
+
+    @include mobile {
+        padding-top: 60px;
+        padding-bottom: 30px;
+    }
+
+
+}
+
+.content {
+    flex: 0 1 82%;
+
+    &__text {
+        display: flex;
+        align-items: center;
+        padding: 40px 57px 50px 40px;
+        border-radius: 30px;
+        background: linear-gradient(135deg, #ffa462 0%, #b45350 21.79%, #8a2645 48.93%, #291725 84.55%);
+    }
+
+    &__one {
+        padding: 60px 0 40px 0;
+        display: flex;
+        gap: 42px;
+
+        @include mobile {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+
+    }
+}
+
+.one {
+    align-self: flex-start;
+
+    @include mobile {
+        align-self: center;
+    }
+}
+
+.text {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 140%;
+    color: #fff;
+
+    @include tablet {
+        font-size: 18px;
+    }
+}
+
+.content__one-card {
+    display: grid;
+    grid-template-rows: repeat(2, 62px) 1fr;
+    grid-template-columns: repeat(3, 268px);
+    row-gap: 20px;
+    column-gap: 41px;
+
+    @include tablet {
+        grid-template-rows: repeat(2, 62px) 1fr;
+        grid-template-columns: repeat(3, 180px);
+    }
+
+    @include mobile {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+}
+
+.content__one-item {
+    box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.25);
+    background: #fff;
+    border-radius: 12px;
+    @extend %flex__center;
+
+    @include mobile {
+        height: 62px;
+    }
+}
+
+h4 {
+    grid-column: span 3;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    text-align: right;
+    color: $white;
+    padding-top: 11px;
+
+    @include mobile {
+        font-size: 13px;
+    }
+}
+
+.content__two {
+    display: flex;
+    gap: 5px;
+    padding: 48px 0 50px 0;
+
+    @include mobile {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+}
+
+.content__text-two {
+    display: flex;
+    align-items: center;
+}
+
+.content__three {
+    display: flex;
+    gap: 6px;
+
+    @include mobile {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+}
+
+.content__image {
+    display: flex;
+    gap: 90px;
+    justify-content: center;
+
+
+    @include mobile {
+        flex-direction: column;
+        gap: 20px;
+        padding: 50px 0;
+    }
+
+    &-error {
+        margin: 28px 0 76px 0;
+
+        @include mobile {
+            margin: 0;
+        }
+    }
+
+    &-unavailable {
+        margin: 43px 0 42px 0;
+
+        @include mobile {
+            margin: 0;
+        }
+    }
+}
+
+.content__booklet {
+    position: relative;
+    padding: 182px 0 0 0;
+    display: flex;
+    gap: 166px;
+
+    @include desktop {
+        gap: 18px;
+    }
+
+    @include mobile {
+        padding: 110px 0 0 0;
+    }
+
+    &-scheme {
+        position: absolute;
+        top: 17px;
+        right: 259px;
+
+        @include desktop {
+            right: 236px;
+            top: -26px;
+        }
+
+        @include tablet {
+            right: 152px;
+            top: 1px;
+        }
+
+        @include mobile {
+            width: 225px;
+            right: 35px;
+            top: 12px;
+        }
+    }
+
+    &-left {
+        display: flex;
+        gap: 18px;
+        position: relative;
+
+        @include mobile {
+            flex-direction: column;
+        }
+    }
+
+    &-right {
+        position: relative;
+    }
+
+    &-img {
+        max-width: 200px;
+
+        @include tablet {
+            max-width: 171px;
+        }
+
+        @include mobile {
+            max-width: 136px;
+        }
+    }
+}
+
+.none {
+    @include mobile {
+        display: none;
+    }
+}
+
+.scheme-left {
+    position: absolute;
+    top: -110px;
+    left: 313px;
+
+    @include desktop {
+        left: 246px;
+    }
+
+    @include tablet {
+        display: none;
+    }
+
+}
+
+.scheme-right {
+    position: absolute;
+    top: -110px;
+    left: 44px;
+
+    @include tablet {
+        display: none;
+    }
+}
+
+.content-four {
+    padding: 80px 0 80px 0;
+    display: flex;
+
+    @include mobile {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        padding: 48px 0 48px 0;
+    }
+}
+
+.content-five {
+    display: flex;
+    gap: 4px;
+    padding-bottom: 90px;
+
+    @include mobile {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+}

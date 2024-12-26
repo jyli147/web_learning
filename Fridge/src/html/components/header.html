@@ -1,37 +1,165 @@
 <header class="header">
-  <div class="container header-container">
+  <div class="container header__inner">
     <nav class="header__menu">
       <ul class="header__menu-list">
         <li class="header__menu-item">
-          <a class="header__menu-link menu-item-svg" href="index.html"
-            >Направления
-            <svg
-              width="5"
-              height="12"
-              viewBox="0 0 5 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5 5.99998C5 6.13948 4.95927 6.27911 4.87792 6.38561L2.79459 9.11288L0.711272 11.8401C0.54846 12.0533 0.284816 12.0533 0.122109 11.8401C-0.0405988 11.627 -0.0407029 11.2819 0.122109 11.0689L3.99417 5.99998L0.122108 0.931074C-0.0407034 0.717938 -0.0407034 0.372801 0.122108 0.159801C0.28492 -0.0531985 0.548564 -0.0533348 0.711272 0.159801L4.87792 5.61434C4.95927 5.72084 5 5.86048 5 5.99998Z"
-                fill="white"
-              />
-            </svg>
-          </a>
+          <a class="header__menu-link menu-item-svg" href="index.html">Цены </a>
         </li>
         <li class="header__menu-item">
-          <a class="header__menu-link" href="index.html">Портфолио</a>
+          <a class="header__menu-link" href="index.html">Процесс</a>
+        </li>
+        <li class="header__menu-item">
+          <a class="header__menu-link" href="index.html">Вопросы</a>
         </li>
         <li class="header__menu-item">
           <a class="header__menu-link" href="index.html">Контакты</a>
         </li>
       </ul>
     </nav>
-    <div class="header__button">
-      <button type="button" class="button">Войти</button>
-      <button type="button" class="header__button-registration button">
-        Регистрация
-      </button>
-    </div>
+
+    <button class="header__button" type="button">Получить консультацию</button>
+
+    <button
+      class="header__burger-button burger-button visible-mobile"
+      type="button"
+      onclick="mobileOverlay.showModal()"
+      aria-label="Открыть новигационное меню"
+    >
+      <span class="burger-button__line"></span>
+      <span class="burger-button__line"></span>
+      <span class="burger-button__line"></span>
+      <span class="burger-button__line">
+        <svg
+          width="12"
+          height="20"
+          viewBox="0 0 12 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            opacity="0.8"
+            d="M4.80001 10L10.6 15.8C10.7821 15.9836 10.9249 16.2025 11.0194 16.4433C11.114 16.684 11.1585 16.9415 11.15 17.2C11.1585 17.4585 11.114 17.716 11.0194 17.9568C10.9249 18.1975 10.7821 18.4164 10.6 18.6C10.4164 18.7821 10.1975 18.9249 9.95675 19.0194C9.71602 19.114 9.45851 19.1585 9.20001 19.15C8.9415 19.1585 8.684 19.114 8.44326 19.0194C8.20253 18.9249 7.98364 18.7821 7.80001 18.6L0.600009 11.4C0.409787 11.2199 0.258427 11.0028 0.155242 10.7621C0.0520566 10.5213 -0.000771582 10.262 8.5151e-06 10C8.5151e-06 9.46668 0.200009 9.00001 0.600009 8.60001L7.80001 1.40001C7.98364 1.21787 8.20253 1.07514 8.44326 0.980571C8.684 0.885998 8.9415 0.841571 9.20001 0.850011C9.76668 0.850011 10.2333 1.03334 10.6 1.40001C10.7821 1.58365 10.9249 1.80253 11.0194 2.04327C11.114 2.284 11.1585 2.5415 11.15 2.80001C11.1585 3.05851 11.114 3.31602 11.0194 3.55675C10.9249 3.79749 10.7821 4.01638 10.6 4.20001L4.80001 10Z"
+            fill="#535F70"
+          />
+        </svg>
+      </span>
+    </button>
   </div>
+  <article class="hero inner container">
+    <h1 class="visually-hidden">Ремонт любых холодильников</h1>
+    <h2 class="hero__title title">
+      Ремонт холодильников <br />в Санкт-Петербурге
+    </h2>
+    <p class="hero__subtitle subtitle">
+      Сохраняю холод без посредников и переплат
+    </p>
+    <div class="hero__link link">
+      <a class="link-left" href="#">Вызвать мастера</a>
+      <a class="link-right" href="#">Узнать цены</a>
+    </div>
+    <div class="logos">
+      <div class="marquee-top marquee--3">
+        <img
+          class="marquee__item"
+          src="../img/atlant.svg"
+          width="191"
+          height="100"
+          alt="atlant"
+        />
+        <img
+          class="marquee__item"
+          src="../img/beko.svg"
+          width="191"
+          height="100"
+          alt="beko"
+        />
+        <img
+          class="marquee__item"
+          src="../img/бирюса.svg"
+          width="191"
+          height="100"
+          alt="бирюса"
+        />
+        <img
+          class="marquee__item"
+          src="../img/bosch.svg"
+          width="191"
+          height="100"
+          alt="bosch"
+        />
+        <img
+          class="marquee__item"
+          src="../img/electrolux.svg"
+          width="191"
+          height="100"
+          alt="electrolux"
+        />
+        <img
+          class="marquee__item"
+          src="../img/gorenje.svg"
+          width="191"
+          height="100"
+          alt="gorenje"
+        />
+        <img
+          class="marquee__item"
+          src="../img/haier.svg"
+          width="191"
+          height="100"
+          alt="haier"
+        />
+      </div>
+      <div class="marquee-bottom marquee--4">
+        <img
+          class="marquee__item-b"
+          src="../img/indesit.svg"
+          width="191"
+          height="100"
+          alt="indesit"
+        />
+        <img
+          class="marquee__item-b"
+          src="../img/hisense.svg"
+          width="191"
+          height="100"
+          alt="hisense"
+        />
+        <img
+          class="marquee__item-b"
+          src="../img/lg.svg"
+          width="191"
+          height="100"
+          alt="lg"
+        />
+        <img
+          class="marquee__item-b"
+          src="../img/samsung.svg"
+          width="191"
+          height="100"
+          alt="samsung"
+        />
+        <img
+          class="marquee__item-b"
+          src="../img/siemens.svg"
+          width="191"
+          height="100"
+          alt="siemens"
+        />
+        <img
+          class="marquee__item-b"
+          src="../img/whirlpool.svg"
+          width="191"
+          height="100"
+          alt="whirlpool"
+        />
+        <img
+          class="marquee__item-b"
+          src="../img/zanussi.svg"
+          width="191"
+          height="100"
+          alt="zanussi"
+        />
+      </div>
+    </div>
+  </article>
 </header>

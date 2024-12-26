@@ -1,9 +1,7 @@
 @forward'./variables';
 
-@forward './reset';
+@forward './normalize';
 
 @forward './fonts';
 
 @forward './base';
-
-@forward './mediaqueries';

@@ -1,0 +1,43 @@
+@use '../base/config.scss' as *;
+@use '../helpers/index.scss' as *;
+
+.questions {
+    background-color: var(--schemes-surface-bright);
+}
+
+.questions__container {
+    margin: 50px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--indent);
+}
+
+.questions__card {
+    border-radius: 24px;
+    padding: 24px;
+    max-width: 744px;
+
+    background: var(--white);
+    box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.05);
+
+    @include flex-center;
+    gap: 12px;
+    flex-direction: column;
+    flex: 0 1 100%;
+
+    &-question {
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 125%;
+        color: var(--color-theme-black);
+    }
+
+    &-answer {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 133%;
+        color: var(--color-theme-black);
+        max-width: 446px;
+    }
+}

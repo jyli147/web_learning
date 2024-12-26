@@ -1,0 +1,36 @@
+@use '../base/config.scss' as *;
+@use '../helpers/index.scss' as *;
+
+.link {
+    @include flex-center;
+    gap: var(--indent);
+}
+
+.link-left {
+    background: var(--schemes-primary);
+    border-radius: 12px;
+    min-width: 300px;
+    height: 80px;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--schemes-on-primary);
+
+    @include flex-center;
+}
+
+.link-right {
+    background: var(--schemes-on-primary);
+    border: 2px solid var(--schemes-primary);
+    border-radius: 12px;
+    min-width: 300px;
+    height: 80px;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--schemes-primary);
+
+    @include flex-center;
+}

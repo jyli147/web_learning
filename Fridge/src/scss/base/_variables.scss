@@ -1,4 +1,17 @@
-$font-family: "Gotham Pro", sans-serif;
-$second-family: "Abel", sans-serif;
-$white: #fff;
-$burgundy: rgba(158, 11, 55, 0.7);
+:root {
+    --font-family: "Roboto", sans-serif;
+    --second-family: "Inter", sans-serif;
+    --white: #fff;
+    --schemes-on-background: #191c20;
+    --color-theme-black: #000;
+    --container-width: 1536px;
+    --container-padding-x: 15px;
+    --schemes-on-primary-container: #001c37;
+    --schemes-primary: #38608f;
+    --schemes-on-primary: #fff;
+    --indent: 24px;
+    --padding: 96px;
+    --schemes-secondary: #535f70;
+    --schemes-surface-bright: #f8f9ff;
+    --color-theme-black: #000;
+}

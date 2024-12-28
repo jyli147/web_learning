@@ -3,7 +3,10 @@
 
 .link {
     @include flex-center;
-    gap: var(--indent);
+
+    & {
+        gap: var(--indent);
+    }
 }
 
 .link-left {

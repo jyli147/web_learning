@@ -6,17 +6,58 @@
     backdrop-filter: blur(50px);
     box-shadow: inset 2px 2px 100px 0 rgba(66, 66, 66, 0.1), inset -2px -2px 100px 0 rgba(255, 255, 255, 0.1);
 
+
     &__inner {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: 108px;
+    }
+}
+
+.header__overlay {
+    @include mobile-above {
+        display: contents;
+    }
+
+    @include tablet {
+        position: fixed;
+        height: 100vh;
+        inset: 0;
+        padding: 15px;
+        background-color: #D2E4FF;
+        transition-duration: 0.3s;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        z-index: 99;
+
+        &:not(.is-active) {
+            @include hide;
+
+            & {
+                translate: 100%;
+            }
+        }
     }
 }
 
 .header__menu {
+    &:not(.is-active) {
+        display: none;
+    }
+
     &-list {
         display: flex;
         gap: var(--indent);
+
+        @include tablet {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 
     &-link {
@@ -28,6 +69,11 @@
         height: 108px;
         display: inline-flex;
         align-items: center;
+
+        @include tablet {
+            height: 50px;
+            text-align: center;
+        }
 
         &::after {
             content: "";
@@ -47,6 +93,16 @@
     }
 }
 
+.header__menu-overlay {
+    &:not(.is-active) {
+        display: none;
+
+        & {
+            translate: 100%;
+        }
+    }
+}
+
 .header__button {
     border: 1px solid var(--schemes-on-primary-container);
     border-radius: 8px;
@@ -60,4 +116,8 @@
     color: var(--schemes-on-primary-container);
 
     @include flex-center;
+
+    @include tablet {
+        order: -1;
+    }
 }

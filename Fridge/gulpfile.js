@@ -26,7 +26,7 @@ const path = {
     // libs: "./dist/libs/",
   },
   src: {
-    js: "./src/js/main.min.js",
+    js: "./src/js/*.js",
     css: "./src/scss/**/*.scss",
     html: "./src/html/pages/*.html",
     img: "./src/img/*.{jpg,jpeg,png}",
@@ -129,7 +129,7 @@ function watching() {
 
 const mainTasks = series(
   cleanDist,
-  parallel(styles, html, script, img, fonts),
+  parallel(img, styles, html, script, fonts),
   parallel(startServer, watching),
 );
 

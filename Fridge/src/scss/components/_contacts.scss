@@ -6,8 +6,12 @@
 }
 
 .contacts__container {
-    margin: 100px 0;
-    padding: 70px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+}
+
+.contacts__container-inner {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -27,6 +31,10 @@
     gap: 12px;
     flex-direction: column;
     flex: 0 1 100%;
+
+    &:hover {
+        @include hover-card;
+    }
 
     &-overtext {
         font-weight: 500;
@@ -50,17 +58,31 @@
 
 .contacts__card-bottom {
     @include flex-center;
-    flex-direction: column;
-    flex: 0 1 100%;
 
-    box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.05), 0 1px 4px 0 rgba(12, 12, 13, 0.1);
-    background: var(--white);
+    & {
+        align-self: center;
+    }
 
-    border-radius: 24px;
-    padding: 24px;
-    max-width: 450px;
-    gap: 12px;
+    &:hover {
+        @include hover-card;
+    }
 
+    & {
+        flex-direction: column;
+        flex: 0 1 100%;
+
+        box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.05), 0 1px 4px 0 rgba(12, 12, 13, 0.1);
+        background: var(--white);
+
+        border-radius: 24px;
+        padding: 24px;
+        max-width: 450px;
+        gap: 12px;
+    }
+
+    @include mobile {
+        flex: 0 1 100%;
+    }
 
     &-text {
         font-weight: 400;

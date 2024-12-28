@@ -6,25 +6,33 @@
 }
 
 .questions__container {
-    margin: 50px 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: var(--indent);
 }
 
 .questions__card {
     border-radius: 24px;
     padding: 24px;
-    max-width: 744px;
+
 
     background: var(--white);
     box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.05);
 
     @include flex-center;
-    gap: 12px;
-    flex-direction: column;
-    flex: 0 1 100%;
+
+    &:hover {
+        @include hover-card;
+    }
+
+    & {
+        gap: 12px;
+        flex-direction: column;
+    }
+
+    @include tablet {
+        align-items: flex-start;
+    }
 
     &-question {
         font-weight: 400;

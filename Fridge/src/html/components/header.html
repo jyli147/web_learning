@@ -1,29 +1,64 @@
-<header class="header">
+<header class="header" data-js-header>
   <div class="container header__inner">
-    <nav class="header__menu">
-      <ul class="header__menu-list">
-        <li class="header__menu-item">
-          <a class="header__menu-link menu-item-svg" href="index.html">Цены </a>
-        </li>
-        <li class="header__menu-item">
-          <a class="header__menu-link" href="index.html">Процесс</a>
-        </li>
-        <li class="header__menu-item">
-          <a class="header__menu-link" href="index.html">Вопросы</a>
-        </li>
-        <li class="header__menu-item">
-          <a class="header__menu-link" href="index.html">Контакты</a>
-        </li>
-      </ul>
-    </nav>
-
-    <button class="header__button" type="button">Получить консультацию</button>
-
+    <div class="header__overlay" data-js-header-overlay>
+      <nav class="header__menu is-active" data-js-header-overlay-nav-isActive>
+        <ul class="header__menu-list">
+          <li class="header__menu-item">
+            <a class="header__menu-link menu-item-svg" href="#price">Цены </a>
+          </li>
+          <li class="header__menu-item">
+            <a class="header__menu-link" href="#work">Процесс</a>
+          </li>
+          <li class="header__menu-item">
+            <a class="header__menu-link" href="#questions">Вопросы</a>
+          </li>
+          <li class="header__menu-item">
+            <a class="header__menu-link" href="#contacts">Контакты</a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="header__menu-overlay" data-js-header-overlay-nav>
+        <ul class="header__menu-list">
+          <li class="header__menu-item">
+            <a
+              class="header__menu-link menu-item-svg"
+              href="#price"
+              data-js-header-price
+              >Стоимость работ
+            </a>
+          </li>
+          <li class="header__menu-item">
+            <a class="header__menu-link" href="#work" data-js-header-work
+              >Процесс работы</a
+            >
+          </li>
+          <li class="header__menu-item">
+            <a
+              class="header__menu-link"
+              href="#questions"
+              data-js-header-questions
+              >Частые вопросы</a
+            >
+          </li>
+          <li class="header__menu-item">
+            <a
+              class="header__menu-link"
+              href="#contacts"
+              data-js-header-contacts
+              >Мои контакты</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <button class="header__button" type="button" data-js-button>
+      Получить консультацию
+    </button>
     <button
       class="header__burger-button burger-button visible-mobile"
       type="button"
-      onclick="mobileOverlay.showModal()"
       aria-label="Открыть новигационное меню"
+      data-js-header-burger-button
     >
       <span class="burger-button__line"></span>
       <span class="burger-button__line"></span>
@@ -45,16 +80,18 @@
       </span>
     </button>
   </div>
-  <article class="hero inner container">
+  <article class="hero container">
     <h1 class="visually-hidden">Ремонт любых холодильников</h1>
-    <h2 class="hero__title title">
-      Ремонт холодильников <br />в Санкт-Петербурге
-    </h2>
-    <p class="hero__subtitle subtitle">
-      Сохраняю холод без посредников и переплат
-    </p>
-    <div class="hero__link link">
-      <a class="link-left" href="#">Вызвать мастера</a>
+    <div>
+      <h2 class="hero__title title">
+        Ремонт холодильников <br />в Санкт-Петербурге
+      </h2>
+      <p class="hero__subtitle subtitle">
+        Сохраняю холод без посредников и переплат
+      </p>
+    </div>
+    <div class="link inner-card">
+      <a class="link-left" href="#" data-js-button>Вызвать мастера</a>
       <a class="link-right" href="#">Узнать цены</a>
     </div>
     <div class="logos">

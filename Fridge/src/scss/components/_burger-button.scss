@@ -4,20 +4,24 @@
 .burger-button {
     @include square(48px);
 
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 14px 6px;
-    color: var(--schemes-primary);
-    background-color: transparent;
-    border: none;
-    position: relative;
+    & {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 14px 6px;
+        color: var(--schemes-primary);
+        background-color: transparent;
+        border: none;
+        position: relative;
+    }
 
     @include hover {
         color: var(--schemes-secondary);
     }
 
     &.is-active {
+        z-index: 100;
+
         .burger-button__line {
             &:first-child {
                 rotate: 45deg;
@@ -56,7 +60,7 @@
 
         &:nth-child(2) {
             width: 43%;
-            color: var(--schemes-secondary);
+            color: var(--button);
         }
 
         &:nth-child(3) {

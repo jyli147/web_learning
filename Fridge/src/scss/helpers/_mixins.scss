@@ -20,12 +20,17 @@
         display: inline-flex;
     }
 
+
     @else {
-        display: flex;
+        & {
+            display: flex;
+        }
     }
 
-    justify-content: center;
-    align-items: center;
+    & {
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @mixin abs-center {
@@ -66,7 +71,13 @@
 }
 
 @mixin background {
-    background: url(../img/background.png);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+@mixin hover-card {
+    -webkit-box-shadow: 0px 6px 26px 17px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 6px 26px 17px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 6px 26px 17px rgba(34, 60, 80, 0.2);
+    cursor: pointer;
 }

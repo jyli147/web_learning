@@ -8,7 +8,7 @@ class Header {
     workButton: "[data-js-header-work]",
     priceButton: "[data-js-header-price]",
     navActive: "[data-js-header-overlay-nav-isActive]",
-    nav: "[data-js-header-overlay]",
+    nav: "[data-js-header-overlay-nav]",
   };
 
   stateClasses = {
@@ -31,26 +31,25 @@ class Header {
     this.bindEvents();
   }
 
-  onBurgerButtonClick = () => {
-    // this.navActiveElement.classList.toggle(this.stateClasses.isActive);
-    // this.navElement.classList.toggle(this.stateClasses.isActive);
+  onBurgerButtonClick() {
+    this.navActiveElement.classList.toggle(this.stateClasses.isActive);
+    this.navElement.classList.toggle(this.stateClasses.isActive);
     this.burgerButtonElement.classList.toggle(this.stateClasses.isActive);
     this.overlayElement.classList.toggle(this.stateClasses.isActive);
     this.document.documentElement.classList.toggle(this.stateClasses.isLock);
-  };
+  }
 
-  scrollToSection = (selector) => {
+  scrollToSection(selector) {
     const section = document.querySelector(selector);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
       this.onBurgerButtonClick();
     }
-  };
+  }
 
   bindEvents() {
-    this.burgerButtonElement.addEventListener(
-      "click",
-      this.onBurgerButtonClick,
+    this.burgerButtonElement.addEventListener("click", () =>
+      this.onBurgerButtonClick(),
     );
 
     this.rootElement

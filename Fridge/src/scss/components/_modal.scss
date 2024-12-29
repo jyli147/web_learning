@@ -135,7 +135,8 @@
 
 .input:focus+.data__form-placeholder,
 .input:valid+.data__form-placeholder,
-.input:invalid+.data__form-placeholder {
+.input:user-valid+.data__form-placeholder,
+.input:user-invalid+.data__form-placeholder {
     @include hide;
 }
 

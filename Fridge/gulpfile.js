@@ -44,11 +44,13 @@ const path = {
 };
 
 function script() {
-  return gulp
-    .src(path.src.js)
-    .pipe(concat("main.min.js"))
-    .pipe(uglify())
-    .pipe(dest(path.bild.js));
+  return (
+    gulp
+      .src(path.src.js)
+      .pipe(concat("main.min.js"))
+      // .pipe(uglify())
+      .pipe(dest(path.bild.js))
+  );
 }
 
 function styles() {
